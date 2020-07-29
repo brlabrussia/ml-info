@@ -3,7 +3,7 @@ version: '3'
 services:
   app:
     depends_on:
-      - postgres
+      - db
     build:
       context: .
       args:
@@ -17,10 +17,10 @@ services:
       - inner_network
     env_file:
       - .env
-    command: bash -c 'while !</dev/tcp/postgres/5432; do sleep 1; done; python manage.py runserver 0:8080'
+    command: bash -c 'while !</dev/tcp/db/5432; do sleep 1; done; python manage.py runserver 0:8080'
     restart: always
 
-  postgres:
+  db:
     image: postgres:12
     expose:
       - 5432
