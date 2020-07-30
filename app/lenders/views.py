@@ -11,8 +11,8 @@ from .models import Lender
 @require_POST
 def cbr(request):
     items = json.loads(request.body)
-    for item in items:
-        lender = Lender(
+    Lender.objects.bulk_create([
+        Lender(
             scraped_from=['https://www.cbr.ru/vfs/finmarkets/files/supervision/list_MFO.xlsx'],
             name=item.get('name', ''),
             full_name=item.get('full_name', ''),
@@ -25,5 +25,6 @@ def cbr(request):
             website=item.get('url', ''),
             address=item.get('address', ''),
         )
-        lender.save()
+        for item in items
+    ])
     return HttpResponse(status=201)
