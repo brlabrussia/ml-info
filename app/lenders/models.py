@@ -15,9 +15,9 @@ class Lender(models.Model):
     is_legal = models.BooleanField(default=False)
     type = models.TextField('Вид МФО', blank=True)
     regdate = models.DateTimeField('Дата внесения в ЦБ', blank=True, null=True)
-    regnum = models.IntegerField('Регномер ЦБ', unique=True, blank=True, null=True)
-    ogrn = models.IntegerField('ОГРН', unique=True, blank=True, null=True)
-    inn = models.IntegerField('ИНН', unique=True, blank=True, null=True)
+    regnum = models.BigIntegerField('Регномер ЦБ', unique=True, blank=True, null=True)
+    ogrn = models.BigIntegerField('ОГРН', unique=True, blank=True, null=True)
+    inn = models.BigIntegerField('ИНН', unique=True, blank=True, null=True)
 
     website = models.URLField(blank=True)
     email = models.EmailField(blank=True)
@@ -81,8 +81,8 @@ class Loan(models.Model):
     trademark = models.TextField('Торговая марка')
     address = models.TextField('Адрес')
     head_name = models.TextField('Руководитель')
-    regnum = models.IntegerField('Регномер ЦБ')
-    ogrn = models.IntegerField('ОГРН')
+    regnum = models.BigIntegerField('Регномер ЦБ')
+    ogrn = models.BigIntegerField('ОГРН')
 
     def __str__(self):
         return self.name
