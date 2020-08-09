@@ -7,6 +7,7 @@ from .serializers import (
     CbrSerializer,
     LenderSerializer,
     LoanSerializer,
+    VsezaimyonlineSerializer,
     ZaymovSerializer,
 )
 
@@ -29,6 +30,8 @@ class ScrapersView(APIView):
             serializer_class = CbrSerializer
         elif scraper_name == 'zaymov':
             serializer_class = ZaymovSerializer
+        elif scraper_name == 'vsezaimyonline':
+            serializer_class = VsezaimyonlineSerializer
         else:
             return Response(status=status.HTTP_400_BAD_REQUEST)
 

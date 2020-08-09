@@ -1,4 +1,4 @@
-from django.contrib.postgres.fields import ArrayField
+from django.contrib.postgres.fields import ArrayField, JSONField
 from django.db import models
 
 
@@ -11,6 +11,7 @@ class Lender(models.Model):
     name = models.TextField('Сокращенное наименование', blank=True)
     full_name = models.TextField('Полное наименование', blank=True)
     logo = models.URLField()
+    documents = ArrayField(JSONField(), verbose_name='Документы', null=True)
 
     is_legal = models.BooleanField(default=False)
     type = models.TextField('Вид МФО', blank=True)
@@ -33,12 +34,6 @@ class Lender(models.Model):
 
     def __str__(self):
         return self.trademark or self.name
-
-
-class Document(models.Model):
-    lender = models.ForeignKey(Lender, on_delete=models.CASCADE)
-    name = models.TextField()
-    url = models.URLField()
 
 
 class Loan(models.Model):
@@ -76,7 +71,7 @@ class Loan(models.Model):
 
     # * Об организации
     # We merge based on scraped data, which can be outdated so we keep it for future debugging
-    lender = models.ForeignKey(Lender, on_delete=models.CASCADE)
+    lender = models.ForeignKey(Lender, on_delete=models.CASCADE, related_name='loans')
     logo = models.URLField('Логотип организации')
     trademark = models.TextField('Торговая марка')
     address = models.TextField('Адрес')
