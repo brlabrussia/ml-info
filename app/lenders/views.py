@@ -1,30 +1,17 @@
-import json
+from rest_framework import status, viewsets
+from rest_framework.response import Response
+from rest_framework.views import APIView
 
-from django.http import HttpResponse
-from django.views.decorators.csrf import csrf_exempt
-from django.views.decorators.http import require_POST
-
-from .models import Lender
+from .models import Lender, Loan
+from .serializers import CbrSerializer, LenderSerializer, LoanSerializer
 
 
-@csrf_exempt
-@require_POST
-def cbr(request):
-    items = json.loads(request.body)
-    Lender.objects.bulk_create([
-        Lender(
-            scraped_from=['https://www.cbr.ru/vfs/finmarkets/files/supervision/list_MFO.xlsx'],
-            name=item.get('name', ''),
-            full_name=item.get('full_name', ''),
-            is_legal=True,
-            type=item.get('mfo_type', ''),
-            regdate=item.get('registry_date', ''),
-            regnum=item.get('reg_number'),
-            ogrn=item.get('ogrn'),
-            inn=item.get('inn'),
-            website=item.get('url', ''),
-            address=item.get('address', ''),
-        )
-        for item in items
-    ])
-    return HttpResponse(status=201)
+class CbrView(APIView):
+    permission_classes = []
+
+    def post(self, request):
+        serializer = CbrSerializer(data=request.data, many=True)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_202_ACCEPTED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)

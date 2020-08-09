@@ -1,7 +1,8 @@
-from django.urls import path
+from django.urls import path, re_path
+from rest_framework.routers import DefaultRouter
 
 from . import views
 
 urlpatterns = [
-    path('cbr/', views.cbr),
+    re_path(r'^scrapers/cbr/$', views.CbrView.as_view()),
 ]
