@@ -22,12 +22,12 @@ class CbrSerializer(serializers.ModelSerializer):
     """
     name: str
     full_name: str
-    type: str
-    regdate: str
-    regnum: int
+    mfo_type: str
+    registry_date: str
+    reg_number: int
     ogrn: int
     inn: int
-    website: str
+    url: str
     email: str
     address: str
     """
@@ -163,68 +163,100 @@ class CbrSerializer(serializers.ModelSerializer):
         }
 
 
-# class ZaymovSerializer(serializers.ModelSerializer):
-#     """
-#     url: str
-#     name: str
-#     logo: str
-#     reg_number: int
-#     ogrn: int
-#     registry_date: str
-#     address: str
-#     """
+class ZaymovSerializer(serializers.ModelSerializer):
+    """
+    url: str
+    name: str
+    logo: str
+    reg_number: int
+    ogrn: int
+    address: str
+    """
 
-#     def to_internal_value(self, data):
-#         return super().to_internal_value({
-#             'scraped_from': data.get('url', ''),
-#             'trademark': data.get('name', ''),
-#             'logo': data.get('logo', ''),
-#             'regdate': data.get('registry_date', ''),
-#             'regnum': data.get('reg_number'),
-#             'ogrn': data.get('ogrn'),
-#             'address': data.get('address', ''),
-#         })
+    def to_internal_value(self, data):
+        return super().to_internal_value({
+            'scraped_from': [data.get('url', '')],
+            'trademark': data.get('name', ''),
+            'logo': data.get('logo', ''),
+            'regnum': data.get('reg_number'),
+            'ogrn': data.get('ogrn'),
+            'address': data.get('address', ''),
+        })
 
-#     def create(self, validated_data):
-#         """
-#         Can't override `save()` for this class
-#         since serializer is initiated with `many=True`
-#         so we implement create/update logic here.
-#         """
-#         ogrn = validated_data.get('ogrn')
-#         inn = validated_data.get('inn')
-#         regnum = validated_data.get('regnum')
-#         qs = Lender.objects.filter(
-#             Q(ogrn__isnull=False, ogrn=ogrn)
-#             | Q(inn__isnull=False, inn=inn)
-#             | Q(regnum__isnull=False, regnum=regnum),
-#         )
-#         if qs.exists():
-#             return self.update(qs.first(), validated_data)
+    def create(self, validated_data):
+        """
+        Can't override `save()` for this class
+        since serializer is initiated with `many=True`
+        so we implement create/update logic here.
+        """
 
-#         # create new if none found
-#         lender = Lender(**validated_data)
-#         lender.is_legal = False
-#         lender.save()
-#         return lender
+        # try to find instance in db
+        ogrn = validated_data.get('ogrn')
+        inn = validated_data.get('inn')
+        regnum = validated_data.get('regnum')
+        qs = Lender.objects.filter(
+            Q(ogrn__isnull=False, ogrn=ogrn)
+            | Q(inn__isnull=False, inn=inn)
+            | Q(regnum__isnull=False, regnum=regnum),
+        )
 
-#     def update(self, instance, validated_data):
-#         return instance
+        # update if found
+        if qs.exists():
+            return self.update(qs.first(), validated_data)
 
-#     class Meta:
-#         model = Lender
-#         fields = (
-#             'scraped_from',
-#             'trademark',
-#             'logo',
-#             'regdate',
-#             'regnum',
-#             'ogrn',
-#             'address',
-#         )
-#         extra_kwargs = {
-#             # following fields have `unique=True` constraint
-#             # disable `UniqueValidator` since we manage it in `create()`
-#             'ogrn': {'validators': [integer_validator]},
-#             'regnum': {'validators': [integer_validator]},
-#         }
+        # create new if none found
+        return Lender.objects.create(
+            **validated_data,
+            is_legal=False,
+        )
+
+    def update(self, instance, validated_data):
+        """
+        Only update non-empty fields which have changed.
+        We track whether changes have been made so that
+        we don't call `save()` for nothing and `updated_at`
+        field is meaningful.
+        """
+
+        fields_to_override = (
+            'trademark',
+            'logo',
+            'address',
+        )
+        updated = False
+        for key, value in validated_data.items():
+            want_to_change = (
+                value  # scraped value is non-empty
+                and (
+                    not getattr(instance, key)  # field is empty
+                    or (
+                        key in fields_to_override  # we want to override non-empty
+                        and value != getattr(instance, key)  # field changed
+                    )
+                )
+            )
+            if want_to_change:
+                setattr(instance, key, value)
+                updated = True
+        if updated:
+            if not validated_data['scraped_from'][0] in instance.scraped_from:
+                instance.scraped_from += validated_data['scraped_from']
+            instance.save()
+        return instance
+
+    class Meta:
+        model = Lender
+        fields = (
+            'scraped_from',
+            'trademark',
+            'logo',
+            'regnum',
+            'ogrn',
+            'address',
+        )
+        extra_kwargs = {
+            # following fields have `unique=True` constraint
+            # disable `UniqueValidator` since we manage it in `create()`
+            'ogrn': {'validators': [integer_validator]},
+            'regnum': {'validators': [integer_validator]},
+        }
