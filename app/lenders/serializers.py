@@ -23,7 +23,6 @@ class CbrSerializer(serializers.ModelSerializer):
         return super().to_internal_value({
             'name': data.get('name', ''),
             'full_name': data.get('full_name', ''),
-            'is_legal': True,
             'type': data.get('mfo_type', ''),
             'regdate': data.get('registry_date'),
             'regnum': data.get('reg_number'),
@@ -81,6 +80,7 @@ class CbrSerializer(serializers.ModelSerializer):
         # create new if none found
         lender = Lender(**validated_data)
         lender.scraped_from = ['https://www.cbr.ru/vfs/finmarkets/files/supervision/list_MFO.xlsx']
+        lender.is_legal = True
         lender.save()  # Lender.objects.create(**validated_data)
         return lender
 
@@ -94,7 +94,6 @@ class CbrSerializer(serializers.ModelSerializer):
         fields_to_override = (
             'name',
             'full_name',
-            'is_legal',
             'type',
             'regdate',
             'regnum',
@@ -128,7 +127,6 @@ class CbrSerializer(serializers.ModelSerializer):
         fields = (
             'name',
             'full_name',
-            'is_legal',
             'type',
             'regdate',
             'regnum',
