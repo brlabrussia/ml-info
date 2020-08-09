@@ -6,6 +6,16 @@ from .models import Lender, Loan
 from .serializers import CbrSerializer, LenderSerializer, LoanSerializer
 
 
+class LenderViewSet(viewsets.ReadOnlyModelViewSet):
+    serializer_class = LenderSerializer
+    queryset = Lender.objects.all()
+
+
+class LoanViewSet(viewsets.ReadOnlyModelViewSet):
+    serializer_class = LoanSerializer
+    queryset = Loan.objects.all()
+
+
 class CbrView(APIView):
     permission_classes = []
 

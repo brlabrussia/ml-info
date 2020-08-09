@@ -6,6 +6,18 @@ from rest_framework import serializers
 from .models import Lender, Loan
 
 
+class LenderSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Lender
+        fields = '__all__'
+
+
+class LoanSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Loan
+        fields = '__all__'
+
+
 class CbrSerializer(serializers.ModelSerializer):
     def to_internal_value(self, data):
         return super().to_internal_value({
