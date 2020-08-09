@@ -3,7 +3,12 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 
 from .models import Lender, Loan
-from .serializers import CbrSerializer, LenderSerializer, LoanSerializer
+from .serializers import (
+    CbrSerializer,
+    LenderSerializer,
+    LoanSerializer,
+    ZaymovSerializer,
+)
 
 
 class LenderViewSet(viewsets.ReadOnlyModelViewSet):
@@ -16,11 +21,18 @@ class LoanViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = Loan.objects.all()
 
 
-class CbrView(APIView):
-    permission_classes = []
+class ScrapersView(APIView):
+    permission_classes = ()
 
-    def post(self, request):
-        serializer = CbrSerializer(data=request.data, many=True)
+    def post(self, request, scraper_name):
+        if scraper_name == 'cbr':
+            serializer_class = CbrSerializer
+        elif scraper_name == 'zaymov':
+            serializer_class = ZaymovSerializer
+        else:
+            return Response(status=status.HTTP_400_BAD_REQUEST)
+
+        serializer = serializer_class(data=request.data, many=True)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=status.HTTP_202_ACCEPTED)
