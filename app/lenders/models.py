@@ -10,7 +10,7 @@ class Lender(models.Model):
     trademark = models.TextField('Торговая марка', blank=True)
     name = models.TextField('Сокращенное наименование', blank=True)
     full_name = models.TextField('Полное наименование', blank=True)
-    # logo = models.ImageField()  # TODO upload_to='images/', add pillow
+    logo = models.URLField()
 
     is_legal = models.BooleanField(default=False)
     type = models.TextField('Вид МФО', blank=True)
@@ -38,7 +38,7 @@ class Lender(models.Model):
 class Document(models.Model):
     lender = models.ForeignKey(Lender, on_delete=models.CASCADE)
     name = models.TextField()
-    file = models.FileField()
+    url = models.URLField()
 
 
 class Loan(models.Model):
