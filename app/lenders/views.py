@@ -4,6 +4,7 @@ from rest_framework.views import APIView
 
 from .models import Lender, Loan
 from .serializers import (
+    BankiSerializer,
     CbrSerializer,
     LenderSerializer,
     LoanSerializer,
@@ -12,14 +13,25 @@ from .serializers import (
 )
 
 
-class LenderViewSet(viewsets.ReadOnlyModelViewSet):
-    serializer_class = LenderSerializer
-    queryset = Lender.objects.all()
-
-
 class LoanViewSet(viewsets.ReadOnlyModelViewSet):
     serializer_class = LoanSerializer
     queryset = Loan.objects.all()
+    search_fields = ('scraped_from', 'name', 'trademark')
+    filterset_fields = (
+        'lender',
+        'amount_max',
+        'period_min',
+        'period_max',
+        'regnum',
+        'ogrn',
+    )
+
+
+class LenderViewSet(viewsets.ReadOnlyModelViewSet):
+    serializer_class = LenderSerializer
+    queryset = Lender.objects.all()
+    search_fields = ('trademark', 'name', 'full_name')
+    filterset_fields = ('is_legal', 'regnum', 'ogrn', 'inn')
 
 
 class ScrapersView(APIView):
@@ -32,6 +44,8 @@ class ScrapersView(APIView):
             serializer_class = ZaymovSerializer
         elif scraper_name == 'vsezaimyonline':
             serializer_class = VsezaimyonlineSerializer
+        elif scraper_name == 'banki':
+            serializer_class = BankiSerializer
         else:
             return Response(status=status.HTTP_400_BAD_REQUEST)
 
