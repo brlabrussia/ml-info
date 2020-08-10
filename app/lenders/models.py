@@ -47,17 +47,17 @@ class Loan(models.Model):
     last_modified = models.DateTimeField('Дата актуализации')
     # ** Условия и ставки
     purpose = ArrayField(models.TextField(), verbose_name='Цель займа')
-    amount_max = models.IntegerField('Максимальная сумма займа')
+    amount_max = models.IntegerField('Максимальная сумма займа', null=True)
     amount_note = models.TextField('Допинфа по сумме займа', blank=True)  # first_loan_condition
     rate = models.TextField('Ставка')
-    period_min = models.IntegerField('Минимальный срок займа')  # dates_from
-    period_max = models.IntegerField('Максимальный срок займа')  # dates_to
+    period_min = models.IntegerField('Минимальный срок займа', null=True)  # dates_from
+    period_max = models.IntegerField('Максимальный срок займа', null=True)  # dates_to
     period_note = models.TextField('Допинфа по срокам', blank=True)  # loan_time_terms
     collateral = ArrayField(models.TextField(), verbose_name='Обеспечение')  # providing
     # ** Требования и документы
     borrowers_categories = ArrayField(models.TextField(), verbose_name='Категория заемщиков')
-    borrowers_age = models.TextField('Возраст заемщика')
-    borrowers_registration = ArrayField(models.TextField(), verbose_name='Регистрация')
+    borrowers_age = models.TextField('Возраст заемщика', blank=True)
+    borrowers_registration = ArrayField(models.TextField(), verbose_name='Регистрация', null=True)
     borrowers_documents = ArrayField(models.TextField(), verbose_name='Документы')
     # ** Выдача
     issuance = models.TextField('Срок выдачи')
@@ -72,12 +72,12 @@ class Loan(models.Model):
     # * Об организации
     # We merge based on scraped data, which can be outdated so we keep it for future debugging
     lender = models.ForeignKey(Lender, on_delete=models.CASCADE, related_name='loans')
-    logo = models.URLField('Логотип организации')
+    logo = models.URLField('Логотип организации', blank=True)
     trademark = models.TextField('Торговая марка')
     address = models.TextField('Адрес')
-    head_name = models.TextField('Руководитель')
+    head_name = models.TextField('Руководитель', blank=True)
     regnum = models.BigIntegerField('Регномер ЦБ')
-    ogrn = models.BigIntegerField('ОГРН')
+    ogrn = models.BigIntegerField('ОГРН', null=True)
 
     def __str__(self):
         return self.name
