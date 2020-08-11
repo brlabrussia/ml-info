@@ -1,5 +1,6 @@
 django-filter==2.3.*
 django==3.0.*
 djangorestframework==3.11.*
+drf-yasg==1.17.*
 psycopg2-binary==2.8.*
 requests==2.24.*

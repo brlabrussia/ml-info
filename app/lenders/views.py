@@ -16,22 +16,22 @@ from .serializers import (
 class LoanViewSet(viewsets.ReadOnlyModelViewSet):
     serializer_class = LoanSerializer
     queryset = Loan.objects.all()
-    search_fields = ('scraped_from', 'name', 'trademark')
-    filterset_fields = (
-        'lender',
-        'amount_max',
-        'period_min',
-        'period_max',
-        'regnum',
-        'ogrn',
-    )
+    # search_fields = ('scraped_from', 'name', 'trademark')
+    # filterset_fields = (
+    #     'lender',
+    #     'amount_max',
+    #     'period_min',
+    #     'period_max',
+    #     'regnum',
+    #     'ogrn',
+    # )
 
 
 class LenderViewSet(viewsets.ReadOnlyModelViewSet):
     serializer_class = LenderSerializer
     queryset = Lender.objects.all()
-    search_fields = ('trademark', 'name', 'full_name')
-    filterset_fields = ('is_legal', 'regnum', 'ogrn', 'inn')
+    # search_fields = ('trademark', 'name', 'full_name')
+    # filterset_fields = ('is_legal', 'regnum', 'ogrn', 'inn')
 
 
 class ScrapersView(APIView):
