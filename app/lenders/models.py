@@ -59,12 +59,6 @@ class Lender(models.Model):
         return self.trademark or self.name_short
 
 
-class Document(models.Model):
-    lender = models.ForeignKey(Lender, on_delete=models.CASCADE, related_name='documents')
-    name = models.TextField()
-    url = models.URLField()
-
-
 class Loan(models.Model):
     lender = models.ForeignKey(Lender, on_delete=models.CASCADE, related_name='loans')
 
