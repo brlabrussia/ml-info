@@ -1,6 +1,6 @@
-from django.contrib.postgres.fields import ArrayField
-from django.db import models
+from django.contrib.postgres.fields import ArrayField, JSONField
 from django.core.validators import RegexValidator
+from django.db import models
 
 
 class Lender(models.Model):
@@ -57,6 +57,12 @@ class Lender(models.Model):
 
     def __str__(self):
         return self.trademark or self.name_short
+
+
+class Document(models.Model):
+    lender = models.ForeignKey(Lender, on_delete=models.CASCADE, related_name='documents')
+    name = models.TextField()
+    url = models.URLField()
 
 
 class Loan(models.Model):
