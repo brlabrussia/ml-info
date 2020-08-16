@@ -1,83 +1,121 @@
-from django.contrib.postgres.fields import ArrayField, JSONField
+from django.contrib.postgres.fields import ArrayField
 from django.db import models
+from django.core.validators import RegexValidator
 
 
 class Lender(models.Model):
-    added_at = models.DateTimeField(auto_now_add=True)
+    created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     scraped_from = ArrayField(models.URLField())
 
-    trademark = models.TextField('Торговая марка', blank=True)
-    name = models.TextField('Сокращенное наименование', blank=True)
-    full_name = models.TextField('Полное наименование', blank=True)
-    logo = models.URLField()
-    documents = ArrayField(JSONField(), verbose_name='Документы', null=True)
+    trademark = models.TextField(blank=True, help_text='Торговая марка')
+    name_short = models.TextField(blank=True, help_text='Сокращенное наименование')
+    name_full = models.TextField(blank=True, help_text='Полное наименование')
+    logo = models.URLField(blank=True, help_text='Логотип')
+    documents = ArrayField(JSONField(), blank=True, null=True, help_text='Документы')
 
-    is_legal = models.BooleanField(default=False)
-    type = models.TextField('Вид МФО', blank=True)
-    regdate = models.DateTimeField('Дата внесения в ЦБ', blank=True, null=True)
-    regnum = models.BigIntegerField('Регномер ЦБ', unique=True, blank=True, null=True)
-    ogrn = models.BigIntegerField('ОГРН', unique=True, blank=True, null=True)
-    inn = models.BigIntegerField('ИНН', unique=True, blank=True, null=True)
+    is_legal = models.BooleanField(default=False, help_text='Легальная МФО (есть в реестре ЦБ)')
+    cbr_created_at = models.DateTimeField(blank=True, null=True, help_text='Дата внесения в реестр ЦБ')
+    type = models.TextField(blank=True, help_text='Вид МФО')
+    cbrn = models.CharField(
+        max_length=13,
+        validators=(RegexValidator(r'\d{13}$'),),
+        unique=True,
+        blank=True,
+        help_text='Регномер в ЦБ',
+    )
+    ogrn = models.CharField(
+        max_length=13,
+        validators=(RegexValidator(r'\d{13}$'),),
+        unique=True,
+        blank=True,
+        null=True,
+        help_text='ОГРН',
+    )
+    inn = models.CharField(
+        max_length=10,
+        validators=(RegexValidator(r'\d{10}$'),),
+        unique=True,
+        blank=True,
+        null=True,
+        help_text='ИНН',
+    )
 
-    website = models.URLField('Вебсайт', blank=True)
-    email = models.EmailField('Электронная почта', blank=True)
-    socials = ArrayField(models.URLField(), verbose_name='Соцсети', blank=True, null=True)
-    address = models.TextField('Адрес', blank=True)
-    head_name = models.TextField('Руководитель', blank=True)
+    website = models.URLField(blank=True, help_text='Вебсайт')
+    email = models.EmailField(blank=True, help_text='Электронная почта')
+    socials = ArrayField(models.URLField(), blank=True, null=True, help_text='Соцсети')
+    address = models.TextField(blank=True, help_text='Адрес')
+    head_name = models.TextField(blank=True, help_text='Руководитель')
 
-    amount_min = models.IntegerField('Минимальная сумма займа', blank=True, null=True)
-    amount_max = models.IntegerField('Максимальная сумма займа', blank=True, null=True)
-    overpayment_day = models.IntegerField('Переплата за день', blank=True, null=True)
-    overpayment_full = models.IntegerField('Переплата за весь срок', blank=True, null=True)
-    refusal_reasons = ArrayField(models.TextField(), verbose_name='Причины отказа', blank=True, null=True)
+    decision_speed = models.TextField(blank=True, help_text='Скорость рассмотрения заявки')
+    payment_speed = models.TextField(blank=True, help_text='Скорость выплаты')
+    amount_min = models.PositiveIntegerField(blank=True, null=True, help_text='Минимальная сумма займа')
+    amount_max = models.PositiveIntegerField(blank=True, null=True, help_text='Максимальная сумма займа')
+    overpayment_day = models.PositiveIntegerField(blank=True, null=True, help_text='Переплата за день')
+    overpayment_full = models.PositiveIntegerField(blank=True, null=True, help_text='Переплата за весь срок')
+    decline_reasons = ArrayField(models.TextField(), blank=True, null=True, help_text='Причины отказа')
 
     def __str__(self):
-        return self.trademark or self.name
+        return self.trademark or self.name_short
 
 
 class Loan(models.Model):
-    added_at = models.DateTimeField(auto_now_add=True)
+    lender = models.ForeignKey(Lender, on_delete=models.CASCADE, related_name='loans')
+
+    created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-    scraped_from = models.URLField(unique=True)
 
     # * О займе
     # https://www.banki.ru/microloans/products/2/
-    name = models.TextField('Название займа')
-    last_modified = models.DateTimeField('Дата актуализации')
+    name = models.TextField(help_text='Название займа')
+    banki_url = models.URLField(unique=True, help_text='Ссылка на Банки.ру')
+    banki_updated_at = models.DateTimeField(blank=True, null=True, help_text='Дата актуализации на Банки.ру')
     # ** Условия и ставки
-    purpose = ArrayField(models.TextField(), verbose_name='Цель займа')
-    amount_max = models.IntegerField('Максимальная сумма займа', null=True)
-    amount_note = models.TextField('Допинфа по сумме займа', blank=True)  # first_loan_condition
-    rate = models.TextField('Ставка')
-    period_min = models.IntegerField('Минимальный срок займа', null=True)  # dates_from
-    period_max = models.IntegerField('Максимальный срок займа', null=True)  # dates_to
-    period_note = models.TextField('Допинфа по срокам', blank=True)  # loan_time_terms
-    collateral = ArrayField(models.TextField(), verbose_name='Обеспечение')  # providing
+    purposes = ArrayField(models.TextField(), blank=True, null=True, help_text='Цель займа')
+    amount_min = models.PositiveIntegerField(blank=True, null=True, help_text='Минимальная сумма займа')
+    amount_max = models.PositiveIntegerField(blank=True, null=True, help_text='Максимальная сумма займа')
+    amount_note = models.TextField(blank=True, help_text='Допинфа по сумме займа')
+    rate = models.TextField(blank=True, help_text='Ставка')
+    period_min = models.PositiveIntegerField(blank=True, null=True, help_text='Минимальный срок займа')
+    period_max = models.PositiveIntegerField(blank=True, null=True, help_text='Максимальный срок займа')
+    period_note = models.TextField(blank=True, help_text='Допинфа по срокам')
+    collateral = ArrayField(models.TextField(), blank=True, null=True, help_text='Обеспечение')
     # ** Требования и документы
-    borrowers_categories = ArrayField(models.TextField(), verbose_name='Категория заемщиков')
-    borrowers_age = models.TextField('Возраст заемщика', blank=True)
-    borrowers_registration = ArrayField(models.TextField(), verbose_name='Регистрация', null=True)
-    borrowers_documents = ArrayField(models.TextField(), verbose_name='Документы')
+    borrower_categories = ArrayField(models.TextField(), blank=True, null=True, help_text='Категории заемщиков')
+    borrower_age = models.TextField(blank=True, help_text='Возраст заемщика')
+    borrower_registration = ArrayField(models.TextField(), blank=True, null=True, help_text='Регистрация заемщика')
+    borrower_documents = ArrayField(models.TextField(), blank=True, null=True, help_text='Документы заемщика')
     # ** Выдача
-    issuance = models.TextField('Срок выдачи')
-    loan_processing = ArrayField(models.TextField(), verbose_name='Оформление займа')
-    loan_form = ArrayField(models.TextField(), verbose_name='Форма выдачи')
-    loan_form_note = models.TextField('Допинфа по форме выдачи', blank=True)  # loan_form_description
+    application_process = ArrayField(models.TextField(), blank=True, null=True, help_text='Оформление займа')
+    payment_speed = models.TextField(blank=True, help_text='Срок выдачи')
+    payment_forms = ArrayField(models.TextField(), blank=True, null=True, help_text='Форма выдачи')
+    payment_forms_note = models.TextField(blank=True, help_text='Допинфа по форме выдачи')
     # ** Погашение
-    repayment_order = ArrayField(models.TextField(), verbose_name='Порядок погашения')
-    repayment_order_note = models.TextField('Допинфа по порядку погашения', blank=True)  # repayment_order_description
-    payment_methods = ArrayField(models.TextField(), verbose_name='Способ оплаты')
+    repayment_process = ArrayField(models.TextField(), blank=True, null=True, help_text='Порядок погашения')
+    repayment_process_note = models.TextField(blank=True, help_text='Допинфа по порядку погашения')
+    repayment_forms = ArrayField(models.TextField(), blank=True, null=True, help_text='Способ оплаты')
 
     # * Об организации
     # We merge based on scraped data, which can be outdated so we keep it for future debugging
-    lender = models.ForeignKey(Lender, on_delete=models.CASCADE, related_name='loans')
-    logo = models.URLField('Логотип организации', blank=True)
-    trademark = models.TextField('Торговая марка')
-    address = models.TextField('Адрес')
-    head_name = models.TextField('Руководитель', blank=True)
-    regnum = models.BigIntegerField('Регномер ЦБ')
-    ogrn = models.BigIntegerField('ОГРН', null=True)
+    lender_logo = models.URLField(blank=True, help_text='Логотип организации')
+    lender_trademark = models.TextField(blank=True, help_text='Торговая марка')
+    lender_address = models.TextField(blank=True, help_text='Адрес')
+    lender_head_name = models.TextField(blank=True, help_text='Руководитель')
+    lender_cbrn = models.CharField(
+        max_length=13,
+        validators=(RegexValidator(r'\d{13}$'),),
+        unique=True,
+        blank=True,
+        help_text='Регномер в ЦБ',
+    )
+    lender_ogrn = models.CharField(
+        max_length=13,
+        validators=(RegexValidator(r'^\d{13}$'),),
+        unique=True,
+        blank=True,
+        null=True,
+        help_text='ОГРН',
+    )
 
     def __str__(self):
         return self.name
