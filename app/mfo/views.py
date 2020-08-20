@@ -49,7 +49,8 @@ class ScrapersView(APIView):
         else:
             return Response(status=status.HTTP_400_BAD_REQUEST)
 
-        serializer = serializer_class(data=request.data, many=True)
+        many = True if type(request.data) is list else False
+        serializer = serializer_class(data=request.data, many=many)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=status.HTTP_202_ACCEPTED)
