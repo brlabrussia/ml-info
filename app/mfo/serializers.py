@@ -90,40 +90,33 @@ class CbrSerializer(serializers.ModelSerializer):
 
 
 class ZaymovSerializer(serializers.ModelSerializer):
-    """
-    url: str
-    name: str
-    logo: str
-    reg_number: int
-    ogrn: int
-    address: str
-    """
-
-    def to_internal_value(self, data):
-        return super().to_internal_value({
-            'scraped_from': [data.get('url', '')],
-            'trademark': data.get('name', ''),
-            'logo': data.get('logo', ''),
-            'regnum': data.get('reg_number'),
-            'ogrn': data.get('ogrn'),
-            'address': data.get('address', ''),
-        })
+    class Meta:
+        model = Lender
+        fields = (
+            'scraped_from',
+            'trademark',
+            'logo',
+            'cbrn',
+            'ogrn',
+            'cbr_created_at',
+            'address',
+        )
+        extra_kwargs = {
+            # following fields have `unique=True` constraint
+            # disable `UniqueValidator` since we manage it in `create()`
+            'cbrn': {'validators': []},
+            'ogrn': {'validators': []},
+        }
 
     def create(self, validated_data):
-        """
-        Can't override `save()` for this class
-        since serializer is initiated with `many=True`
-        so we implement create/update logic here.
-        """
-
         # try to find instance in db
+        cbrn = validated_data.get('cbrn')
         ogrn = validated_data.get('ogrn')
         inn = validated_data.get('inn')
-        regnum = validated_data.get('regnum')
         qs = Lender.objects.filter(
-            Q(ogrn__isnull=False, ogrn=ogrn)
-            | Q(inn__isnull=False, inn=inn)
-            | Q(regnum__isnull=False, regnum=regnum),
+            Q(cbrn__isnull=False, cbrn=cbrn)
+            | Q(ogrn__isnull=False, ogrn=ogrn)
+            | Q(inn__isnull=False, inn=inn),
         )
 
         # update if found
@@ -137,13 +130,6 @@ class ZaymovSerializer(serializers.ModelSerializer):
         )
 
     def update(self, instance, validated_data):
-        """
-        Only update non-empty fields which have changed.
-        We track whether changes have been made so that
-        we don't call `save()` for nothing and `updated_at`
-        field is meaningful.
-        """
-
         fields_to_override = (
             'trademark',
             'logo',
@@ -151,17 +137,9 @@ class ZaymovSerializer(serializers.ModelSerializer):
         )
         updated = False
         for key, value in validated_data.items():
-            want_to_change = (
-                value  # scraped value is non-empty
-                and (
-                    not getattr(instance, key)  # field is empty
-                    or (
-                        key in fields_to_override  # we want to override non-empty
-                        and value != getattr(instance, key)  # field changed
-                    )
-                )
-            )
-            if want_to_change:
+            field_is_empty = not getattr(instance, key)
+            want_to_override = key in fields_to_override and value != getattr(instance, key)
+            if value and (field_is_empty or want_to_override):
                 setattr(instance, key, value)
                 updated = True
         if updated:
@@ -169,23 +147,6 @@ class ZaymovSerializer(serializers.ModelSerializer):
                 instance.scraped_from += validated_data['scraped_from']
             instance.save()
         return instance
-
-    class Meta:
-        model = Lender
-        fields = (
-            'scraped_from',
-            'trademark',
-            'logo',
-            'regnum',
-            'ogrn',
-            'address',
-        )
-        extra_kwargs = {
-            # following fields have `unique=True` constraint
-            # disable `UniqueValidator` since we manage it in `create()`
-            'ogrn': {'validators': [integer_validator]},
-            'regnum': {'validators': [integer_validator]},
-        }
 
 
 class VsezaimyonlineSerializer(serializers.ModelSerializer):
