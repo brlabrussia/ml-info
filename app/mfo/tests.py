@@ -241,3 +241,145 @@ class ZaymovTestCase(APITestCase):
             response = self.client.post(self.endpoint, json_data)
             self.assertEqual(response.status_code, status.HTTP_202_ACCEPTED)
             self.assertLessEqual(Lender.objects.count(), len(json_data))
+
+
+class VsezaimyonlineTestCase(APITestCase):
+    endpoint = '/mfo/scrapers/vsezaimyonline/'
+    sample_list = [
+        {
+            'scraped_from': [
+                'https://vsezaimyonline.ru/mobifinans',
+            ],
+            'trademark': 'Мобифинанс',
+            'logo': 'https://vsezaimyonline.ru/images/zajm/mobifinans.png',
+            'ogrn': '5157746003366',
+            'inn': '7718282033',
+            'decline_reasons': [
+                'Заемщику нет 18 лет',
+                'Заемщик имеет незакрытые долги перед компанией',
+                'Заемщик не является гражданином Российской Федерации',
+                'У заемщика отсутствует мобильный телефон (или номер указан неверно)',
+            ],
+            'documents': [
+                {
+                    'name': 'Правила предоставления займов',
+                    'url': 'https://vsezaimyonline.ru/files/new/mobifinans1.pdf',
+                },
+            ],
+            'decision_speed': '1 минута',
+            'payment_speed': 'Моментально',
+        },
+        {
+            'scraped_from': [
+                'https://vsezaimyonline.ru/chestnii-zaim',
+            ],
+            'trademark': 'Честный займ',
+            'logo': 'https://vsezaimyonline.ru/images/zajm/chestnii-zaim.png',
+            'ogrn': '1152901002330',
+            'inn': '2901256280',
+            'decline_reasons': [
+                'Несоответствие возрасту',
+                'Несоответствие поданных данных реальным',
+                'Неправильно заполненная заявка',
+            ],
+            'documents': [
+                {
+                    'name': 'Свидетельство о внесении в реестр МФО',
+                    'url': 'https://vsezaimyonline.ru/files/chestnii-zaim-1.pdf',
+                },
+                {
+                    'name': 'Свидетельство о членстве в СРО',
+                    'url': 'https://vsezaimyonline.ru/files/chestnii-zaim-2.pdf',
+                },
+            ],
+            'decision_speed': 'От 10 минут',
+            'payment_speed': 'В течение дня',
+        },
+    ]
+
+    def test_create_item(self):
+        """
+        Ensure we can create single Lender object from valid data.
+        """
+        item = self.sample_list[0].copy()
+        response = self.client.post(self.endpoint, item)
+        self.assertEqual(response.status_code, status.HTTP_202_ACCEPTED)
+        self.assertEqual(Lender.objects.get().ogrn, item['ogrn'])
+
+    def test_update_item(self):
+        """
+        Ensure we:
+            don't create duplicates when sending same item multiple times;
+            override fields correctly.
+        """
+        initial_item = self.sample_list[0].copy()
+        for _ in range(5):
+            response = self.client.post(self.endpoint, initial_item)
+            self.assertEqual(response.status_code, status.HTTP_202_ACCEPTED)
+            self.assertEqual(Lender.objects.count(), 1)
+            initial_instance = Lender.objects.get()
+            self.assertEqual(initial_instance.ogrn, initial_item['ogrn'])
+
+        changed_item = initial_item.copy()
+        changed_item['ogrn'] = '0123456789012'
+        changed_item['payment_speed'] = 'different payment_speed'
+        response = self.client.post(self.endpoint, changed_item)
+        self.assertEqual(response.status_code, status.HTTP_202_ACCEPTED)
+        # didn't create duplicates
+        self.assertEqual(Lender.objects.count(), 1)
+        changed_instance = Lender.objects.get()
+        # `ogrn` shouldn't be overriden
+        self.assertEqual(changed_instance.cbrn, initial_instance.cbrn)
+        # `payment_speed` should be overriden
+        self.assertNotEqual(changed_instance.payment_speed, initial_instance.payment_speed)
+        # and become `'different payment_speed'`
+        self.assertEqual(changed_instance.payment_speed, changed_item['payment_speed'])
+        # `updated_at` should refreshed
+        self.assertNotEqual(changed_instance.updated_at, initial_instance.updated_at)
+
+    def test_create_item_error(self):
+        """
+        Ensure we cannot create single Lender object from invalid data.
+        """
+        item = self.sample_list[0].copy()
+        del item['scraped_from']  # `scraped_from` is required
+        response = self.client.post(self.endpoint, item)
+        self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
+
+    def test_create_list_sample(self):
+        """
+        Ensure we can create multiple Lender objects from sample list.
+        """
+        response = self.client.post(self.endpoint, self.sample_list)
+        self.assertEqual(response.status_code, status.HTTP_202_ACCEPTED)
+        self.assertLessEqual(Lender.objects.count(), len(self.sample_list))
+
+    def test_update_list_sample(self):
+        """
+        Ensure we don't create duplicates by sending same sample multiple times.
+        """
+        for _ in range(4):
+            response = self.client.post(self.endpoint, self.sample_list)
+            self.assertEqual(response.status_code, status.HTTP_202_ACCEPTED)
+            self.assertEqual(Lender.objects.count(), len(self.sample_list))
+
+    def test_create_list_scraper(self):
+        """
+        Ensure we can create multiple Lender objects from sample scraper output.
+        """
+        with open('mfo/utils/imitate_scrapers_input/vsezaimyonline.json') as json_file:
+            json_data = json.load(json_file)
+        response = self.client.post(self.endpoint, json_data)
+        self.assertEqual(response.status_code, status.HTTP_202_ACCEPTED)
+        self.assertLessEqual(Lender.objects.count(), len(json_data))
+
+    def test_update_list_scraper(self):
+        """
+        Ensure we don't create duplicates by sending same sample multiple times.
+        """
+        with open('mfo/utils/imitate_scrapers_input/vsezaimyonline.json') as json_file:
+            json_data = json.load(json_file)
+        for _ in range(2):
+            response = self.client.post(self.endpoint, json_data)
+            self.assertEqual(response.status_code, status.HTTP_202_ACCEPTED)
+            self.assertLessEqual(Lender.objects.count(), len(json_data))
