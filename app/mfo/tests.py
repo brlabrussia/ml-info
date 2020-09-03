@@ -3,7 +3,7 @@ import json
 from rest_framework import status
 from rest_framework.test import APITestCase
 
-from .models import Lender
+from .models import Lender, Loan
 
 
 class CbrTestCase(APITestCase):
@@ -383,3 +383,141 @@ class VsezaimyonlineTestCase(APITestCase):
             response = self.client.post(self.endpoint, json_data)
             self.assertEqual(response.status_code, status.HTTP_202_ACCEPTED)
             self.assertLessEqual(Lender.objects.count(), len(json_data))
+class ZaymovTestCase(APITestCase):
+    endpoint = '/mfo/scrapers/zaymov/'
+    sample_list = [
+        {
+            'scraped_from': [
+                'https://zaymov.net/mfo/zaymer',
+            ],
+            'trademark': 'Займер',
+            'logo': 'https://zaymov.net/wp-content/themes/zaymovnet/images/mfo/zaymer.png',
+            'cbrn': '1303532004088',
+            'ogrn': '1134205019189',
+            'cbr_created_at': '2013-11-10T00:00:00+04:00',
+            'address': '650000, Кемеровская обл., г. Кемерово, Советский пр-т, д. 2/7',
+        },
+        {
+            'scraped_from': [
+                'https://zaymov.net/mfo/vkarmane',
+            ],
+            'trademark': 'Вкармане',
+            'logo': 'https://zaymov.net/wp-content/themes/zaymovnet/images/mfo/vkarmane.png',
+            'cbrn': '1403550005450',
+            'ogrn': '1145476064711',
+            'cbr_created_at': '2014-07-28T00:00:00+04:00',
+            'address': '630004 г. Новосибирск, ул. Дмитрия Шамшурина д. 1, офис 1',
+        },
+    ]
+
+    def test_create_item(self):
+        """
+        Ensure we can create single Lender object from valid data.
+        """
+        item = self.sample_list[0].copy()
+        response = self.client.post(self.endpoint, item)
+        self.assertEqual(response.status_code, status.HTTP_202_ACCEPTED)
+        self.assertEqual(Lender.objects.get().ogrn, item['ogrn'])
+
+    def test_update_item(self):
+        """
+        Ensure we:
+            don't create duplicates when sending same item multiple times;
+            override fields correctly.
+        """
+        initial_item = self.sample_list[0].copy()
+        for _ in range(5):
+            response = self.client.post(self.endpoint, initial_item)
+            self.assertEqual(response.status_code, status.HTTP_202_ACCEPTED)
+            self.assertEqual(Lender.objects.count(), 1)
+            initial_instance = Lender.objects.get()
+            self.assertEqual(initial_instance.ogrn, initial_item['ogrn'])
+
+        changed_item = initial_item.copy()
+        changed_item['cbrn'] = '0123456789012'
+        changed_item['address'] = 'different address'
+        response = self.client.post(self.endpoint, changed_item)
+        self.assertEqual(response.status_code, status.HTTP_202_ACCEPTED)
+        # didn't create duplicates
+        self.assertEqual(Lender.objects.count(), 1)
+        changed_instance = Lender.objects.get()
+        # `cbrn` shouldn't be overriden
+        self.assertEqual(changed_instance.cbrn, initial_instance.cbrn)
+        # `address` should be overriden
+        self.assertNotEqual(changed_instance.address, initial_instance.address)
+        # and become `'different address'`
+        self.assertEqual(changed_instance.address, changed_item['address'])
+        # `updated_at` should refreshed
+        self.assertNotEqual(changed_instance.updated_at, initial_instance.updated_at)
+
+    def test_create_item_error(self):
+        """
+        Ensure we cannot create single Lender object from invalid data.
+        """
+        item = self.sample_list[0].copy()
+        del item['scraped_from']  # `scraped_from` is required
+        response = self.client.post(self.endpoint, item)
+        self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
+
+    def test_create_list_sample(self):
+        """
+        Ensure we can create multiple Lender objects from sample list.
+        """
+        response = self.client.post(self.endpoint, self.sample_list)
+        self.assertEqual(response.status_code, status.HTTP_202_ACCEPTED)
+        self.assertLessEqual(Lender.objects.count(), len(self.sample_list))
+
+    def test_update_list_sample(self):
+        """
+        Ensure we don't create duplicates by sending same sample multiple times.
+        """
+        for _ in range(4):
+            response = self.client.post(self.endpoint, self.sample_list)
+            self.assertEqual(response.status_code, status.HTTP_202_ACCEPTED)
+            self.assertEqual(Lender.objects.count(), len(self.sample_list))
+
+    def test_create_list_scraper(self):
+        """
+        Ensure we can create multiple Lender objects from sample scraper output.
+        """
+        with open('mfo/utils/imitate_scrapers_input/zaymov.json') as json_file:
+            json_data = json.load(json_file)
+        response = self.client.post(self.endpoint, json_data)
+        self.assertEqual(response.status_code, status.HTTP_202_ACCEPTED)
+        self.assertLessEqual(Lender.objects.count(), len(json_data))
+
+    def test_update_list_scraper(self):
+        """
+        Ensure we don't create duplicates by sending same sample multiple times.
+        """
+        with open('mfo/utils/imitate_scrapers_input/zaymov.json') as json_file:
+            json_data = json.load(json_file)
+        for _ in range(2):
+            response = self.client.post(self.endpoint, json_data)
+            self.assertEqual(response.status_code, status.HTTP_202_ACCEPTED)
+            self.assertLessEqual(Lender.objects.count(), len(json_data))
+
+
+class BankiTestCase(APITestCase):
+    endpoint = '/mfo/scrapers/banki/'
+
+    def test_create_list_scraper(self):
+        """
+        Ensure we can create multiple Loan objects from sample scraper output.
+        """
+        with open('mfo/utils/imitate_scrapers_input/banki.json') as json_file:
+            json_data = json.load(json_file)
+        response = self.client.post(self.endpoint, json_data)
+        self.assertEqual(response.status_code, status.HTTP_202_ACCEPTED)
+        self.assertEqual(Loan.objects.count(), len(json_data))
+
+    def test_update_list_scraper(self):
+        """
+        Ensure we don't create duplicates by sending same sample multiple times.
+        """
+        with open('mfo/utils/imitate_scrapers_input/banki.json') as json_file:
+            json_data = json.load(json_file)
+        for _ in range(2):
+            response = self.client.post(self.endpoint, json_data)
+            self.assertEqual(response.status_code, status.HTTP_202_ACCEPTED)
+            self.assertEqual(Loan.objects.count(), len(json_data))
