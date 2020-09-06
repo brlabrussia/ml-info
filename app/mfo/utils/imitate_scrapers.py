@@ -11,7 +11,7 @@ scrapers = (
 )
 
 for scraper in scrapers:
-    path = f'app/lenders/utils/imitate_scrapers_input/{scraper}.json'
+    path = f'app/mfo/utils/imitate_scrapers_input/{scraper}.json'
     with open(path) as f:
         r = requests.post(
             f'http://localhost:8080/mfo/scrapers/{scraper}/',
