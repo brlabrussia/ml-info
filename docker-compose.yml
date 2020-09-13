@@ -5,23 +5,22 @@ services:
     depends_on:
       - db
     build:
-      context: .
-      args:
-        - user_uid=${user_uid:-1000}
-        - user_gid=${user_gid:-1000}
+      context: ./app/
     volumes:
-      - ./app/:/home/user/app/:cached
-    ports:
-      - 8080:8080
+      - ./app/:/usr/src/app/:cached
+      - ./app/static/:/usr/src/app/static/
+      - ./app/media/:/usr/src/app/media/
     networks:
       - inner_network
     env_file:
       - .env
-    command: bash -c 'while !</dev/tcp/db/5432; do sleep 1; done; python manage.py runserver 0:8080'
+    command: bash -c 'while !</dev/tcp/db/5432; do sleep 1; done; python manage.py migrate && python manage.py collectstatic --no-input && gunicorn -c gunicorn.py config.wsgi'
     restart: always
 
   db:
     image: postgres:12
+    volumes:
+      - pgdata:/var/lib/postgresql/data/
     expose:
       - 5432
     networks:
@@ -30,6 +29,36 @@ services:
       - .env
     restart: always
 
+  nginx:
+    build: ./nginx
+    expose:
+      - 80
+    volumes:
+      - ./app/static/:/django/static/
+      - ./app/media/:/django/media/
+    networks:
+      - inner_network
+      - traefik_network
+    env_file:
+      - .env
+    labels:
+      - 'traefik.enable=true'
+      - 'traefik.http.routers.info_nginx_https.rule=Host("$VIRTUAL_HOST")'
+      - 'traefik.http.routers.info_nginx_https.tls.certresolver=httpchallenge_0'
+      - 'traefik.http.routers.info_nginx_http.rule=Host("$VIRTUAL_HOST")'
+      - 'traefik.http.routers.info_nginx_http.middlewares=redirect_middleware'
+      - 'traefik.http.middlewares.redirect_middleware.redirectscheme.scheme=https'
+    depends_on:
+      - app
+    command: nginx -g 'daemon off;'
+    restart: always
+
+volumes:
+  pgdata:
+
 networks:
   inner_network:
     driver: bridge
+  traefik_network:
+    external:
+      name: traefik_network
