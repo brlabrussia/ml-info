@@ -1,9 +1,16 @@
+
 from collections import OrderedDict
 
 from django.db.models import Q
 from rest_framework import serializers
 
-from .models import Lender, Loan
+from .models import Document, Lender, Loan
+
+
+class DocumentSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Document
+        fields = ['name', 'file']
 
 
 class LoanSerializer(serializers.ModelSerializer):
@@ -13,11 +20,12 @@ class LoanSerializer(serializers.ModelSerializer):
 
 
 class LenderSerializer(serializers.ModelSerializer):
+    documents = DocumentSerializer(many=True)
     loans = LoanSerializer(many=True)
 
     class Meta:
         model = Lender
-        fields = '__all__'
+        exclude = ['logo_origin_url']
 
 
 class CbrSerializer(serializers.ModelSerializer):
@@ -86,6 +94,7 @@ class CbrSerializer(serializers.ModelSerializer):
                 setattr(instance, key, value)
                 updated = True
         if updated:
+            instance.is_legal = True
             instance.save()
         return instance
 
@@ -96,7 +105,7 @@ class ZaymovSerializer(serializers.ModelSerializer):
         fields = (
             'scraped_from',
             'trademark',
-            'logo',
+            'logo_origin_url',
             'cbrn',
             'ogrn',
             'cbr_created_at',
@@ -111,11 +120,13 @@ class ZaymovSerializer(serializers.ModelSerializer):
 
     def create(self, validated_data):
         # try to find instance in db
+        scraped_from = validated_data.get('scraped_from')
         cbrn = validated_data.get('cbrn')
         ogrn = validated_data.get('ogrn')
         inn = validated_data.get('inn')
         qs = Lender.objects.filter(
-            Q(cbrn__isnull=False, cbrn=cbrn)
+            Q(scraped_from__contains=scraped_from)
+            | Q(cbrn__isnull=False, cbrn=cbrn)
             | Q(ogrn__isnull=False, ogrn=ogrn)
             | Q(inn__isnull=False, inn=inn),
         )
@@ -125,23 +136,22 @@ class ZaymovSerializer(serializers.ModelSerializer):
             return self.update(qs.first(), validated_data)
 
         # create new if none found
-        return Lender.objects.create(
+        instance = Lender(
             **validated_data,
             is_legal=False,
         )
+        if instance.logo_origin_url:
+            instance.download_logo()
+        instance.save()
+        return instance
 
     def update(self, instance, validated_data):
-        fields_to_override = (
-            'trademark',
-            'logo',
-            'address',
-        )
         updated = False
         for key, value in validated_data.items():
-            field_is_empty = not getattr(instance, key)
-            want_to_override = key in fields_to_override and value != getattr(instance, key)
-            if value and (field_is_empty or want_to_override):
+            if value and not getattr(instance, key):
                 setattr(instance, key, value)
+                if key == 'logo_origin_url':
+                    instance.download_logo()
                 updated = True
         if updated:
             if not validated_data['scraped_from'][0] in instance.scraped_from:
@@ -151,6 +161,8 @@ class ZaymovSerializer(serializers.ModelSerializer):
 
 
 class VsezaimyonlineSerializer(serializers.ModelSerializer):
+    documents = serializers.ListField(required=False, write_only=True)
+
     class Meta:
         model = Lender
         fields = (
@@ -177,13 +189,13 @@ class VsezaimyonlineSerializer(serializers.ModelSerializer):
             validated_data['ogrn'] = '1087325005899'
 
         # try to find instance in db
+        scraped_from = validated_data.get('scraped_from')
         ogrn = validated_data.get('ogrn')
         inn = validated_data.get('inn')
-        scraped_from = validated_data.get('scraped_from')
         qs = Lender.objects.filter(
-            Q(ogrn__isnull=False, ogrn=ogrn)
-            | Q(inn__isnull=False, inn=inn)
-            | Q(scraped_from__contains=scraped_from),
+            Q(scraped_from__contains=scraped_from)
+            | Q(ogrn__isnull=False, ogrn=ogrn)
+            | Q(inn__isnull=False, inn=inn),
         )
 
         # update if found
@@ -191,25 +203,25 @@ class VsezaimyonlineSerializer(serializers.ModelSerializer):
             return self.update(qs.first(), validated_data)
 
         # create new if none found
-        return Lender.objects.create(
+        documents = validated_data.pop('documents', None)
+        instance = Lender(
             **validated_data,
             is_legal=False,
         )
+        instance.save()
+        if documents is not None:
+            for document in documents:
+                self.create_document(instance, document)
+        return instance
 
     def update(self, instance, validated_data):
-        fields_to_override = (
-            'trademark',
-            'decline_reasons',
-            'socials',
-            'documents',
-            'decision_speed',
-            'payment_speed',
-        )
+        documents = validated_data.pop('documents', None)
+        if documents is not None:
+            for document in documents:
+                self.create_document(instance, document)
         updated = False
         for key, value in validated_data.items():
-            field_is_empty = not getattr(instance, key)
-            want_to_override = key in fields_to_override and value != getattr(instance, key)
-            if value and (field_is_empty or want_to_override):
+            if value and not getattr(instance, key):
                 setattr(instance, key, value)
                 updated = True
         if updated:
@@ -217,6 +229,19 @@ class VsezaimyonlineSerializer(serializers.ModelSerializer):
                 instance.scraped_from += validated_data['scraped_from']
             instance.save()
         return instance
+
+    def create_document(self, lender, document):
+        qs = Document.objects.filter(origin_url=document['url'])
+        if qs.exists():
+            return
+
+        instance = Document(
+            lender=lender,
+            origin_url=document['url'],
+            name=document['name'] or '',
+        )
+        instance.download()
+        instance.save()
 
 
 class BankiSerializer(serializers.ModelSerializer):
@@ -263,9 +288,9 @@ class BankiSerializer(serializers.ModelSerializer):
         ogrn = validated_data.get('lender_ogrn')
         scraped_from = [validated_data.get('banki_url')]
         qs = Lender.objects.filter(
-            Q(cbrn__isnull=False, cbrn=cbrn)
-            | Q(ogrn__isnull=False, ogrn=ogrn)
-            | Q(scraped_from__contains=scraped_from),
+            Q(scraped_from__contains=scraped_from)
+            | Q(cbrn__isnull=False, cbrn=cbrn)
+            | Q(ogrn__isnull=False, ogrn=ogrn),
         )
 
         if qs.exists():
@@ -291,8 +316,7 @@ class BankiSerializer(serializers.ModelSerializer):
             if not key.startswith('lender_'):
                 continue
             field_name = key.replace('lender_', '')
-            field_is_empty = not getattr(lender, field_name)
-            if value and field_is_empty:
+            if value and not getattr(lender, field_name):
                 setattr(lender, field_name, value)
                 updated = True
         if updated:

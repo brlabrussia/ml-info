@@ -1,8 +1,11 @@
 from django.contrib import admin
 
-from .models import Lender, Loan
+from .models import Document, Lender, Loan
 
-admin.site.register(Loan)
+
+class DocumentInline(admin.TabularInline):
+    model = Document
+    extra = 0
 
 
 class LoanInline(admin.TabularInline):
@@ -20,4 +23,12 @@ class LenderAdmin(admin.ModelAdmin):
         'overpayment_day',
         'overpayment_full',
     ]
-    inlines = [LoanInline]
+    inlines = [DocumentInline, LoanInline]
+
+
+@admin.register(Loan)
+class LoanAdmin(admin.ModelAdmin):
+    readonly_fields = [
+        'created_at',
+        'updated_at',
+    ]

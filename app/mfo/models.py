@@ -1,6 +1,18 @@
-from django.contrib.postgres.fields import ArrayField, JSONField
+import hashlib
+import os
+
+import requests
+from django.contrib.postgres.fields import ArrayField
 from django.core.validators import RegexValidator
 from django.db import models
+
+
+def logo_path(instance, filename):
+    return f'mfo/logos/lender/{filename}'
+
+
+def document_path(instance, filename):
+    return f'mfo/documents/lender/{filename}'
 
 
 class Lender(models.Model):
@@ -11,8 +23,8 @@ class Lender(models.Model):
     trademark = models.TextField(blank=True, help_text='Торговая марка')
     name_short = models.TextField(blank=True, help_text='Сокращенное наименование')
     name_full = models.TextField(blank=True, help_text='Полное наименование')
-    logo = models.URLField(blank=True, help_text='Логотип')
-    documents = ArrayField(JSONField(), blank=True, null=True, help_text='Документы')
+    logo_origin_url = models.URLField(blank=True, help_text='Ссылка на источник логотипа')
+    logo_image = models.ImageField(upload_to=logo_path, blank=True, help_text='Логотип')
 
     is_legal = models.BooleanField(default=False, help_text='Легальная МФО (есть в реестре ЦБ)')
     cbr_created_at = models.DateTimeField(blank=True, null=True, help_text='Дата внесения в реестр ЦБ')
@@ -56,6 +68,8 @@ class Lender(models.Model):
     overpayment_full = models.FloatField(blank=True, null=True, help_text='Переплата за весь срок')
     decline_reasons = ArrayField(models.TextField(), blank=True, null=True, help_text='Причины отказа')
 
+    id_meta = models.IntegerField(blank=True, null=True, help_text='ID Метарейтинга')
+
     def __str__(self):
         return self.trademark or self.name_short
 
@@ -63,6 +77,14 @@ class Lender(models.Model):
         if self.loans.exists():
             self.update_logical_fields()
         super().save(*args, **kwargs)
+
+    def download_logo(self):
+        url = self.logo_origin_url
+        url_hash = hashlib.md5(url.encode()).hexdigest()
+        _, ext = os.path.splitext(url)
+        filename = url_hash + ext
+        response = requests.get(url, stream=True)
+        self.logo_image.save(filename, response.raw)
 
     def update_logical_fields(self):
         """
@@ -79,6 +101,23 @@ class Lender(models.Model):
 
     class Meta:
         ordering = ['-updated_at']
+
+
+class Document(models.Model):
+    lender = models.ForeignKey(Lender, on_delete=models.CASCADE, related_name='documents')
+    origin_url = models.URLField()
+    name = models.TextField(blank=True)
+    file = models.FileField(upload_to=document_path)
+
+    def download(self):
+        url = self.origin_url
+        if url.startswith('/files/'):
+            self.origin_url = url = 'https://vsezaimyonline.ru' + url
+        url_hash = hashlib.md5(url.encode()).hexdigest()
+        _, ext = os.path.splitext(url)
+        filename = url_hash + ext
+        response = requests.get(url, stream=True)
+        self.file.save(filename, response.raw)
 
 
 class Loan(models.Model):
