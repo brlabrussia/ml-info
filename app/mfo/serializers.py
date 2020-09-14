@@ -25,7 +25,7 @@ class LenderSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Lender
-        exclude = ['logo_origin_url']
+        exclude = ['scraped_from', 'logo_origin_url']
 
 
 class CbrSerializer(serializers.ModelSerializer):

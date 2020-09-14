@@ -7,7 +7,7 @@ services:
     build:
       context: ./app/
     volumes:
-      - ./app/:/usr/src/app/:cached
+      - ./app/:/usr/src/app/
       - ./app/static/:/usr/src/app/static/
       - ./app/media/:/usr/src/app/media/
     networks:
