@@ -10,7 +10,10 @@ from .models import Document, Lender, Loan
 class DocumentSerializer(serializers.ModelSerializer):
     class Meta:
         model = Document
-        fields = ['name', 'file']
+        fields = [
+            'name',
+            'file',
+        ]
 
 
 class LoanSerializer(serializers.ModelSerializer):
@@ -25,13 +28,16 @@ class LenderSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Lender
-        exclude = ['scraped_from', 'logo_origin_url']
+        exclude = [
+            'scraped_from',
+            'logo_origin_url',
+        ]
 
 
 class CbrSerializer(serializers.ModelSerializer):
     class Meta:
         model = Lender
-        fields = (
+        fields = [
             'scraped_from',
             'name_short',
             'name_full',
@@ -43,7 +49,7 @@ class CbrSerializer(serializers.ModelSerializer):
             'website',
             'email',
             'address',
-        )
+        ]
         extra_kwargs = {
             # following fields have `unique=True` constraint
             # disable `UniqueValidator` since we manage it in `create()`
@@ -102,7 +108,7 @@ class CbrSerializer(serializers.ModelSerializer):
 class ZaymovSerializer(serializers.ModelSerializer):
     class Meta:
         model = Lender
-        fields = (
+        fields = [
             'scraped_from',
             'trademark',
             'logo_origin_url',
@@ -110,7 +116,7 @@ class ZaymovSerializer(serializers.ModelSerializer):
             'ogrn',
             'cbr_created_at',
             'address',
-        )
+        ]
         extra_kwargs = {
             # following fields have `unique=True` constraint
             # disable `UniqueValidator` since we manage it in `create()`
@@ -165,7 +171,7 @@ class VsezaimyonlineSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Lender
-        fields = (
+        fields = [
             'scraped_from',
             'trademark',
             'ogrn',
@@ -175,7 +181,7 @@ class VsezaimyonlineSerializer(serializers.ModelSerializer):
             'documents',
             'decision_speed',
             'payment_speed',
-        )
+        ]
         extra_kwargs = {
             # following fields have `unique=True` constraint
             # disable `UniqueValidator` since we manage it in `create()`
@@ -247,7 +253,10 @@ class VsezaimyonlineSerializer(serializers.ModelSerializer):
 class BankiSerializer(serializers.ModelSerializer):
     class Meta:
         model = Loan
-        exclude = ('lender', 'lender_logo')
+        exclude = [
+            'lender',
+            'lender_logo',
+        ]
         extra_kwargs = {
             # following fields have `unique=True` constraint
             # disable `UniqueValidator` since we manage it in `create()`

@@ -8,5 +8,5 @@ timeout = 300
 worker_class = 'gevent'
 workers = int(os.getenv('WORKERS', cpu_count()))
 
-if bool(os.getenv('DEBUG', False)):
+if int(os.getenv('DEBUG', 0)):
     reload = True

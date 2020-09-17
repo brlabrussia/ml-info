@@ -4,7 +4,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 SECRET_KEY = os.getenv('SECRET_KEY')
 
-DEBUG = bool(int(os.getenv('DEBUG', False)))
+DEBUG = int(os.getenv('DEBUG', 0))
 
 ALLOWED_HOSTS = [os.getenv('VIRTUAL_HOST'), 'localhost']
 
