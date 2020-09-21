@@ -8,4 +8,4 @@ docker-compose up -d # запуск сервисов в фоне
 docker-compose exec web_app ./manage.py createsuperuser # создание суперпользователя для админки
 docker-compose logs -f # аттач к логам
 ```
-Админке https://info.localhost/
+Админка https://info.localhost/
