@@ -1,26 +1,37 @@
 version: '3'
 
+volumes:
+  postgres_data: {}
+
+networks:
+  inner_network:
+    driver: bridge
+  traefik_network:
+    external:
+      name: traefik_network
+
 services:
-  app:
+  django: &django
     depends_on:
-      - db
-    build:
-      context: ./app/
+      - postgres
+      - redis
+    build: ./app/
     volumes:
       - ./app/:/usr/src/app/
       - ./app/static/:/usr/src/app/static/
       - ./app/media/:/usr/src/app/media/
+      - ./app/fixtures/:/usr/src/app/fixtures/
     networks:
       - inner_network
     env_file:
       - .env
-    command: bash -c 'while !</dev/tcp/db/5432; do sleep 1; done; python manage.py migrate && python manage.py collectstatic --no-input && gunicorn -c gunicorn.py config.wsgi'
+    command: gunicorn -c gunicorn.py core.wsgi
     restart: always
 
-  db:
+  postgres:
     image: postgres:12
     volumes:
-      - pgdata:/var/lib/postgresql/data/
+      - postgres_data:/var/lib/postgresql/data/
     expose:
       - 5432
     networks:
@@ -49,16 +60,20 @@ services:
       - 'traefik.http.routers.info_nginx_http.middlewares=redirect_middleware'
       - 'traefik.http.middlewares.redirect_middleware.redirectscheme.scheme=https'
     depends_on:
-      - app
+      - django
     command: nginx -g 'daemon off;'
     restart: always
 
-volumes:
-  pgdata:
+  redis:
+    image: redis:6-buster
+    networks:
+      - inner_network
+    restart: always
 
-networks:
-  inner_network:
-    driver: bridge
-  traefik_network:
-    external:
-      name: traefik_network
+  celeryworker:
+    <<: *django
+    command: celery -A core worker -l info
+
+  celerybeat:
+    <<: *django
+    command: celery -A core beat -l info

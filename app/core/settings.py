@@ -1,5 +1,7 @@
 import os
 
+from celery.schedules import crontab
+
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 SECRET_KEY = os.getenv('SECRET_KEY')
@@ -10,6 +12,7 @@ ALLOWED_HOSTS = [os.getenv('VIRTUAL_HOST'), 'localhost']
 
 INSTALLED_APPS = [
     'mfo.apps.MfoConfig',
+    'tables.apps.TablesConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -31,7 +34,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'config.urls'
+ROOT_URLCONF = 'core.urls'
 
 TEMPLATES = [
     {
@@ -49,7 +52,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'config.wsgi.application'
+WSGI_APPLICATION = 'core.wsgi.application'
 
 DATABASES = {
     'default': {
@@ -106,3 +109,14 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+CELERY_TIMEZONE = TIME_ZONE
+CELERY_BROKER_URL = 'redis://redis:6379'
+CELERY_RESULT_BACKEND = 'redis://redis:6379'
+CELERY_IMPORTS = ['core.tasks']
+CELERY_BEAT_SCHEDULE = {
+    'backup': {
+        'task': 'core.tasks.backup',
+        'schedule': crontab(hour=6, minute=0),
+    },
+}
