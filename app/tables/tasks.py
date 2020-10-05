@@ -14,7 +14,7 @@ SCRAPYD_PASS = os.getenv('SCRAPYD_PASS')
 @app.task(ignore_result=True)
 def schedule_scrapers():
     project = 'tables'
-    webhook = 'http://eb5db0e8077d.ngrok.io/tables/scrappers/'  # f"https://{os.getenv('VIRTUAL_HOST')}/tables/scrapers/"
+    webhook = f'https://{os.getenv("VIRTUAL_HOST")}/tables/scrapers/'
     tables = Table.objects.filter(driver__isnull=False)
     for table in tables:
         spider = table.driver.scraper

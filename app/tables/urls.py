@@ -4,7 +4,7 @@ from rest_framework.routers import DefaultRouter
 from . import views
 
 urlpatterns = [
-    re_path(r'^scrappers/?$', views.ScrapersView.as_view()),
+    re_path(r'^scrapers/?$', views.ScrapersView.as_view()),
 ]
 
 router = DefaultRouter()
