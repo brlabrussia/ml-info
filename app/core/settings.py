@@ -13,6 +13,7 @@ ALLOWED_HOSTS = [os.getenv('VIRTUAL_HOST'), 'localhost']
 INSTALLED_APPS = [
     'mfo.apps.MfoConfig',
     'tables.apps.TablesConfig',
+    # 'banks.apps.BanksConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -118,5 +119,13 @@ CELERY_BEAT_SCHEDULE = {
     'backup': {
         'task': 'core.tasks.backup',
         'schedule': crontab(hour=6, minute=0),
+    },
+    'tables_scrapers': {
+        'task': 'tables.tasks.schedule_scrapers',
+        'schedule': crontab(hour=5, minute=0),
+    },
+    'tables_hltv_scrapers': {
+        'task': 'tables.tasks.schedule_hltv_scrapers',
+        'schedule': crontab(minute='*/15'),
     },
 }

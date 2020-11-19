@@ -30,3 +30,24 @@ def schedule_scrapers():
             data=data,
             auth=(SCRAPYD_LOGIN, SCRAPYD_PASS),
         )
+
+
+@app.task(ignore_result=True)
+def schedule_hltv_scrapers():
+    project = 'tables'
+    webhook = f'https://{os.getenv("VIRTUAL_HOST")}/tables/scrapers/'
+    tables = Table.objects.filter(driver__isnull=False, url__icontains='hltv.org')
+    for table in tables:
+        spider = table.driver.scraper
+        args = [table.pk, table.url, *table.driver_args]
+        data = [
+            ('project', project),
+            ('spider', spider),
+            ('request_args', json.dumps(args)),
+            ('setting', f'WEBHOOK_ENDPOINT={webhook}'),
+        ]
+        requests.post(
+            f'{SCRAPYD_URL}/schedule.json',
+            data=data,
+            auth=(SCRAPYD_LOGIN, SCRAPYD_PASS),
+        )
