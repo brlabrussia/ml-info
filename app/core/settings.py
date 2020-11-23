@@ -13,7 +13,7 @@ ALLOWED_HOSTS = [os.getenv('VIRTUAL_HOST'), 'localhost']
 INSTALLED_APPS = [
     'mfo.apps.MfoConfig',
     'tables.apps.TablesConfig',
-    # 'banks.apps.BanksConfig',
+    'banks.apps.BanksConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

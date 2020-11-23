@@ -1,0 +1,2295 @@
+[
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/absolutbank/",
+        "name": "Абсолют Банк",
+        "reg_number": "2306",
+        "ogrn": "1027700024560"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/bankrmp/",
+        "name": "Банк РМП",
+        "reg_number": "2574",
+        "ogrn": "1027739153573"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/izhcombank/",
+        "name": "Датабанк",
+        "reg_number": "646",
+        "ogrn": "1021800000090"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/cosmos/",
+        "name": "Космос",
+        "reg_number": "2245",
+        "ogrn": "1027739019373"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/ndbank/",
+        "name": "Народный Доверительный Банк",
+        "reg_number": "2374",
+        "ogrn": "1027739461694"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/nashdom/",
+        "name": "Профессионал Банк",
+        "reg_number": "3296",
+        "ogrn": "1037739447350"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/sistema/",
+        "name": "Система",
+        "reg_number": "2846",
+        "ogrn": "1027739919954"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/vrb/",
+        "name": "ФинТех",
+        "reg_number": "3499",
+        "ogrn": "1097711000111"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/yarinterbank/",
+        "name": "Яринтербанк",
+        "reg_number": "2564",
+        "ogrn": "1027600000075"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/unistream/",
+        "name": "Юнистрим",
+        "reg_number": "3467",
+        "ogrn": "1067711004437"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/unicreditbank/",
+        "name": "ЮниКредит Банк",
+        "reg_number": "1",
+        "ogrn": "1027739082106"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/umc/",
+        "name": "ЮМК Банк",
+        "reg_number": "3495",
+        "ogrn": "1172375051936"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/yug-investbank/",
+        "name": "Юг-Инвестбанк",
+        "reg_number": "2772",
+        "ogrn": "1022300001811"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/ubs-bank/",
+        "name": "Ю Би Эс Банк",
+        "reg_number": "3463",
+        "ogrn": "1067711001863"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/sbibank/",
+        "name": "Эс-Би-Ай Банк",
+        "reg_number": "3185",
+        "ogrn": "1037739028678"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/energotransbank/",
+        "name": "Энерготрансбанк",
+        "reg_number": "1307",
+        "ogrn": "1023900000080"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/energomashbank/",
+        "name": "Энергомашбанк",
+        "reg_number": "52",
+        "ogrn": "1027800001261"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/energobank/",
+        "name": "Энергобанк",
+        "reg_number": "67",
+        "ogrn": "1021600000289"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/botm/",
+        "name": "Эм-Ю-Эф-Джи Банк (Евразия)",
+        "reg_number": "3465",
+        "ogrn": "1067711004492"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/elita/",
+        "name": "Элита",
+        "reg_number": "1399",
+        "ogrn": "1024000001002"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/expobank/",
+        "name": "Экспобанк",
+        "reg_number": "2998",
+        "ogrn": "1027739504760"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/exi-bank/",
+        "name": "Экси-Банк",
+        "reg_number": "2530",
+        "ogrn": "1027800000942"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/econombank/",
+        "name": "Экономбанк",
+        "reg_number": "1319",
+        "ogrn": "1026400002067"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/eco-invest/",
+        "name": "Эко-Инвест",
+        "reg_number": "3116",
+        "ogrn": "1027739469746"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/hsbc/",
+        "name": "Эйч-Эс-Би-Си Банк (HSBC)",
+        "reg_number": "3290",
+        "ogrn": "1027739139075"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/chbrr/",
+        "name": "Черноморский банк развития и реконструкции",
+        "reg_number": "3527",
+        "ogrn": "1149102030186"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/chelinvest/",
+        "name": "Челябинвестбанк",
+        "reg_number": "493",
+        "ogrn": "1027400001650"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/chelindbank/",
+        "name": "Челиндбанк",
+        "reg_number": "485",
+        "ogrn": "1027400000110"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/chinaselhozbank/",
+        "name": "Чайнасельхозбанк",
+        "reg_number": "3529",
+        "ogrn": "1147711000051"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/chinaconstruction/",
+        "name": "Чайна Констракшн",
+        "reg_number": "3515",
+        "ogrn": "1137711000030"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/cmrbank/",
+        "name": "ЦМРБанк",
+        "reg_number": "3531",
+        "ogrn": "1157700005759"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/ccb/",
+        "name": "ЦентроКредит",
+        "reg_number": "121",
+        "ogrn": "1027739198387"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/centr-invest/",
+        "name": "Центр-инвест",
+        "reg_number": "2225",
+        "ogrn": "1026100001949"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/homecreditbank/",
+        "name": "Хоум Кредит Банк",
+        "reg_number": "316",
+        "ogrn": "1027700280937"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/holmsk/",
+        "name": "Холмск",
+        "reg_number": "503-К"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/hlynov/",
+        "name": "Хлынов",
+        "reg_number": "254",
+        "ogrn": "1024300000042"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/bankhimik/",
+        "name": "Химик",
+        "reg_number": "1114",
+        "ogrn": "1025200000198"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/hmb/",
+        "name": "Хакасский Муниципальный Банк",
+        "reg_number": "1049",
+        "ogrn": "1021900002563"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/forshtadt/",
+        "name": "Форштадт",
+        "reg_number": "2208",
+        "ogrn": "1025600000854"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/forbank/",
+        "name": "ФорБанк",
+        "reg_number": "2063",
+        "ogrn": "1022200526061"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/forabank/",
+        "name": "Фора-Банк",
+        "reg_number": "1885",
+        "ogrn": "1027739553764"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/vwbank/",
+        "name": "Фольксваген Банк Рус",
+        "reg_number": "3500",
+        "ogrn": "1107711000044"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/fbbank/",
+        "name": "Финанс Бизнес Банк",
+        "reg_number": "520",
+        "ogrn": "1032335000675"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/finambank/",
+        "name": "Финам Банк",
+        "reg_number": "2799",
+        "ogrn": "1037739001046"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/woori/",
+        "name": "Ури Банк",
+        "reg_number": "3479",
+        "ogrn": "1077711000190"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/ubrr/",
+        "name": "Уральский Банк Реконструкции и Развития",
+        "reg_number": "429",
+        "ogrn": "1026600000350"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/uralfinance/",
+        "name": "Уралфинанс",
+        "reg_number": "1370",
+        "ogrn": "1026600001361"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/uralfd/",
+        "name": "Урал ФД",
+        "reg_number": "249",
+        "ogrn": "1025900000048"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/uralprombank/",
+        "name": "Уралпромбанк",
+        "reg_number": "2964",
+        "ogrn": "1027400001727"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/unifondbank/",
+        "name": "Унифондбанк",
+        "reg_number": "3416",
+        "ogrn": "1027739042143"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/coalmetbank/",
+        "name": "Углеметбанк",
+        "reg_number": "2997",
+        "ogrn": "1024200006434"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/trust/",
+        "name": "Траст",
+        "reg_number": "3279",
+        "ogrn": "1027800000480"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/transstroybank/",
+        "name": "Трансстройбанк",
+        "reg_number": "2807",
+        "ogrn": "1027739582089"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/transcapitalbank/",
+        "name": "Транскапиталбанк",
+        "reg_number": "2210",
+        "ogrn": "1027739186970"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/tochka/",
+        "name": "Точка",
+        "reg_number": "2209"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/kb-tub/",
+        "name": "Торжок (бывш. Торжокуниверсалбанк)",
+        "reg_number": "933",
+        "ogrn": "1026900000170"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/tomskpsb/",
+        "name": "Томскпромстройбанк",
+        "reg_number": "1720",
+        "ogrn": "1027000002446"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/thbank/",
+        "name": "Тольяттихимбанк",
+        "reg_number": "2507",
+        "ogrn": "1026300001881"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/toyota-bank/",
+        "name": "Тойота Банк",
+        "reg_number": "3470",
+        "ogrn": "1077711000058"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/tcs/",
+        "name": "Тинькофф Банк",
+        "reg_number": "2673",
+        "ogrn": "1027739642281"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/timerbank/",
+        "name": "Тимер Банк",
+        "reg_number": "1581",
+        "ogrn": "1021600000146"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/tender-bank/",
+        "name": "Тендер-Банк",
+        "reg_number": "2252",
+        "ogrn": "1027739463300"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/texbank/",
+        "name": "Тексбанк",
+        "reg_number": "2756",
+        "ogrn": "1020900001968"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/tatsotsbank/",
+        "name": "Татсоцбанк",
+        "reg_number": "480",
+        "ogrn": "1021600000256"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/tambovkpb/",
+        "name": "Тамбовкредитпромбанк",
+        "reg_number": "1312",
+        "ogrn": "1026800000017"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/taidon/",
+        "name": "Тайдон",
+        "reg_number": "2085",
+        "ogrn": "1024200685948"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/taganrogbank/",
+        "name": "Таганрогбанк",
+        "reg_number": "3136",
+        "ogrn": "1026100002565"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/tavrichesky/",
+        "name": "Таврический Банк",
+        "reg_number": "2304",
+        "ogrn": "1027800000315"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/sebbank/",
+        "name": "СЭБ Банк",
+        "reg_number": "3235",
+        "ogrn": "1027800000910"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/sngb/",
+        "name": "Сургутнефтегазбанк",
+        "reg_number": "588",
+        "ogrn": "1028600001792"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/smbc/",
+        "name": "Сумитомо Мицуи Рус Банк",
+        "reg_number": "3494",
+        "ogrn": "1097711000045"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/stroylesbank/",
+        "name": "Стройлесбанк",
+        "reg_number": "2995",
+        "ogrn": "1028600003442"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/capitalkredit/",
+        "name": "Столичный Кредит",
+        "reg_number": "2853",
+        "ogrn": "1027739199927"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/stavropolpsb/",
+        "name": "Ставропольпромстройбанк",
+        "reg_number": "1288",
+        "ogrn": "1022600000092"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/sputnik/",
+        "name": "Спутник",
+        "reg_number": "1071",
+        "ogrn": "1025600006024"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/specstroybank/",
+        "name": "Спецстройбанк",
+        "reg_number": "236",
+        "ogrn": "1027739412359"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/soyuz/",
+        "name": "Союз",
+        "reg_number": "2307",
+        "ogrn": "1027739447922"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/socium-bank/",
+        "name": "Социум-Банк",
+        "reg_number": "2881",
+        "ogrn": "1037739058609"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/solid-bank/",
+        "name": "Солид Банк",
+        "reg_number": "1329",
+        "ogrn": "1024100000121"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/solid/",
+        "name": "Солидарность",
+        "reg_number": "554",
+        "ogrn": "1026300001848"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/sokolovsky/",
+        "name": "Соколовский",
+        "reg_number": "2830",
+        "ogrn": "1027739247227"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/sstb/",
+        "name": "Современные Стандарты Бизнеса",
+        "reg_number": "3397",
+        "ogrn": "1027739066739"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/sovcombank/",
+        "name": "Совкомбанк",
+        "reg_number": "963",
+        "ogrn": "1144400000425"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/sobinbank/",
+        "name": "Собинбанк",
+        "reg_number": "1317",
+        "ogrn": "1027739051009"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/snezhinsky/",
+        "name": "Снежинский",
+        "reg_number": "1376",
+        "ogrn": "1027400009064"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/smpbank/",
+        "name": "СМП Банк",
+        "reg_number": "3368",
+        "ogrn": "1097711000078"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/slavyanbank/",
+        "name": "Славянбанк",
+        "reg_number": "804",
+        "ogrn": "1025300000175"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/slaviabank/",
+        "name": "Славия",
+        "reg_number": "2664",
+        "ogrn": "1027739228758"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/skb-bank/",
+        "name": "СКБ-Банк",
+        "reg_number": "705",
+        "ogrn": "1026600000460"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/cibank/",
+        "name": "Сити Инвест Банк",
+        "reg_number": "3194",
+        "ogrn": "1027800000095"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/citibank/",
+        "name": "Ситибанк",
+        "reg_number": "2557",
+        "ogrn": "1027700431296"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/sinko-bank/",
+        "name": "Синко-Банк",
+        "reg_number": "2838",
+        "ogrn": "1027739563610"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/sibsocbank/",
+        "name": "Сибсоцбанк",
+        "reg_number": "2015",
+        "ogrn": "1022200525819"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/siab/",
+        "name": "СИАБ",
+        "reg_number": "3245",
+        "ogrn": "1022400003944"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/bnpparibaseast/",
+        "name": "Сетелем Банк",
+        "reg_number": "2168",
+        "ogrn": "1027739664260"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/service-reserve/",
+        "name": "Сервис Резерв",
+        "reg_number": "2034",
+        "ogrn": "1027739058720"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/selmashbank/",
+        "name": "Сельмашбанк",
+        "reg_number": "106",
+        "ogrn": "1026100002026"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/sevzapinvestpb/",
+        "name": "Севзапинвестпромбанк",
+        "reg_number": "2152",
+        "ogrn": "1027800000403"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/sevstroybank/",
+        "name": "Северстройбанк",
+        "reg_number": "3507",
+        "ogrn": "1123500000216"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/sevnb/",
+        "name": "Северный Народный Банк",
+        "reg_number": "2721",
+        "ogrn": "1021100000074"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/severgazbank/",
+        "name": "Севергазбанк",
+        "reg_number": "2816",
+        "ogrn": "1023500000160"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/morskoybank/",
+        "name": "Севастопольский Морской Банк",
+        "reg_number": "3528",
+        "ogrn": "1149204013397"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/sdm-bank/",
+        "name": "СДМ-Банк",
+        "reg_number": "1637",
+        "ogrn": "1027739296584"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/sberbank/",
+        "name": "СберБанк",
+        "reg_number": "1481",
+        "ogrn": "1027700132195"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/sarovbb/",
+        "name": "Саровбизнесбанк",
+        "reg_number": "2048",
+        "ogrn": "1025200001254"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/saratov/",
+        "name": "Саратов",
+        "reg_number": "330",
+        "ogrn": "1026400002089"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/sbionline/",
+        "name": "Санкт-Петербургский Банк Инвестиций",
+        "reg_number": "3468",
+        "ogrn": "1077800000167"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/bspb/",
+        "name": "Санкт-Петербург",
+        "reg_number": "436",
+        "ogrn": "1027800000140"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/sammitbank/",
+        "name": "Саммит Банк",
+        "reg_number": "85",
+        "ogrn": "1022500001930"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/rfibank/",
+        "name": "РФИ Банк",
+        "reg_number": "3351",
+        "ogrn": "1027739051757"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/rusuniversalbank/",
+        "name": "Русьуниверсалбанк",
+        "reg_number": "3293",
+        "ogrn": "1027739671288"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/rusregionbank/",
+        "name": "РусьРегионБанк",
+        "reg_number": "685",
+        "ogrn": "1026000001983"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/rusfinancebank/",
+        "name": "Русфинанс Банк",
+        "reg_number": "1792",
+        "ogrn": "1026300001991"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/rsb/",
+        "name": "Русский Стандарт",
+        "reg_number": "2289",
+        "ogrn": "1027739210630"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/rusbs/",
+        "name": "Русский Банк Сбережений",
+        "reg_number": "779",
+        "ogrn": "1022600000114"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/rusnarbank/",
+        "name": "Руснарбанк",
+        "reg_number": "3403",
+        "ogrn": "1027739028855"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/runa-bank/",
+        "name": "Руна-Банк",
+        "reg_number": "3207"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/royalcreditbank/",
+        "name": "Роял Кредит Банк",
+        "reg_number": "783",
+        "ogrn": "1022700000685"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/roseximbank/",
+        "name": "Росэксимбанк",
+        "reg_number": "2790-Г",
+        "ogrn": "1027739109133"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/rostfinance/",
+        "name": "Ростфинанс",
+        "reg_number": "481",
+        "ogrn": "1022300003021"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/rossiya/",
+        "name": "Россия",
+        "reg_number": "328",
+        "ogrn": "1027800000084"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/russita-bank/",
+        "name": "Россита-Банк",
+        "reg_number": "3257",
+        "ogrn": "1027739254036"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/rusfincorp/",
+        "name": "Российская Финансовая Корпорация",
+        "reg_number": "3099",
+        "ogrn": "1037744005771"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/rshb/",
+        "name": "Россельхозбанк",
+        "reg_number": "3349",
+        "ogrn": "1027700342890"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/roscosmosbank/",
+        "name": "Роскосмосбанк",
+        "reg_number": "2989",
+        "ogrn": "1027739224611"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/rosdorbank/",
+        "name": "Росдорбанк",
+        "reg_number": "1573",
+        "ogrn": "1027739857958"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/rbb/",
+        "name": "Росбизнесбанк",
+        "reg_number": "1405",
+        "ogrn": "1027739149778"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/rosbank/",
+        "name": "Росбанк",
+        "reg_number": "2272",
+        "ogrn": "1027739460737"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/rocketbank/",
+        "name": "Рокетбанк",
+        "reg_number": "2241"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/rncb/",
+        "name": "РНКБ",
+        "reg_number": "1354",
+        "ogrn": "1027700381290"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/rnbank/",
+        "name": "РН Банк",
+        "reg_number": "170",
+        "ogrn": "1025500003737"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/rcalliance/",
+        "name": "Республиканский Кредитный Альянс",
+        "reg_number": "3017",
+        "ogrn": "1027739082931"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/resocredit/",
+        "name": "РЕСО Кредит",
+        "reg_number": "3450",
+        "ogrn": "1087711000046"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/renta-bank/",
+        "name": "Рента-Банк",
+        "reg_number": "3095",
+        "ogrn": "1027744003231"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/rencredit/",
+        "name": "Ренессанс Кредит",
+        "reg_number": "3354",
+        "ogrn": "1027739586291"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/baikalinvestbank/",
+        "name": "Реалист Банк",
+        "reg_number": "1067",
+        "ogrn": "1023800000124"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/rgsbank/",
+        "name": "РГС Банк",
+        "reg_number": "3073",
+        "ogrn": "1027739004809"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/rba-bank/",
+        "name": "РБА",
+        "reg_number": "3413",
+        "ogrn": "1027600000251"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/raiffeisen/",
+        "name": "Райффайзенбанк",
+        "reg_number": "3292",
+        "ogrn": "1027739326449"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/dcbank/",
+        "name": "Развитие-Столица",
+        "reg_number": "3013",
+        "ogrn": "1027739067861"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/promtransbank/",
+        "name": "Промтрансбанк",
+        "reg_number": "2638",
+        "ogrn": "1020200000083"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/pshbank/",
+        "name": "Промсельхозбанк",
+        "reg_number": "538",
+        "ogrn": "1026400002012"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/promsvyazbank/",
+        "name": "Промсвязьбанк",
+        "reg_number": "3251",
+        "ogrn": "1027739019142"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/procommercebank/",
+        "name": "Прокоммерцбанк",
+        "reg_number": "2996",
+        "ogrn": "1037739758022"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/pibank/",
+        "name": "Проинвестбанк",
+        "reg_number": "784",
+        "ogrn": "1025900000488"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/priovtb/",
+        "name": "Прио-Внешторгбанк",
+        "reg_number": "212",
+        "ogrn": "1026200000111"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/priobye/",
+        "name": "Приобье",
+        "reg_number": "537",
+        "ogrn": "1028600002100"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/ptkb/",
+        "name": "Примтеркомбанк",
+        "reg_number": "21",
+        "ogrn": "1022500001325"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/primsotsbank/",
+        "name": "Примсоцбанк",
+        "reg_number": "2733",
+        "ogrn": "1022500001061"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/primorye/",
+        "name": "Приморье",
+        "reg_number": "3001",
+        "ogrn": "1022500000566"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/pochtobank/",
+        "name": "Почтобанк",
+        "reg_number": "1788",
+        "ogrn": "1025900000059"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/pochtabank/",
+        "name": "Почта Банк",
+        "reg_number": "650",
+        "ogrn": "1023200000010"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/poidem/",
+        "name": "Пойдем!",
+        "reg_number": "2534",
+        "ogrn": "1025480001073"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/plusbank/",
+        "name": "Плюс Банк",
+        "reg_number": "1189",
+        "ogrn": "1025500000624"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/platina/",
+        "name": "Платина",
+        "reg_number": "2347",
+        "ogrn": "1027739881091"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/pscb/",
+        "name": "Петербургский Социальный Коммерческий Банк",
+        "reg_number": "2551",
+        "ogrn": "1027800000227"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/peresvet/",
+        "name": "Пересвет",
+        "reg_number": "2110",
+        "ogrn": "1027739250285"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/1cb/",
+        "name": "Первый Клиентский Банк",
+        "reg_number": "3436",
+        "ogrn": "1037711002339"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/almabank/",
+        "name": "Первый Инвестиционный Банк",
+        "reg_number": "604",
+        "ogrn": "1027739222246"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/dtb/",
+        "name": "Первый Дортрансбанк",
+        "reg_number": "3271",
+        "ogrn": "1024300000097"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/pervouralskbank/",
+        "name": "Первоуральскбанк",
+        "reg_number": "965",
+        "ogrn": "1026600001823"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/otpbank/",
+        "name": "ОТП Банк",
+        "reg_number": "2766",
+        "ogrn": "1027739176563"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/oneybank/",
+        "name": "Оней Банк",
+        "reg_number": "3516",
+        "ogrn": "1137711000020"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/onego/",
+        "name": "Онего",
+        "reg_number": "2484",
+        "ogrn": "1021000000108"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/united-reserve/",
+        "name": "Объединенный Резервный Банк",
+        "reg_number": "937",
+        "ogrn": "1026400001803"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/okbank/",
+        "name": "Объединенный Капитал",
+        "reg_number": "2611",
+        "ogrn": "1027800003505"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/obr/",
+        "name": "Объединенный Банк Республики",
+        "reg_number": "1016",
+        "ogrn": "1022100000120"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/nsbank/",
+        "name": "НС Банк",
+        "reg_number": "3124",
+        "ogrn": "1027739198200"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/nordea/",
+        "name": "Нордеа Банк",
+        "reg_number": "3016",
+        "ogrn": "1027739436955"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/norvik-bank/",
+        "name": "Норвик Банк",
+        "reg_number": "902",
+        "ogrn": "1024300004739"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/noosfera/",
+        "name": "Ноосфера",
+        "reg_number": "2650",
+        "ogrn": "1020400000059"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/nokssbank/",
+        "name": "НОКССбанк",
+        "reg_number": "3202",
+        "ogrn": "1023400000018"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/nmbank/",
+        "name": "Новый Московский Банк",
+        "reg_number": "2932",
+        "ogrn": "1027700128796"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/newbank/",
+        "name": "Новый Век",
+        "reg_number": "3417",
+        "ogrn": "1027700047715"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/novokib/",
+        "name": "Новокиб",
+        "reg_number": "1747",
+        "ogrn": "1024200001792"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/novobank/",
+        "name": "Новобанк",
+        "reg_number": "1352",
+        "ogrn": "1025300002925"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/novikombank/",
+        "name": "Новикомбанк",
+        "reg_number": "2546",
+        "ogrn": "1027739075891"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/nkbank/",
+        "name": "НК Банк",
+        "reg_number": "2755",
+        "ogrn": "1027739028536"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/nico-bank/",
+        "name": "НИКО-Банк",
+        "reg_number": "702",
+        "ogrn": "1025600001679"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/nefteprombank/",
+        "name": "Нефтепромбанк",
+        "reg_number": "2156",
+        "ogrn": "1027739345281"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/neyva/",
+        "name": "Нейва",
+        "reg_number": "1293",
+        "ogrn": "1026600006510"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/nbd-bank/",
+        "name": "НБД-Банк",
+        "reg_number": "1966",
+        "ogrn": "1025200000022"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/ns-bank/",
+        "name": "Национальный Стандарт",
+        "reg_number": "3421",
+        "ogrn": "1157700006650"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/nrb/",
+        "name": "Национальный Резервный Банк",
+        "reg_number": "2170",
+        "ogrn": "1027700458224"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/nbs/",
+        "name": "Национальный Банк Сбережений",
+        "reg_number": "1949",
+        "ogrn": "1083700000471"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/nfc/",
+        "name": "Национальная Факторинговая Компания",
+        "reg_number": "3437",
+        "ogrn": "1067711005185"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/nipbank/",
+        "name": "Нацинвестпромбанк",
+        "reg_number": "3077",
+        "ogrn": "1027739043750"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/natixis/",
+        "name": "Натиксис Банк",
+        "reg_number": "3390",
+        "ogrn": "1037739058180"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/nib/",
+        "name": "Народный Инвестиционный Банк",
+        "reg_number": "2876",
+        "ogrn": "1027300000012"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/nalchik/",
+        "name": "Нальчик",
+        "reg_number": "695",
+        "ogrn": "1020700000496"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/mscb/",
+        "name": "Мурманский Социальный Коммерческий Банк",
+        "reg_number": "2722",
+        "ogrn": "1025100003917"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/mkpb/",
+        "name": "Муниципальный Камчатпрофитбанк",
+        "reg_number": "2103",
+        "ogrn": "1024100000165"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/mts-bank/",
+        "name": "МТС Банк",
+        "reg_number": "2268",
+        "ogrn": "1027739053704"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/mti-bank/",
+        "name": "МТИ Банк",
+        "reg_number": "1052",
+        "ogrn": "1077711000080"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/mspbank/",
+        "name": "МСП Банк",
+        "reg_number": "3340",
+        "ogrn": "1027739108649"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/capital-moscow/",
+        "name": "МС Банк Рус",
+        "reg_number": "2789",
+        "ogrn": "1027739094250"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/moskommertsbank/",
+        "name": "Москоммерцбанк",
+        "reg_number": "3365",
+        "ogrn": "1107711000066"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/mosoblbank/",
+        "name": "Московский Областной Банк",
+        "reg_number": "1751",
+        "ogrn": "1107711000022"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/mkb/",
+        "name": "Московский Кредитный Банк",
+        "reg_number": "1978",
+        "ogrn": "1027739555282"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/moscombank/",
+        "name": "Московский Коммерческий Банк",
+        "reg_number": "3172",
+        "ogrn": "1027739223687"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/minbank/",
+        "name": "Московский Индустриальный Банк",
+        "reg_number": "912",
+        "ogrn": "1027739179160"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/moscow-city/",
+        "name": "Москва-Сити",
+        "reg_number": "3247",
+        "ogrn": "1027739045124"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/maritime/",
+        "name": "Морской Банк",
+        "reg_number": "77",
+        "ogrn": "1027700568224"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/modulkassa/",
+        "name": "МодульКасса",
+        "ogrn": "1155476129753"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/modulbank/",
+        "name": "Модульбанк",
+        "reg_number": "1927",
+        "ogrn": "1022200525841"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/mbb/",
+        "name": "Мир Бизнес Банк",
+        "reg_number": "3396",
+        "ogrn": "1027739669726"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/mizuhocbk/",
+        "name": "Мидзухо Банк",
+        "reg_number": "3337",
+        "ogrn": "1027700317028"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/metcom/",
+        "name": "Меткомбанк (Каменск-Уральский)",
+        "reg_number": "2443",
+        "ogrn": "1026600000195"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/metallurg/",
+        "name": "Металлург",
+        "reg_number": "2877",
+        "ogrn": "1027739246490"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/metallinvestbank/",
+        "name": "Металлинвестбанк",
+        "reg_number": "2440",
+        "ogrn": "1027700218666"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/mercedes-benz-bank/",
+        "name": "Мерседес-Бенц Банк Рус",
+        "reg_number": "3473",
+        "ogrn": "1077711000113"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/mfk-bank/",
+        "name": "Международный Финансовый Клуб",
+        "reg_number": "2618",
+        "ogrn": "1027700056977"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/mcombank/",
+        "name": "Международный Коммерческий Банк",
+        "reg_number": "2524",
+        "ogrn": "1027700053776"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/megapolis/",
+        "name": "Мегаполис",
+        "reg_number": "3265",
+        "ogrn": "1022100000317"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/mvsbank/",
+        "name": "МВС Банк",
+        "reg_number": "2407",
+        "ogrn": "1020500003941"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/ibamoscow/",
+        "name": "МБА-Москва",
+        "reg_number": "3395",
+        "ogrn": "1027739877857"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/maxima/",
+        "name": "Максима",
+        "reg_number": "3379",
+        "ogrn": "1027739553753"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/maykopbank/",
+        "name": "Майкопбанк",
+        "reg_number": "1136",
+        "ogrn": "1020100002394"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/land-bank/",
+        "name": "Лэнд Кредит",
+        "reg_number": "1478-Д",
+        "ogrn": "1157700013250"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/locko-bank/",
+        "name": "Локо-Банк",
+        "reg_number": "2707",
+        "ogrn": "1057711014195"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/levoberezhny/",
+        "name": "Левобережный",
+        "reg_number": "1343",
+        "ogrn": "1025400000010"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/lanta-bank/",
+        "name": "Ланта-Банк",
+        "reg_number": "1920",
+        "ogrn": "1037739042912"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/kebrus/",
+        "name": "КЭБ ЭйчЭнБи Банк",
+        "reg_number": "3525",
+        "ogrn": "1147711000030"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/kurgan/",
+        "name": "Курган",
+        "reg_number": "2568",
+        "ogrn": "1024500000029"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/kuznetsky/",
+        "name": "Кузнецкий",
+        "reg_number": "609",
+        "ogrn": "1125800000094"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/kuznetskbb/",
+        "name": "Кузнецкбизнесбанк",
+        "reg_number": "1158",
+        "ogrn": "1024200001814"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/khbank/",
+        "name": "Кузбассхимбанк",
+        "reg_number": "2868",
+        "ogrn": "1024200001847"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/kubankredit/",
+        "name": "Кубань Кредит",
+        "reg_number": "2518",
+        "ogrn": "1022300003703"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/ks-bank/",
+        "name": "КС Банк",
+        "reg_number": "1752",
+        "ogrn": "1021300000072"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/crosna-bank/",
+        "name": "Кросна-Банк",
+        "reg_number": "2607",
+        "ogrn": "1027739175859"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/krona-bank/",
+        "name": "Крона-Банк",
+        "reg_number": "2499",
+        "ogrn": "1023800000245"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/crocus-bank/",
+        "name": "Крокус-Банк",
+        "reg_number": "2682",
+        "ogrn": "1027739621810"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/credituralbank/",
+        "name": "Кредит Урал Банк",
+        "reg_number": "2584",
+        "ogrn": "1027400000638"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/crediteuropebank/",
+        "name": "Кредит Европа Банк",
+        "reg_number": "3311",
+        "ogrn": "1037739326063"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/credit-agricole/",
+        "name": "Креди Агриколь КИБ",
+        "reg_number": "1680",
+        "ogrn": "1027800000953"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/koshelev_bank/",
+        "name": "Кошелев-Банк",
+        "reg_number": "3300",
+        "ogrn": "1025200001661"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/kostromascb/",
+        "name": "Костромаселькомбанк",
+        "reg_number": "1115",
+        "ogrn": "1024400003858"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/continental/",
+        "name": "Континенталь",
+        "reg_number": "3184",
+        "ogrn": "1020500002093"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/conservativecb/",
+        "name": "Консервативный Коммерческий Банк",
+        "reg_number": "1087",
+        "ogrn": "1023001538340"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/cbi/",
+        "name": "Коммерческий Индо Банк",
+        "reg_number": "3446",
+        "ogrn": "1037711012998"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/commerzbank/",
+        "name": "Коммерцбанк (Евразия)",
+        "reg_number": "3333",
+        "ogrn": "1027739070259"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/kubank/",
+        "name": "Кольцо Урала",
+        "reg_number": "65",
+        "ogrn": "1026600001955"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/ceb/",
+        "name": "Классик Эконом Банк",
+        "reg_number": "3298",
+        "ogrn": "1021500000730"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/qiwibank/",
+        "name": "Киви Банк",
+        "reg_number": "2241",
+        "ogrn": "1027739328440"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/ketovsky/",
+        "name": "Кетовский Коммерческий Банк",
+        "reg_number": "842",
+        "ogrn": "1024500000392"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/capital/",
+        "name": "Капитал",
+        "reg_number": "575",
+        "ogrn": "1028600002199"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/kamkombank/",
+        "name": "Камский Коммерческий Банк",
+        "reg_number": "438",
+        "ogrn": "1021600000840"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/kaluga/",
+        "name": "Калуга",
+        "reg_number": "1151",
+        "ogrn": "1024000001739"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/yoshkar-ola/",
+        "name": "Йошкар-Ола",
+        "reg_number": "2802",
+        "ogrn": "1021200004748"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/isbank/",
+        "name": "Ишбанк",
+        "reg_number": "2867",
+        "ogrn": "1027739066354"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/iturup/",
+        "name": "Итуруп",
+        "reg_number": "2390",
+        "ogrn": "1026500002286"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/itbank/",
+        "name": "ИТ Банк",
+        "reg_number": "2609",
+        "ogrn": "1025500001163"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/irs/",
+        "name": "ИРС",
+        "reg_number": "272",
+        "ogrn": "1027739137535"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/interprombank/",
+        "name": "Интерпромбанк",
+        "reg_number": "3266",
+        "ogrn": "1027739033013"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/ipb/",
+        "name": "Интерпрогрессбанк",
+        "reg_number": "600",
+        "ogrn": "1027739065375"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/isb/",
+        "name": "Индустриальный Сберегательный Банк",
+        "reg_number": "3175",
+        "ogrn": "1027739339715"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/ingbank/",
+        "name": "ИНГ Банк",
+        "reg_number": "2495",
+        "ogrn": "1027739329375"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/investtorgbank/",
+        "name": "Инвестторгбанк",
+        "reg_number": "2763",
+        "ogrn": "1027739543182"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/inbank/",
+        "name": "Инбанк",
+        "reg_number": "1829",
+        "ogrn": "1025600001668"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/tatinvestbank/",
+        "name": "ИК Банк",
+        "reg_number": "1732",
+        "ogrn": "1021600000751"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/ikanobank/",
+        "name": "Икано Банк",
+        "reg_number": "3519",
+        "ogrn": "1135000001652"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/ziraatbank/",
+        "name": "Зираат Банк",
+        "reg_number": "2559",
+        "ogrn": "1037739412700"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/zemsky/",
+        "name": "Земский Банк",
+        "reg_number": "2900",
+        "ogrn": "1156300000141"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/zemcombank/",
+        "name": "Земкомбанк",
+        "reg_number": "574",
+        "ogrn": "1026100001982"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/zauberbank/",
+        "name": "Заубер Банк",
+        "reg_number": "1614",
+        "ogrn": "1020900001781"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/zapsibkombank/",
+        "name": "Запсибкомбанк",
+        "reg_number": "918",
+        "ogrn": "1028900001460"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/zhivago-bank/",
+        "name": "Живаго Банк",
+        "reg_number": "2065",
+        "ogrn": "1026200004060"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/ermak/",
+        "name": "Ермак",
+        "reg_number": "1809",
+        "ogrn": "1028600003497"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/eniseisk-united-bank/",
+        "name": "Енисейский Объединенный Банк",
+        "reg_number": "2645",
+        "ogrn": "1022400000160"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/emb/",
+        "name": "Екатеринбург",
+        "reg_number": "3161",
+        "ogrn": "1026600000074"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/evrofinance/",
+        "name": "Еврофинанс Моснарбанк",
+        "reg_number": "2402",
+        "ogrn": "1027700565970"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/euroalliance/",
+        "name": "Евроальянс",
+        "reg_number": "1781",
+        "ogrn": "1023700001467"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/eab/",
+        "name": "Евроазиатский Инвестиционный Банк",
+        "reg_number": "2897",
+        "ogrn": "1027739915796"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/eurasian-bank/",
+        "name": "Евразийский Банк",
+        "reg_number": "969",
+        "ogrn": "1027500001100"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/eatibank/",
+        "name": "ЕАТП Банк",
+        "reg_number": "1765",
+        "ogrn": "1023000817388"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/bankdruzhba/",
+        "name": "Дружба",
+        "reg_number": "990",
+        "ogrn": "1027200000013"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/don-teksbank/",
+        "name": "Дон-Тексбанк",
+        "reg_number": "1818"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/donkombank/",
+        "name": "Донкомбанк",
+        "reg_number": "492",
+        "ogrn": "1026100001817"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/dom-bank/",
+        "name": "Дом-Банк",
+        "reg_number": "3209",
+        "ogrn": "1035000002828"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/dolinsk/",
+        "name": "Долинск",
+        "reg_number": "857",
+        "ogrn": "1026500538240"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/deutsche-bank/",
+        "name": "Дойче Банк",
+        "reg_number": "3328",
+        "ogrn": "1027739369041"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/jpmorgan/",
+        "name": "Дж. П. Морган Банк",
+        "reg_number": "2629",
+        "ogrn": "1027739606245"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/jtbank/",
+        "name": "Джей энд Ти Банк",
+        "reg_number": "3061",
+        "ogrn": "1027739121651"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/derzhava/",
+        "name": "Держава",
+        "reg_number": "2738",
+        "ogrn": "1027739120199"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/denizbank_moscow/",
+        "name": "Денизбанк Москва",
+        "reg_number": "3330",
+        "ogrn": "1027739453390"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/delobank/",
+        "name": "ДелоБанк",
+        "reg_number": "705"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/dalnevostochny/",
+        "name": "Дальневосточный Банк",
+        "reg_number": "843",
+        "ogrn": "1022500000786"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/dalenabank/",
+        "name": "Далена Банк",
+        "reg_number": "1948",
+        "ogrn": "1027700135540"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/guta-bank/",
+        "name": "Гута-Банк",
+        "reg_number": "256",
+        "ogrn": "1026900005307"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/geobank/",
+        "name": "Геобанк",
+        "reg_number": "2027",
+        "ogrn": "1021100000393"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/genbank/",
+        "name": "Генбанк",
+        "reg_number": "2490",
+        "ogrn": "1137711000074"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/garant-invest/",
+        "name": "Гарант-Инвест",
+        "reg_number": "2576",
+        "ogrn": "1037739429320"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/gazenergobank/",
+        "name": "Газэнергобанк",
+        "reg_number": "3252",
+        "ogrn": "1024000000210"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/gaztransbank/",
+        "name": "Газтрансбанк",
+        "reg_number": "665",
+        "ogrn": "1020100002955"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/gazprombank/",
+        "name": "Газпромбанк",
+        "reg_number": "354",
+        "ogrn": "1027700167110"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/gazneftbank/",
+        "name": "Газнефтьбанк",
+        "reg_number": "3223",
+        "ogrn": "1026400001870"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/vyatich/",
+        "name": "Вятич",
+        "reg_number": "2796",
+        "ogrn": "1026200000386"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/veb/",
+        "name": "ВЭБ",
+        "ogrn": "1077711000102"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/vuzbank/",
+        "name": "ВУЗ-Банк",
+        "reg_number": "1557",
+        "ogrn": "1026600001042"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/vtb/",
+        "name": "ВТБ",
+        "reg_number": "1000",
+        "ogrn": "1027739609391"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/vbrr/",
+        "name": "Всероссийский Банк Развития Регионов",
+        "reg_number": "3287",
+        "ogrn": "1027739186914"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/v-express-bank/",
+        "name": "Восточный Банк",
+        "reg_number": "1460",
+        "ogrn": "1022800000112"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/vologzhanin/",
+        "name": "Вологжанин",
+        "reg_number": "1896",
+        "ogrn": "1023500000655"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/vozrozhdenie/",
+        "name": "Возрождение",
+        "reg_number": "1439",
+        "ogrn": "1027700540680"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/vneshfinbank/",
+        "name": "Внешфинбанк",
+        "reg_number": "3173",
+        "ogrn": "1020500003919"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/vladbiznesbank/",
+        "name": "Владбизнесбанк",
+        "reg_number": "903",
+        "ogrn": "1023300000063"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/vkabank/",
+        "name": "Вкабанк",
+        "reg_number": "1027",
+        "ogrn": "1023000000210"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/vitabank/",
+        "name": "Витабанк",
+        "reg_number": "356",
+        "ogrn": "1027800000183"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/viking/",
+        "name": "Викинг",
+        "reg_number": "2",
+        "ogrn": "1027800000250"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/vesta/",
+        "name": "Веста",
+        "reg_number": "2368",
+        "ogrn": "1026000001796"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/venetsbank/",
+        "name": "Венец",
+        "reg_number": "524",
+        "ogrn": "1027300000166"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/velikie-luki-bank/",
+        "name": "Великие Луки Банк",
+        "reg_number": "598",
+        "ogrn": "1026000001774"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/vakobank/",
+        "name": "Вакобанк",
+        "reg_number": "1291",
+        "ogrn": "1026000002160"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/boc/",
+        "name": "Бэнк оф Чайна",
+        "reg_number": "2309",
+        "ogrn": "1027739857551"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/bystrobank/",
+        "name": "БыстроБанк",
+        "reg_number": "1745",
+        "ogrn": "1021800001508"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/bstbank/",
+        "name": "БСТ-Банк",
+        "reg_number": "2883",
+        "ogrn": "1024200002276"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/ankb/",
+        "name": "Братский АНКБ",
+        "reg_number": "1144",
+        "ogrn": "1023800000069"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/bnpparibasbank/",
+        "name": "БНП Париба Банк",
+        "reg_number": "3407",
+        "ogrn": "1027700045780"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/bmwbank/",
+        "name": "БМВ Банк",
+        "reg_number": "3482",
+        "ogrn": "1085000001998"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/bmbank/",
+        "name": "БМ-Банк",
+        "reg_number": "2748",
+        "ogrn": "1027700159497"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/bcs/",
+        "name": "БКС Мир Инвестиций",
+        "reg_number": "101"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/bcs-bank/",
+        "name": "БКС Банк",
+        "reg_number": "101",
+        "ogrn": "1055400000369"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/sct/",
+        "name": "Бест Эффортс Банк",
+        "reg_number": "435",
+        "ogrn": "1037700041323"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/belsocbank/",
+        "name": "Белгородсоцбанк",
+        "reg_number": "760",
+        "ogrn": "1023100000560"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/bbrbank/",
+        "name": "ББР Банк",
+        "reg_number": "2929",
+        "ogrn": "1027700074775"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/bankffin/",
+        "name": "Банк Фридом Финанс",
+        "reg_number": "1143",
+        "ogrn": "1026500000317"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/finservice/",
+        "name": "Банк Финсервис",
+        "reg_number": "3388",
+        "ogrn": "1087711000013"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/uralsib/",
+        "name": "Банк Уралсиб",
+        "reg_number": "30",
+        "ogrn": "1020280000190"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/sfera/",
+        "name": "Банк Сфера",
+        "reg_number": "101"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/stkbank/",
+        "name": "Банк Стандарт-Кредит",
+        "reg_number": "841",
+        "ogrn": "1020100002340"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/westlb/",
+        "name": "Банк Сберегательно-Кредитного Сервиса",
+        "reg_number": "3224",
+        "ogrn": "1137711000096"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/bankrsi/",
+        "name": "Банк РСИ",
+        "reg_number": "3415",
+        "ogrn": "1027739312589"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/roundbank/",
+        "name": "Банк Раунд",
+        "reg_number": "2506",
+        "ogrn": "1027700140753"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/psa-finance-rus/",
+        "name": "Банк ПСА Финанс Рус",
+        "reg_number": "3481",
+        "ogrn": "1087711000024"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/bankperm/",
+        "name": "Банк Пермь",
+        "reg_number": "875",
+        "ogrn": "1025900000510"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/fk_otkritie/",
+        "name": "Банк Открытие",
+        "reg_number": "2209",
+        "ogrn": "1027739019208"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/orenburg/",
+        "name": "Банк Оренбург",
+        "reg_number": "3269",
+        "ogrn": "1025600002230"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/bankorange/",
+        "name": "Банк Оранжевый",
+        "reg_number": "1659",
+        "ogrn": "1023800000322"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/kremlevsky/",
+        "name": "Банк Кремлевский",
+        "reg_number": "2905",
+        "ogrn": "1027739881223"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/credit-suisse/",
+        "name": "Банк Кредит Свисс",
+        "reg_number": "2494",
+        "ogrn": "1027739526935"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/kazanbank/",
+        "name": "Банк Казани",
+        "reg_number": "708",
+        "ogrn": "1021600000014"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/intesa/",
+        "name": "Банк Интеза",
+        "reg_number": "2216",
+        "ogrn": "1027739177377"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/zenit/",
+        "name": "Банк Зенит",
+        "reg_number": "3255",
+        "ogrn": "1027739056927"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/zarechye/",
+        "name": "Банк Заречье",
+        "reg_number": "817",
+        "ogrn": "1021600000586"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/bgfbank/",
+        "name": "Банк Жилищного Финансирования",
+        "reg_number": "3138",
+        "ogrn": "1027739098639"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/domrfbank/",
+        "name": "Банк ДОМ.РФ",
+        "reg_number": "2312",
+        "ogrn": "1037739527077"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/bankglobus/",
+        "name": "Банк Глобус",
+        "reg_number": "2438",
+        "ogrn": "1027739050833"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/cfb/",
+        "name": "Банк БКФ",
+        "reg_number": "2684",
+        "ogrn": "1027739542050"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/bereit/",
+        "name": "Банк Берейт",
+        "reg_number": "3505",
+        "ogrn": "1124700000160"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/akcept/",
+        "name": "Банк Акцепт",
+        "reg_number": "567",
+        "ogrn": "1025400000427"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/bank131/",
+        "name": "Банк 131",
+        "reg_number": "3538",
+        "ogrn": "1191690025746"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/baltinvestbank/",
+        "name": "Балтинвестбанк",
+        "reg_number": "3176",
+        "ogrn": "1027800001570"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/balakovo-bank/",
+        "name": "Балаково-Банк",
+        "reg_number": "444",
+        "ogrn": "1026400002265"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/baikalcredobank/",
+        "name": "Байкалкредобанк",
+        "reg_number": "2990",
+        "ogrn": "1023800000278"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/arzamas/",
+        "name": "Арзамас",
+        "reg_number": "1281",
+        "ogrn": "1025200000011"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/aresbank/",
+        "name": "Аресбанк",
+        "reg_number": "2914",
+        "ogrn": "1027739554930"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/amexbank/",
+        "name": "Америкэн Экспресс Банк",
+        "reg_number": "3460",
+        "ogrn": "1057711014800"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/alfabank/",
+        "name": "Альфа-Банк",
+        "reg_number": "1326",
+        "ogrn": "1027700067328"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/alternativa/",
+        "name": "Альтернатива",
+        "reg_number": "3452",
+        "ogrn": "1057711000820"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/aljba_alliance/",
+        "name": "Альба Альянс",
+        "reg_number": "2593",
+        "ogrn": "1025000004787"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/karaaltynbank/",
+        "name": "Алтынбанк",
+        "reg_number": "2070",
+        "ogrn": "1151600000100"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/altaycapitalbank/",
+        "name": "Алтайкапиталбанк",
+        "reg_number": "2659",
+        "ogrn": "1022200531484"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/almazergienbank/",
+        "name": "Алмазэргиэнбанк",
+        "reg_number": "2602",
+        "ogrn": "1031403918138"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/alefbank/",
+        "name": "Алеф-Банк",
+        "reg_number": "2119",
+        "ogrn": "1027739176080"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/aleksandrovsky/",
+        "name": "Александровский",
+        "reg_number": "53",
+        "ogrn": "1027800000194"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/aktivbank/",
+        "name": "Актив Банк",
+        "reg_number": "2529",
+        "ogrn": "1021300001029"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/acropol/",
+        "name": "Акрополь",
+        "reg_number": "3027",
+        "ogrn": "1077711000091"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/akibank/",
+        "name": "Акибанк",
+        "reg_number": "2587",
+        "ogrn": "1021600000839"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/akbars/",
+        "name": "Ак Барс",
+        "reg_number": "2590",
+        "ogrn": "1021600000124"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/icbc/",
+        "name": "АйСиБиСи Банк",
+        "reg_number": "3475",
+        "ogrn": "1077711000157"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/asia-invest-bank/",
+        "name": "Азия-Инвест Банк",
+        "reg_number": "3303",
+        "ogrn": "1027739278973"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/atb/",
+        "name": "Азиатско-Тихоокеанский Банк",
+        "reg_number": "1810",
+        "ogrn": "1022800000079"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/agroros/",
+        "name": "Агророс",
+        "reg_number": "2860",
+        "ogrn": "1026400001770"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/agropromcredit/",
+        "name": "Агропромкредит",
+        "reg_number": "2880",
+        "ogrn": "1095000004252"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/reb/",
+        "name": "Агора",
+        "reg_number": "3231"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/avtotorgbank/",
+        "name": "Автоторгбанк",
+        "reg_number": "2776",
+        "ogrn": "1027739408290"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/autokreditbank/",
+        "name": "АвтоКредитБанк",
+        "reg_number": "1973",
+        "ogrn": "1021600000366"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/avtogradbank/",
+        "name": "Автоградбанк",
+        "reg_number": "1455",
+        "ogrn": "1021600000806"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/aversbank/",
+        "name": "Аверс",
+        "reg_number": "415",
+        "ogrn": "1021600000993"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/avangard/",
+        "name": "Авангард",
+        "reg_number": "2879",
+        "ogrn": "1027700367507"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/gefest-bank/",
+        "name": "Гефест",
+        "reg_number": "1046",
+        "ogrn": "1026900001347"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/goldman-sachs-bank/",
+        "name": "Голдман Сакс Банк",
+        "reg_number": "3490",
+        "ogrn": "1087711000112"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/gorbank/",
+        "name": "Горбанк",
+        "reg_number": "2982",
+        "ogrn": "1027800000348"
+    },
+    {
+        "banki_url": "https://www.banki.ru/banks/bank/kubantorgbank/",
+        "name": "Кубаньторгбанк",
+        "reg_number": "478",
+        "ogrn": "1022300000502"
+    }
+]
