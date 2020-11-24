@@ -1,9 +1,6 @@
-app/static/
-app/media/
-app/fixtures/
-
-celerybeat.pid
-celerybeat-schedule
+app/backups/*
+app/media/*
+app/static/*
 
 .vscode/
 .mypy_cache/

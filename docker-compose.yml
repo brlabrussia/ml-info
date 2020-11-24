@@ -2,6 +2,8 @@ version: '3'
 
 volumes:
   postgres_data: {}
+  static_data: {}
+  media_data: {}
 
 networks:
   inner_network:
@@ -17,15 +19,15 @@ services:
       - redis
     build: ./app/
     volumes:
-      - ./app/:/usr/src/app/
-      - ./app/static/:/usr/src/app/static/
-      - ./app/media/:/usr/src/app/media/
-      - ./app/fixtures/:/usr/src/app/fixtures/
+      # - ./app/:/app/
+      - ./app/backups/:/app/backups/
+      - static_data:/app/static/
+      - media_data:/app/media/
     networks:
       - inner_network
     env_file:
       - .env
-    command: gunicorn -c gunicorn.py core.wsgi
+    command: ./start
     restart: always
 
   postgres:
@@ -45,8 +47,8 @@ services:
     expose:
       - 80
     volumes:
-      - ./app/static/:/django/static/
-      - ./app/media/:/django/media/
+      - static_data:/django/static/
+      - media_data:/django/media/
     networks:
       - inner_network
       - traefik_network

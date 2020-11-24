@@ -23,6 +23,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'django_filters',
     'drf_yasg',
+    'dbbackup',
 ]
 
 MIDDLEWARE = [
@@ -97,7 +98,7 @@ REST_FRAMEWORK = {
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'Europe/Moscow'
+TIME_ZONE = os.getenv('TZ')
 
 USE_I18N = True
 
@@ -111,6 +112,9 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
+DBBACKUP_STORAGE = 'django.core.files.storage.FileSystemStorage'
+DBBACKUP_STORAGE_OPTIONS = {'location': os.path.join(BASE_DIR, 'backups')}
+
 CELERY_TIMEZONE = TIME_ZONE
 CELERY_BROKER_URL = 'redis://redis:6379'
 CELERY_RESULT_BACKEND = 'redis://redis:6379'
@@ -118,14 +122,10 @@ CELERY_IMPORTS = ['core.tasks']
 CELERY_BEAT_SCHEDULE = {
     'backup': {
         'task': 'core.tasks.backup',
-        'schedule': crontab(hour=6, minute=0),
+        'schedule': crontab(hour='*/12'),
     },
     'tables_scrapers': {
         'task': 'tables.tasks.schedule_scrapers',
-        'schedule': crontab(hour=5, minute=0),
-    },
-    'tables_hltv_scrapers': {
-        'task': 'tables.tasks.schedule_hltv_scrapers',
-        'schedule': crontab(minute='*/15'),
+        'schedule': crontab(hour=6, minute=0),
     },
 }
