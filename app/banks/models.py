@@ -72,7 +72,7 @@ class DebitCard(models.Model):
     banki_bank_url = models.URLField(blank=True)
 
     name = models.TextField(blank=True)
-    images = ArrayField(models.URLField(), blank=True, null=True)
+    images = JSONField(blank=True, null=True)
     summary = ArrayField(models.TextField(), blank=True, null=True)
 
     borrower_age = models.TextField(blank=True)
@@ -107,7 +107,7 @@ class CreditCard(models.Model):
     banki_bank_url = models.URLField(blank=True)
 
     name = models.TextField(blank=True)
-    images = ArrayField(models.URLField(), blank=True, null=True)
+    images = JSONField(blank=True, null=True)
     summary = ArrayField(models.TextField(), blank=True, null=True)
 
     borrower_age = models.TextField(blank=True)
