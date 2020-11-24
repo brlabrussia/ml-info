@@ -122,7 +122,7 @@ CELERY_IMPORTS = ['core.tasks']
 CELERY_BEAT_SCHEDULE = {
     'backup': {
         'task': 'core.tasks.backup',
-        'schedule': crontab(hour='*/12'),
+        'schedule': crontab(hour='*/12', minute=0),
     },
     'tables_scrapers': {
         'task': 'tables.tasks.schedule_scrapers',
