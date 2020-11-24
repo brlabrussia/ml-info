@@ -1,9 +1,15 @@
+from django.shortcuts import render
 from rest_framework import status, viewsets
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
 from .models import Table
 from .serializers import TableSerializer
+
+
+def preview(request, id):
+    table = Table.objects.get(id=id)
+    return render(request, 'tables/preview.html', {'table': table})
 
 
 class TableViewSet(viewsets.ReadOnlyModelViewSet):
