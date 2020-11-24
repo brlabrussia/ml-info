@@ -19,7 +19,7 @@ services:
       - redis
     build: ./app/
     volumes:
-      # - ./app/:/app/
+      # - ./app/:/app/:cached
       - ./app/backups/:/app/backups/
       - static_data:/app/static/
       - media_data:/app/media/
