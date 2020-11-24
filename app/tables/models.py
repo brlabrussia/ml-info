@@ -12,6 +12,8 @@ class Driver(models.Model):
 
 
 class Table(models.Model):
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
     category = models.TextField()
     name = models.TextField()
     url = models.URLField()

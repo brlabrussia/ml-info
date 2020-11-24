@@ -7,12 +7,23 @@ from .models import Driver, Table
 class TableAdmin(admin.ModelAdmin):
     readonly_fields = [
         'result',
+        'updated_at',
+        'created_at',
     ]
 
     list_display = [
         'name',
         'url',
-        'description',
+        'category',
+        'driver',
+    ]
+
+    search_fields = [
+        'name',
+        'url',
+    ]
+
+    list_filter = [
         'category',
         'driver',
     ]
