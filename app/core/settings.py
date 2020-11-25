@@ -119,13 +119,14 @@ CELERY_TIMEZONE = TIME_ZONE
 CELERY_BROKER_URL = 'redis://redis:6379'
 CELERY_RESULT_BACKEND = 'redis://redis:6379'
 CELERY_IMPORTS = ['core.tasks']
-CELERY_BEAT_SCHEDULE = {
-    'backup': {
-        'task': 'core.tasks.backup',
-        'schedule': crontab(hour='*/12', minute=0),
-    },
-    'tables_scrapers': {
-        'task': 'tables.tasks.schedule_scrapers',
-        'schedule': crontab(hour=6, minute=0),
-    },
-}
+if not DEBUG:
+    CELERY_BEAT_SCHEDULE = {
+        'backup': {
+            'task': 'core.tasks.backup',
+            'schedule': crontab(hour=6, minute=0),
+        },
+        'tables_scrapers': {
+            'task': 'tables.tasks.schedule_scrapers',
+            'schedule': crontab(hour=4, minute=0),
+        },
+    }
