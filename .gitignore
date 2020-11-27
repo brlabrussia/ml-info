@@ -2,6 +2,9 @@ app/backups/*
 app/media/*
 app/static/*
 
+celerybeat.pid
+celerybeat-schedule
+
 .vscode/
 .mypy_cache/
 *venv*/
