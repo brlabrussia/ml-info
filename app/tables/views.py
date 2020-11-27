@@ -9,7 +9,7 @@ from .serializers import TableSerializer
 
 def preview(request, id):
     table = Table.objects.get(id=id)
-    return render(request, 'tables/preview.html', {'table': table})
+    return render(request, 'preview.html', {'table': table})
 
 
 class TableViewSet(viewsets.ReadOnlyModelViewSet):

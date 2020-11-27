@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+    </style>
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        .result-sport-ratings-table>table{width: 95%;margin-left:auto;margin-right:auto;margin-top: 1%;}
+    </style>
+    <title>{{ table.name }}</title>
+</head>
+<body>
+    <div class="result-sport-ratings-table">
+        <a href="{{ table.url }}" class="orign-url">Оригинальная таблица</a>
+        <p>{{ table.description }}</p>
+        <p>{{ table.name }}</p>
+        <div>{{ table.result.addendum|safe }}</div>
+        <table class="table">
+                <thead>
+                {% for row in table.result.head %}
+                    <tr>
+                    {% for data in row %}
+                        <th
+                        {% for attrname, attrval in data.items %}
+                            {% if attrname != 'value' %}
+                                {{ attrname }}="{{ attrval }}"
+                            {% endif %}
+                        {% endfor %}
+                        >
+                        {{ data.value|safe }}
+                        </th>
+                    {% endfor %}
+                    </tr>
+                {% endfor %}
+                </thead>
+                <tbody>
+                {% for row in table.result.body %}
+                    <tr>
+                    {% for data in row %}
+                        <td
+                        {% for attrname, attrval in data.items %}
+                            {% if attrname != 'value' %}
+                                {{ attrname }}="{{ attrval }}"
+                            {% endif %}
+                        {% endfor %}
+                        >
+                        {{ data.value|safe }}
+                        </td>
+                    {% endfor %}
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+    </div>
+</body>
+</html>
