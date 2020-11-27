@@ -16,7 +16,7 @@
         <a href="{{ table.url }}" class="orign-url">Оригинальная таблица</a>
         <p>{{ table.description }}</p>
         <p>{{ table.name }}</p>
-        <div>{{ table.result.addendum|safe }}</div>
+        <div>{{ table.result.extra|safe }}</div>
         <table class="table">
                 <thead>
                 {% for row in table.result.head %}
