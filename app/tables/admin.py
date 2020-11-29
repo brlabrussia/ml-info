@@ -47,6 +47,7 @@ class TableAdmin(admin.ModelAdmin):
     @mark_safe
     def url_as_link(self, obj) -> str:
         return f'<a href="{obj.url}">{obj.url}</a>'
+    url_as_link.short_description = 'Url'
 
     @mark_safe
     def preview(self, obj) -> str:
