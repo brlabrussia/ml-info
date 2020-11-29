@@ -1,11 +1,10 @@
-from django.urls import path, re_path
+from django.urls import path
 from rest_framework.routers import DefaultRouter
 
 from . import views
 
 urlpatterns = [
     path('preview/<int:id>/', views.preview, name='preview'),
-    re_path(r'^scrapers/?$', views.ScrapersView.as_view()),
 ]
 
 router = DefaultRouter()

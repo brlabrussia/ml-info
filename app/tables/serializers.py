@@ -7,6 +7,6 @@ class TableSerializer(serializers.ModelSerializer):
     class Meta:
         model = Table
         exclude = [
-            'driver',
-            'driver_args',
+            'spider',
+            'spider_kwargs',
         ]

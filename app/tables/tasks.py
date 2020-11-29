@@ -1,49 +1,45 @@
-import json
 import os
-from typing import List
 
 import requests
+from django.urls import reverse
 
 from core.celery import app
 from tables.models import Table
 
-SCRAPYD_PROJECT = 'tables'
-SCRAPYD_URL = os.getenv('SCRAPYD_URL')
-SCRAPYD_LOGIN = os.getenv('SCRAPYD_LOGIN')
-SCRAPYD_PASS = os.getenv('SCRAPYD_PASS')
+SCRAPY_PROJECT = 'tables'
+SCRAPY_HOST = os.getenv('SCRAPY_HOST_TABLES')
+SCRAPY_ENDPOINT = 'http://' + SCRAPY_HOST + '/schedule.json'
+SCRAPY_LOGIN = os.getenv('SCRAPY_LOGIN_TABLES')
+SCRAPY_PASS = os.getenv('SCRAPY_PASS_TABLES')
 
-VIRTUAL_HOST = (
-    VIRTUAL_HOST
-    if 'localhost' not in (VIRTUAL_HOST := os.getenv('VIRTUAL_HOST'))
-    else 'nginx'
-)
-WEBHOOK_ENDPOINT = f'http://{VIRTUAL_HOST}/tables/scrapers/'
+VIRTUAL_HOST = os.getenv('VIRTUAL_HOST')
+if SCRAPY_HOST == 'scrapy:6800':
+    VIRTUAL_HOST = 'nginx'
 
 
 @app.task(ignore_result=True)
-def schedule_scraper(spider: str, pk: int, url: str, driver_args: List[str]):
-    spider = spider
-    args = [pk, url, *driver_args]
+def schedule_spider(pk: int, spider: str, spider_kwargs: dict):
+    path = reverse('table-detail', args=[pk])
+    webhook_endpoint = 'http://' + VIRTUAL_HOST + path
     data = [
-        ('project', SCRAPYD_PROJECT),
+        ('project', SCRAPY_PROJECT),
+        ('setting', f'WEBHOOK_ENDPOINT={webhook_endpoint}'),
         ('spider', spider),
-        ('request_args', json.dumps(args)),
-        ('setting', f'WEBHOOK_ENDPOINT={WEBHOOK_ENDPOINT}'),
+        *spider_kwargs.items(),
     ]
     requests.post(
-        f'{SCRAPYD_URL}/schedule.json',
+        SCRAPY_ENDPOINT,
+        auth=(SCRAPY_LOGIN, SCRAPY_PASS),
         data=data,
-        auth=(SCRAPYD_LOGIN, SCRAPYD_PASS),
     )
 
 
 @app.task(ignore_result=True)
-def schedule_scrapers():
-    tables = Table.objects.filter(driver__isnull=False)
+def schedule_spiders():
+    tables = Table.objects.filter(spider__isnull=False)
     for table in tables:
-        schedule_scraper.delay(
-            table.driver.scraper,
+        schedule_spider.delay(
             table.pk,
-            table.url,
-            table.driver_args,
+            table.spider,
+            table.spider_kwargs,
         )

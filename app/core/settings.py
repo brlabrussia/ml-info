@@ -8,7 +8,11 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 
 DEBUG = int(os.getenv('DEBUG', 0))
 
-ALLOWED_HOSTS = [os.getenv('VIRTUAL_HOST'), 'localhost']
+ALLOWED_HOSTS = [
+    os.getenv('VIRTUAL_HOST'),
+    'localhost',
+    'nginx',
+]
 
 INSTALLED_APPS = [
     'mfo.apps.MfoConfig',
@@ -125,8 +129,8 @@ if not DEBUG:
             'task': 'core.tasks.backup',
             'schedule': crontab(hour=6, minute=0),
         },
-        'tables_scrapers': {
-            'task': 'tables.tasks.schedule_scrapers',
+        'tables_schedule': {
+            'task': 'tables.tasks.schedule_spiders',
             'schedule': crontab(hour=4, minute=0),
         },
     }
