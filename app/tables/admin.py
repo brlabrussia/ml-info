@@ -2,8 +2,8 @@ from django.contrib import admin
 from django.urls import reverse
 from django.utils.safestring import mark_safe
 
-from .models import Driver, Table
-from .tasks import schedule_scraper
+from .models import Table
+from .tasks import schedule_spider
 
 
 @admin.register(Table)
@@ -20,9 +20,10 @@ class TableAdmin(admin.ModelAdmin):
     list_display = [
         'preview',
         'name',
-        'url',
+        'url_as_link',
         'category',
-        'driver',
+        'spider',
+        'spider_kwargs',
     ]
 
     list_display_links = [
@@ -36,7 +37,7 @@ class TableAdmin(admin.ModelAdmin):
 
     list_filter = [
         'category',
-        'driver',
+        'spider',
     ]
 
     actions = [
@@ -44,23 +45,21 @@ class TableAdmin(admin.ModelAdmin):
     ]
 
     @mark_safe
-    def preview(self, obj):
+    def url_as_link(self, obj) -> str:
+        return f'<a href="{obj.url}">{obj.url}</a>'
+
+    @mark_safe
+    def preview(self, obj) -> str:
         return '<a class="button" href="{}">Preview</a>'.format(
             reverse('preview', args=[obj.pk]),
         )
 
-    def schedule(self, request, queryset):
+    def schedule(self, request, queryset) -> None:
         for obj in queryset:
-            schedule_scraper.delay(
-                obj.driver.scraper,
+            schedule_spider.delay(
                 obj.pk,
-                obj.url,
-                obj.driver_args,
+                obj.spider,
+                obj.spider_kwargs,
             )
     schedule.short_description = 'Schedule selected tables'
     schedule.allowed_permissions = ['delete']
-
-
-@admin.register(Driver)
-class DriverAdmin(admin.ModelAdmin):
-    pass
