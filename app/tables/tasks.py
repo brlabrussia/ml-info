@@ -8,7 +8,7 @@ from tables.models import Table
 
 SCRAPY_PROJECT = 'tables'
 SCRAPY_HOST = os.getenv('SCRAPY_HOST_TABLES')
-SCRAPY_ENDPOINT = 'http://' + SCRAPY_HOST + '/schedule.json'
+SCRAPY_ENDPOINT = 'https://' + SCRAPY_HOST + '/schedule.json'
 SCRAPY_LOGIN = os.getenv('SCRAPY_LOGIN_TABLES')
 SCRAPY_PASS = os.getenv('SCRAPY_PASS_TABLES')
 
@@ -20,13 +20,14 @@ if SCRAPY_HOST == 'scrapy:6800':
 @app.task(ignore_result=True)
 def schedule_spider(pk: int, spider: str, spider_kwargs: dict):
     path = reverse('table-detail', args=[pk])
-    webhook_endpoint = 'http://' + VIRTUAL_HOST + path
+    webhook_endpoint = 'https://' + VIRTUAL_HOST + path
     data = [
         ('project', SCRAPY_PROJECT),
         ('setting', f'WEBHOOK_ENDPOINT={webhook_endpoint}'),
         ('spider', spider),
-        *spider_kwargs.items(),
     ]
+    if spider_kwargs is not None:
+        data.extend([*spider_kwargs.items()])
     requests.post(
         SCRAPY_ENDPOINT,
         auth=(SCRAPY_LOGIN, SCRAPY_PASS),
