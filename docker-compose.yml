@@ -21,8 +21,7 @@ services:
       - ./app/backups/:/app/backups/
       - static_data:/app/static/
       - media_data:/app/media/
-    env_file:
-      - .env
+    env_file: .env
     command: ./start
     restart: always
 
@@ -32,12 +31,13 @@ services:
       - postgres_data:/var/lib/postgresql/data/
     expose:
       - 5432
-    env_file:
-      - .env
+    env_file: .env
     restart: always
 
   nginx:
-    build: ./nginx
+    depends_on:
+      - django
+    build: ./nginx/
     expose:
       - 80
     volumes:
@@ -46,8 +46,6 @@ services:
     networks:
       - default
       - traefik
-    env_file:
-      - .env
     labels:
       - 'traefik.enable=true'
       - 'traefik.http.routers.info_nginx_https.rule=Host("$VIRTUAL_HOST")'
@@ -55,8 +53,7 @@ services:
       - 'traefik.http.routers.info_nginx_http.rule=Host("$VIRTUAL_HOST")'
       - 'traefik.http.routers.info_nginx_http.middlewares=redirect_middleware'
       - 'traefik.http.middlewares.redirect_middleware.redirectscheme.scheme=https'
-    depends_on:
-      - django
+    env_file: .env
     command: nginx -g 'daemon off;'
     restart: always
 
