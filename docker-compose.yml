@@ -6,9 +6,7 @@ volumes:
   media_data: {}
 
 networks:
-  inner_network:
-    driver: bridge
-  traefik_network:
+  traefik:
     external:
       name: traefik_network
 
@@ -23,8 +21,6 @@ services:
       - ./app/backups/:/app/backups/
       - static_data:/app/static/
       - media_data:/app/media/
-    networks:
-      - inner_network
     env_file:
       - .env
     command: ./start
@@ -36,8 +32,6 @@ services:
       - postgres_data:/var/lib/postgresql/data/
     expose:
       - 5432
-    networks:
-      - inner_network
     env_file:
       - .env
     restart: always
@@ -50,8 +44,8 @@ services:
       - static_data:/django/static/
       - media_data:/django/media/
     networks:
-      - inner_network
-      - traefik_network
+      - default
+      - traefik
     env_file:
       - .env
     labels:
@@ -68,8 +62,6 @@ services:
 
   redis:
     image: redis:6-buster
-    networks:
-      - inner_network
     restart: always
 
   celeryworker:
