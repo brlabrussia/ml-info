@@ -1,6 +1,5 @@
 from urllib.parse import unquote
 
-from django.contrib.postgres.fields import JSONField
 from django.db import models
 
 
@@ -14,9 +13,9 @@ class Table(models.Model):
     description = models.TextField(blank=True)
 
     spider = models.TextField(blank=True)
-    spider_kwargs = JSONField(blank=True, null=True)
+    spider_kwargs = models.JSONField(blank=True, default=dict)
 
-    result = JSONField(blank=True, null=True)
+    result = models.JSONField(blank=True, default=dict)
 
     def __str__(self):
         return self.name

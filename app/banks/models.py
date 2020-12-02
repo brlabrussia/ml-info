@@ -1,4 +1,4 @@
-from django.contrib.postgres.fields import ArrayField, JSONField
+from django.contrib.postgres.fields import ArrayField
 from django.db import models
 
 
@@ -35,9 +35,9 @@ class Bank(models.Model):
     mobile_cash_desks = models.BigIntegerField(blank=True, null=True)
 
     info_sites = ArrayField(models.URLField(), blank=True, null=True)
-    # cards = JSONField(blank=True, null=True)
-    # subsidiaries = JSONField(blank=True, null=True)
-    # agencies = JSONField(blank=True, null=True)
+    # cards = models.JSONField(blank=True, default=dict)
+    # subsidiaries = models.JSONField(blank=True, default=dict)
+    # agencies = models.JSONField(blank=True, default=dict)
 
     def __str__(self):
         return self.name
@@ -72,7 +72,7 @@ class DebitCard(models.Model):
     banki_bank_url = models.URLField(blank=True)
 
     name = models.TextField(blank=True)
-    images = JSONField(blank=True, null=True)
+    images = models.JSONField(blank=True, default=dict)
     summary = ArrayField(models.TextField(), blank=True, null=True)
 
     borrower_age = models.TextField(blank=True)
@@ -86,13 +86,13 @@ class DebitCard(models.Model):
     debit_cashback = models.TextField(blank=True)
     debit_cashback_description = models.TextField(blank=True)
     debit_bonuses = ArrayField(models.TextField(), blank=True, null=True)
-    interest_accrual = JSONField(blank=True, null=True)
-    service_cost = JSONField(blank=True, null=True)
+    interest_accrual = models.JSONField(blank=True, default=dict)
+    service_cost = models.JSONField(blank=True, default=dict)
     cash_withdrawal = models.TextField(blank=True)
     cash_pickup_point = models.TextField(blank=True)
-    foreign_cash_withdrawal = JSONField(blank=True, null=True)
-    foreign_cash_pickup_point = JSONField(blank=True, null=True)
-    operations_limit = JSONField(blank=True, null=True)
+    foreign_cash_withdrawal = models.JSONField(blank=True, default=dict)
+    foreign_cash_pickup_point = models.JSONField(blank=True, default=dict)
+    operations_limit = models.JSONField(blank=True, default=dict)
     additional_information = ArrayField(models.TextField(), blank=True, null=True)
     updated_at = models.DateTimeField(blank=True, null=True)
 
@@ -107,7 +107,7 @@ class CreditCard(models.Model):
     banki_bank_url = models.URLField(blank=True)
 
     name = models.TextField(blank=True)
-    images = JSONField(blank=True, null=True)
+    images = models.JSONField(blank=True, default=dict)
     summary = ArrayField(models.TextField(), blank=True, null=True)
 
     borrower_age = models.TextField(blank=True)
@@ -134,13 +134,13 @@ class CreditCard(models.Model):
     credit_cashback = models.TextField(blank=True)
     credit_cashback_description = models.TextField(blank=True)
     credit_bonuses = ArrayField(models.TextField(), blank=True, null=True)
-    interest_accrual = JSONField(blank=True, null=True)
-    service_cost = JSONField(blank=True, null=True)
+    interest_accrual = models.JSONField(blank=True, default=dict)
+    service_cost = models.JSONField(blank=True, default=dict)
     cash_withdrawal = models.TextField(blank=True)
     cash_pickup_point = models.TextField(blank=True)
-    foreign_cash_withdrawal = JSONField(blank=True, null=True)
-    foreign_cash_pickup_point = JSONField(blank=True, null=True)
-    operations_limit = JSONField(blank=True, null=True)
+    foreign_cash_withdrawal = models.JSONField(blank=True, default=dict)
+    foreign_cash_pickup_point = models.JSONField(blank=True, default=dict)
+    operations_limit = models.JSONField(blank=True, default=dict)
     additional_information = ArrayField(models.TextField(), blank=True, null=True)
     updated_at = models.DateTimeField(blank=True, null=True)
 
@@ -201,7 +201,7 @@ class ConsumerCredit(models.Model):
     credit_insurance = ArrayField(models.TextField(), blank=True, null=True)
     credit_insurance_description = ArrayField(models.TextField(), blank=True, null=True)
     additional_information = models.TextField(blank=True)
-    rates_table = JSONField(blank=True, null=True)
+    rates_table = models.JSONField(blank=True, default=dict)
     borrowers_category = ArrayField(models.TextField(), blank=True, null=True)
     borrowers_age_men = models.TextField(blank=True)
     borrowers_age_women = models.TextField(blank=True)
@@ -248,7 +248,7 @@ class Deposit(models.Model):
     early_dissolution_description = models.TextField(blank=True)
     auto_prolongation = models.IntegerField(blank=True, null=True)
     auto_prolongation_description = models.TextField(blank=True)
-    rates_table = JSONField(blank=True, null=True)
+    rates_table = models.JSONField(blank=True, default=dict)
     rates_comments = ArrayField(models.TextField(), blank=True, null=True)
     online_opening = models.TextField(blank=True)
     partial_withdrawal = models.TextField(blank=True)
