@@ -25,9 +25,8 @@ def schedule_spider(pk: int, spider: str, spider_kwargs: dict):
         ('project', SCRAPY_PROJECT),
         ('setting', f'WEBHOOK_ENDPOINT={webhook_endpoint}'),
         ('spider', spider),
+        *spider_kwargs.items(),
     ]
-    if spider_kwargs is not None:
-        data.extend([*spider_kwargs.items()])
     requests.post(
         SCRAPY_ENDPOINT,
         auth=(SCRAPY_LOGIN, SCRAPY_PASS),
