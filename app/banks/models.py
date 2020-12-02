@@ -230,11 +230,13 @@ class Deposit(models.Model):
     banki_url = models.URLField(blank=True)
     banki_bank_url = models.URLField(blank=True)
 
+    name = models.TextField(blank=True)
     deposit_amount = models.TextField(blank=True)
     deposit_currency = models.TextField(blank=True)
     deposit_term = models.TextField(blank=True)
 
     interest_payment = models.TextField(blank=True)
+    interest_payment_description =  models.TextField(blank=True)
     capitalization = models.TextField(blank=True)
     special_contribution = models.TextField(blank=True)
     is_staircase_contribution = models.BooleanField(default=False)
@@ -248,4 +250,7 @@ class Deposit(models.Model):
     auto_prolongation_description = models.TextField(blank=True)
     rates_table = JSONField(blank=True, null=True)
     rates_comments = ArrayField(models.TextField(), blank=True, null=True)
+    online_opening = models.TextField(blank=True)
+    partial_withdrawal = models.TextField(blank=True)
+    partial_withdrawal_description = models.TextField(blank=True)
     updated_at = models.DateTimeField(blank=True, null=True)
