@@ -38,7 +38,7 @@ def schedule_spider(pk: int, url: str, spider: str, spider_kwargs: dict):
 
 @app.task(ignore_result=True)
 def schedule_spiders():
-    tables = Table.objects.filter(spider__isnull=False)
+    tables = Table.objects.exclude(spider__exact='')
     for table in tables:
         schedule_spider.delay(
             table.pk,
