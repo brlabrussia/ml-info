@@ -186,6 +186,9 @@ class AutoCredit(models.Model):
     updated_at = models.DateTimeField(blank=True, null=True)
     has_repurchase = models.BooleanField(default=False)
 
+    def __str__(self):
+        return self.name
+
 
 class ConsumerCredit(models.Model):
     bank = models.ForeignKey(Bank, on_delete=models.CASCADE, related_name='consumer_credits')
@@ -230,15 +233,18 @@ class Deposit(models.Model):
     banki_url = models.URLField(blank=True)
     banki_bank_url = models.URLField(blank=True)
 
-    name = models.TextField(blank=True)
+    name_base = models.TextField(blank=True)
+    name_full = models.TextField(blank=True)
+
     deposit_amount = models.TextField(blank=True)
     deposit_currency = models.TextField(blank=True)
     deposit_term = models.TextField(blank=True)
 
     interest_payment = models.TextField(blank=True)
-    interest_payment_description =  models.TextField(blank=True)
+    interest_payment_description = models.TextField(blank=True)
     capitalization = models.TextField(blank=True)
     special_contribution = models.TextField(blank=True)
+    special_contribution_description = models.TextField(blank=True)
     is_staircase_contribution = models.BooleanField(default=False)
     special_conditions = ArrayField(models.TextField(), blank=True, null=True)
     replenishment_ability = models.IntegerField(blank=True, null=True)
@@ -254,3 +260,6 @@ class Deposit(models.Model):
     partial_withdrawal = models.TextField(blank=True)
     partial_withdrawal_description = models.TextField(blank=True)
     updated_at = models.DateTimeField(blank=True, null=True)
+
+    def __str__(self):
+        return self.name_full
