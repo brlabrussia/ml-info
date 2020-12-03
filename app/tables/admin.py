@@ -59,6 +59,7 @@ class TableAdmin(admin.ModelAdmin):
         for obj in queryset:
             schedule_spider.delay(
                 obj.pk,
+                obj.url,
                 obj.spider,
                 obj.spider_kwargs,
             )

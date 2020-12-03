@@ -1,14 +1,15 @@
+import json
 import os
 
 import requests
-from django.urls import reverse
 
 from core.celery import app
+from django.urls import reverse
 from tables.models import Table
 
 SCRAPY_PROJECT = 'tables'
 SCRAPY_HOST = os.getenv('SCRAPY_HOST_TABLES')
-SCRAPY_ENDPOINT = 'https://' + SCRAPY_HOST + '/schedule.json'
+SCRAPY_ENDPOINT = 'http://' + SCRAPY_HOST + '/schedule.json'
 SCRAPY_LOGIN = os.getenv('SCRAPY_LOGIN_TABLES')
 SCRAPY_PASS = os.getenv('SCRAPY_PASS_TABLES')
 
@@ -18,13 +19,14 @@ if SCRAPY_HOST == 'scrapy:6800':
 
 
 @app.task(ignore_result=True)
-def schedule_spider(pk: int, spider: str, spider_kwargs: dict):
+def schedule_spider(pk: int, url: str, spider: str, spider_kwargs: dict):
     path = reverse('table-detail', args=[pk])
-    webhook_endpoint = 'https://' + VIRTUAL_HOST + path
+    webhook_endpoint = 'http://' + VIRTUAL_HOST + path
     data = [
         ('project', SCRAPY_PROJECT),
         ('setting', f'WEBHOOK_ENDPOINT={webhook_endpoint}'),
         ('spider', spider),
+        ('start_urls', json.dumps([url])),
         *spider_kwargs.items(),
     ]
     requests.post(
@@ -40,6 +42,7 @@ def schedule_spiders():
     for table in tables:
         schedule_spider.delay(
             table.pk,
+            table.url,
             table.spider,
             table.spider_kwargs,
         )
