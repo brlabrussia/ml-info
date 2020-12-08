@@ -58,11 +58,6 @@ class TableAdmin(admin.ModelAdmin):
     def schedule(self, request, queryset) -> None:
         for obj in queryset:
             if obj.url and obj.spider:
-                schedule_spider.delay(
-                    obj.pk,
-                    obj.url,
-                    obj.spider,
-                    obj.spider_kwargs,
-                )
+                schedule_spider.delay(obj.pk)
     schedule.short_description = 'Schedule selected tables'
     schedule.allowed_permissions = ['delete']

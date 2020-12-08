@@ -19,15 +19,16 @@ if SCRAPY_HOST == 'scrapy:6800':
 
 
 @app.task(ignore_result=True)
-def schedule_spider(pk: int, url: str, spider: str, spider_kwargs: dict):
+def schedule_spider(pk: int):
+    table = Table.objects.get(pk=pk)
     path = reverse('table-detail', args=[pk])
     webhook_endpoint = 'http://' + VIRTUAL_HOST + path
     data = [
         ('project', SCRAPY_PROJECT),
         ('setting', f'WEBHOOK_ENDPOINT={webhook_endpoint}'),
-        ('spider', spider),
-        ('start_urls', json.dumps([url])),
-        *spider_kwargs.items(),
+        ('spider', table.spider),
+        ('start_urls', json.dumps([table.url])),
+        *table.spider_kwargs.items(),
     ]
     requests.post(
         SCRAPY_ENDPOINT,
@@ -40,9 +41,4 @@ def schedule_spider(pk: int, url: str, spider: str, spider_kwargs: dict):
 def schedule_spiders():
     tables = Table.objects.exclude(spider__exact='')
     for table in tables:
-        schedule_spider.delay(
-            table.pk,
-            table.url,
-            table.spider,
-            table.spider_kwargs,
-        )
+        schedule_spider.delay(table.pk)
