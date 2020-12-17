@@ -18,6 +18,7 @@ INSTALLED_APPS = [
     'mfo.apps.MfoConfig',
     'tables.apps.TablesConfig',
     'banks.apps.BanksConfig',
+    'investments.apps.InvestmentsConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
