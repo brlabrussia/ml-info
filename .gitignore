@@ -2,8 +2,12 @@ app/backups/*
 app/media/*
 app/static/*
 
-celerybeat.pid
-celerybeat-schedule
+app/.scrapy/
+app/.scrapyd/
+app/twistd.pid
+
+app/celerybeat.pid
+app/celerybeat-schedule
 
 .vscode/
 .mypy_cache/
