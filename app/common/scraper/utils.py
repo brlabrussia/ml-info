@@ -1,22 +1,23 @@
 import json
 import re
-from typing import Optional
+from typing import Any, Optional
 from urllib.parse import unquote, urljoin
 
 import dateparser
 
 
-def normalize_space(string: str) -> str:
+def normalize_space(value: Any) -> Any:
     """
     Replaces sequences of whitespace characters by a single space,
     strips leading and trailing white-space from a string,
     and returns the resulting string.
+    If input value isn't string, return it as is.
     """
-    return re.sub(r'\s+', ' ', string).strip() if isinstance(string, str) else string
+    return re.sub(r'\s+', ' ', value).strip() if isinstance(value, str) else value
 
 
-def drop_blank(string: str) -> Optional[str]:
-    return string if string else None
+def drop_falsy(value: Any) -> Any:
+    return value if value else None
 
 
 def format_date(date: str) -> Optional[str]:
