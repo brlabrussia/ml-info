@@ -15,3 +15,13 @@ class DjangoWriterPipeline:
         else:
             spider.logger.error(f'Invalid item {item}')
         return item
+
+    def banki_bonds(self, item, spider):
+        if item.is_valid():
+            item.django_model.objects.update_or_create(
+                isin=item['isin'],
+                defaults=item,
+            )
+        else:
+            spider.logger.error(f'Invalid item {item}')
+        return item
