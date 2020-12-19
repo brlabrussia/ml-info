@@ -8,7 +8,7 @@ class Share(models.Model):
         validators=[RegexValidator(r'^\w{12}$')],
         unique=True,
     )
-    name = models.TextField(blank=True)
+    name = models.CharField(max_length=200, blank=True)
     logo = models.URLField(blank=True)
     price = models.FloatField(blank=True, null=True)
     price_dynamic = models.JSONField(blank=True, null=True)
@@ -25,8 +25,8 @@ class Bond(models.Model):
         validators=[RegexValidator(r'^\w{12}$')],
         unique=True,
     )
-    name = models.TextField(blank=True)
-    issuer = models.TextField(blank=True)
+    name = models.CharField(max_length=200, blank=True)
+    issuer = models.CharField(max_length=200, blank=True)
     logo = models.URLField(blank=True)
     price = models.FloatField(blank=True, null=True)
     risk = models.PositiveSmallIntegerField(blank=True, null=True)
