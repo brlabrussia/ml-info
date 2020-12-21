@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from investments.models import Bond, Share
+from investments.models import IIA, Bond, Share
 
 
 class ShareSerializer(serializers.ModelSerializer):
@@ -12,4 +12,10 @@ class ShareSerializer(serializers.ModelSerializer):
 class BondSerializer(serializers.ModelSerializer):
     class Meta:
         model = Bond
+        fields = '__all__'
+
+
+class IIASerializer(serializers.ModelSerializer):
+    class Meta:
+        model = IIA
         fields = '__all__'

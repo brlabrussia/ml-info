@@ -1,4 +1,4 @@
-from investments.models import Bond, Share
+from investments.models import IIA, Bond, Share
 from scrapy_djangoitem import DjangoItem
 
 
@@ -8,3 +8,7 @@ class ShareItem(DjangoItem):
 
 class BondItem(DjangoItem):
     django_model = Bond
+
+
+class IIAItem(DjangoItem):
+    django_model = IIA
