@@ -51,6 +51,23 @@ class IIA(models.Model):
     yield_value = models.FloatField(blank=True, null=True)
     yield_block = models.JSONField(blank=True, null=True)
     fees = models.JSONField(blank=True, null=True)
+    docs = models.JSONField(blank=True, null=True)
+
+    def __str__(self):
+        return self.name
+
+
+class Mutual(models.Model):
+    name = models.CharField(max_length=200, blank=True)
+    company = models.CharField(max_length=200, blank=True)
+    logo = models.URLField(blank=True)
+    filter = models.CharField(max_length=200, blank=True)
+    investment_min = models.PositiveIntegerField(blank=True, null=True)
+    yield_type = models.CharField(max_length=200, blank=True)
+    yield_value = models.FloatField(blank=True, null=True)
+    yield_block = models.JSONField(blank=True, null=True)
+    fees = models.JSONField(blank=True, null=True)
+    docs = models.JSONField(blank=True, null=True)
 
     def __str__(self):
         return self.name

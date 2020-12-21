@@ -1,9 +1,10 @@
 from rest_framework import viewsets
 
-from investments.models import IIA, Bond, Share
+from investments.models import IIA, Bond, Mutual, Share
 from investments.serializers import (
     BondSerializer,
     IIASerializer,
+    MutualSerializer,
     ShareSerializer,
 )
 
@@ -21,3 +22,8 @@ class BondViewSet(viewsets.ReadOnlyModelViewSet):
 class IIAViewSet(viewsets.ReadOnlyModelViewSet):
     serializer_class = IIASerializer
     queryset = IIA.objects.all()
+
+
+class MutualViewSet(viewsets.ReadOnlyModelViewSet):
+    serializer_class = MutualSerializer
+    queryset = Mutual.objects.all()

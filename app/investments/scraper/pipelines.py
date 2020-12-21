@@ -35,3 +35,13 @@ class DjangoWriterPipeline:
         else:
             spider.logger.error(f'Invalid item {item}')
         return item
+
+    def banki_mutuals(self, item, spider):
+        if item.is_valid():
+            item.django_model.objects.update_or_create(
+                name=item['name'],
+                defaults=item,
+            )
+        else:
+            spider.logger.error(f'Invalid item {item}')
+        return item
