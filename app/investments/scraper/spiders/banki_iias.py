@@ -59,6 +59,7 @@ class Spider(scrapy.Spider):
         loader.add_css('yield_value', '[data-test=info] .flexbox__item .header-h2::text', re=r'[\d\,]+')
         loader.add_value('yield_block', self.extract_yield_block(response))
         loader.add_xpath('fees', '//*[starts-with(normalize-space(text()), "Комиссии")]/following-sibling::ul/li/text()')
+        loader.add_value('docs', self.extract_docs(response))
         yield loader.load_item()
 
     @staticmethod
@@ -68,7 +69,16 @@ class Spider(scrapy.Spider):
             key = header_sel.xpath('./text()').get()
             if 'доходность' not in key.lower():
                 continue
-            value = header_sel.xpath('./following-sibling::ul/li/text()').get()
-            value = normalize_space(value) or ''
+            values = header_sel.xpath('./following-sibling::ul[1]/li/text()').getall()
+            values = [(normalize_space(v) or '') for v in values]
+            ret[key] = values
+        return ret
+
+    @staticmethod
+    def extract_docs(response):
+        ret = {}
+        for a_sel in response.xpath('//a[.//*[@data-test="pdf-link"]]'):
+            value = a_sel.xpath('./@href').get()
+            key = a_sel.xpath('.//*[@data-test="pdf-link"]/text()').get()
             ret[key] = value
         return ret
