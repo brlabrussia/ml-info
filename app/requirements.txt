@@ -27,6 +27,7 @@ django-redis==4.12.1      # via -r requirements.in
 django==3.1.4             # via -r requirements.in, django-dbbackup, django-filter, django-redis, djangorestframework, drf-yasg
 djangorestframework==3.12.2  # via -r requirements.in, drf-yasg
 drf-yasg==1.20.0          # via -r requirements.in
+et-xmlfile==1.0.1         # via openpyxl
 flower==0.9.5             # via -r requirements.in
 gevent==20.9.0            # via -r requirements.in
 greenlet==0.4.17          # via gevent
@@ -39,11 +40,13 @@ inflection==0.5.1         # via drf-yasg
 ipython-genutils==0.2.0   # via traitlets
 ipython==7.19.0           # via -r requirements.in
 itypes==1.2.0             # via coreapi
+jdcal==1.4.1              # via openpyxl
 jedi==0.17.2              # via ipython
 jinja2==2.11.2            # via coreschema
 kombu==4.6.11             # via celery
 lxml==4.6.2               # via parsel, scrapy
 markupsafe==1.1.1         # via jinja2
+openpyxl==3.0.5           # via -r requirements.in
 packaging==20.4           # via drf-yasg
 parsel==1.6.0             # via scrapy
 parso==0.7.1              # via jedi

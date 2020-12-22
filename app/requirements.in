@@ -17,6 +17,7 @@ django-filter==2.4.*
 
 ipython==7.19.*
 requests==2.24.*
+openpyxl==3.0.*
 
 scrapy==1.8.*
 scrapyd==1.2.*
