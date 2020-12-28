@@ -63,4 +63,6 @@ class Spider(scrapy.Spider):
                 }
             elif row[4]:
                 license['subtypes'].append(row[4])
+        if license:
+            ret.append(license)
         return ret
