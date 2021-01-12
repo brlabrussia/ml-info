@@ -4,93 +4,228 @@
 #
 #    pip-compile
 #
-amqp==2.6.1               # via kombu
-asgiref==3.3.1            # via django
-attrs==20.3.0             # via automat, service-identity, twisted
-automat==20.2.0           # via twisted
-backcall==0.2.0           # via ipython
-billiard==3.6.3.0         # via celery
-celery==4.4.7             # via -r requirements.in, flower
-certifi==2020.11.8        # via requests
-cffi==1.14.4              # via cryptography
-chardet==3.0.4            # via requests
-constantly==15.1.0        # via twisted
-coreapi==2.3.3            # via drf-yasg
-coreschema==0.0.4         # via coreapi, drf-yasg
-cryptography==3.3.1       # via pyopenssl, scrapy, service-identity
-cssselect==1.1.0          # via parsel, scrapy
-dateparser==0.7.6         # via -r requirements.in
-decorator==4.4.2          # via ipython
-django-dbbackup==3.3.0    # via -r requirements.in
-django-filter==2.4.0      # via -r requirements.in
-django-redis==4.12.1      # via -r requirements.in
-django==3.1.4             # via -r requirements.in, django-dbbackup, django-filter, django-redis, djangorestframework, drf-yasg
-djangorestframework==3.12.2  # via -r requirements.in, drf-yasg
-drf-yasg==1.20.0          # via -r requirements.in
-et-xmlfile==1.0.1         # via openpyxl
-flower==0.9.5             # via -r requirements.in
-gevent==20.9.0            # via -r requirements.in
-greenlet==0.4.17          # via gevent
-gunicorn==20.0.4          # via -r requirements.in
-humanize==3.1.0           # via flower
-hyperlink==20.0.1         # via twisted
-idna==2.10                # via hyperlink, requests
-incremental==17.5.0       # via twisted
-inflection==0.5.1         # via drf-yasg
-ipython-genutils==0.2.0   # via traitlets
-ipython==7.19.0           # via -r requirements.in
-itypes==1.2.0             # via coreapi
-jdcal==1.4.1              # via openpyxl
-jedi==0.17.2              # via ipython
-jinja2==2.11.2            # via coreschema
-kombu==4.6.11             # via celery
-lxml==4.6.2               # via parsel, scrapy
-markupsafe==1.1.1         # via jinja2
-openpyxl==3.0.5           # via -r requirements.in
-packaging==20.4           # via drf-yasg
-parsel==1.6.0             # via scrapy
-parso==0.7.1              # via jedi
-pexpect==4.8.0            # via ipython
-pickleshare==0.7.5        # via ipython
-pillow==7.2.0             # via -r requirements.in
-prometheus-client==0.8.0  # via flower
-prompt-toolkit==3.0.8     # via ipython
-protego==0.1.16           # via scrapy
-psycopg2-binary==2.8.6    # via -r requirements.in
-ptyprocess==0.6.0         # via pexpect
-pyasn1-modules==0.2.8     # via service-identity
-pyasn1==0.4.8             # via pyasn1-modules, service-identity
-pycparser==2.20           # via cffi
-pydispatcher==2.0.5       # via scrapy
-pygments==2.7.2           # via ipython
-pyhamcrest==2.0.2         # via twisted
-pyopenssl==20.0.1         # via scrapy
-pyparsing==2.4.7          # via packaging
-python-dateutil==2.8.1    # via dateparser
-pytz==2020.4              # via celery, dateparser, django, django-dbbackup, flower, tzlocal
-queuelib==1.5.0           # via scrapy
-redis==3.5.3              # via -r requirements.in, django-redis
-regex==2020.11.13         # via dateparser
-requests==2.24.0          # via -r requirements.in, coreapi
-ruamel.yaml.clib==0.2.2   # via ruamel.yaml
-ruamel.yaml==0.16.12      # via drf-yasg
-scrapy-djangoitem==1.1.1  # via -r requirements.in
-scrapy==1.8.0             # via -r requirements.in, scrapyd
-scrapyd==1.2.1            # via -r requirements.in
-service-identity==18.1.0  # via scrapy
-six==1.15.0               # via automat, cryptography, django-dbbackup, packaging, parsel, protego, pyopenssl, python-dateutil, scrapy, scrapy-djangoitem, scrapyd, w3lib
-sqlparse==0.4.1           # via django
-tornado==6.1              # via flower
-traitlets==5.0.5          # via ipython
-twisted==20.3.0           # via scrapy, scrapyd
-tzlocal==2.1              # via dateparser
-uritemplate==3.0.1        # via coreapi, drf-yasg
-urllib3==1.25.11          # via requests
-vine==1.3.0               # via amqp, celery
-w3lib==1.22.0             # via parsel, scrapy
-wcwidth==0.2.5            # via prompt-toolkit
-zope.event==4.5.0         # via gevent
-zope.interface==5.2.0     # via gevent, scrapy, twisted
+amqp==2.6.1
+    # via kombu
+asgiref==3.3.1
+    # via django
+attrs==20.3.0
+    # via
+    #   automat
+    #   service-identity
+    #   twisted
+automat==20.2.0
+    # via twisted
+backcall==0.2.0
+    # via ipython
+billiard==3.6.3.0
+    # via celery
+celery==4.4.7
+    # via -r requirements.in
+certifi==2020.11.8
+    # via requests
+cffi==1.14.4
+    # via cryptography
+chardet==3.0.4
+    # via requests
+constantly==15.1.0
+    # via twisted
+coreapi==2.3.3
+    # via drf-yasg
+coreschema==0.0.4
+    # via
+    #   coreapi
+    #   drf-yasg
+cryptography==3.3.1
+    # via
+    #   pyopenssl
+    #   scrapy
+    #   service-identity
+cssselect==1.1.0
+    # via
+    #   parsel
+    #   scrapy
+dateparser==0.7.6
+    # via -r requirements.in
+decorator==4.4.2
+    # via ipython
+django-dbbackup==3.3.0
+    # via -r requirements.in
+django-filter==2.4.0
+    # via -r requirements.in
+django-redis==4.12.1
+    # via -r requirements.in
+django==3.1.4
+    # via
+    #   -r requirements.in
+    #   django-dbbackup
+    #   django-filter
+    #   django-redis
+    #   djangorestframework
+    #   drf-yasg
+djangorestframework==3.12.2
+    # via
+    #   -r requirements.in
+    #   drf-yasg
+drf-yasg==1.20.0
+    # via -r requirements.in
+et-xmlfile==1.0.1
+    # via openpyxl
+gevent==20.9.0
+    # via -r requirements.in
+greenlet==0.4.17
+    # via gevent
+gunicorn==20.0.4
+    # via -r requirements.in
+hyperlink==20.0.1
+    # via twisted
+idna==2.10
+    # via
+    #   hyperlink
+    #   requests
+incremental==17.5.0
+    # via twisted
+inflection==0.5.1
+    # via drf-yasg
+ipython-genutils==0.2.0
+    # via traitlets
+ipython==7.19.0
+    # via -r requirements.in
+itypes==1.2.0
+    # via coreapi
+jdcal==1.4.1
+    # via openpyxl
+jedi==0.17.2
+    # via ipython
+jinja2==2.11.2
+    # via coreschema
+kombu==4.6.11
+    # via celery
+lxml==4.6.2
+    # via
+    #   parsel
+    #   scrapy
+markupsafe==1.1.1
+    # via jinja2
+openpyxl==3.0.5
+    # via -r requirements.in
+packaging==20.4
+    # via drf-yasg
+parsel==1.6.0
+    # via scrapy
+parso==0.7.1
+    # via jedi
+pexpect==4.8.0
+    # via ipython
+pickleshare==0.7.5
+    # via ipython
+pillow==7.2.0
+    # via -r requirements.in
+prompt-toolkit==3.0.8
+    # via ipython
+protego==0.1.16
+    # via scrapy
+psycopg2-binary==2.8.6
+    # via -r requirements.in
+ptyprocess==0.6.0
+    # via pexpect
+pyasn1-modules==0.2.8
+    # via service-identity
+pyasn1==0.4.8
+    # via
+    #   pyasn1-modules
+    #   service-identity
+pycparser==2.20
+    # via cffi
+pydispatcher==2.0.5
+    # via scrapy
+pygments==2.7.2
+    # via ipython
+pyhamcrest==2.0.2
+    # via twisted
+pyopenssl==20.0.1
+    # via scrapy
+pyparsing==2.4.7
+    # via packaging
+python-dateutil==2.8.1
+    # via dateparser
+pytz==2020.4
+    # via
+    #   celery
+    #   dateparser
+    #   django
+    #   django-dbbackup
+    #   tzlocal
+queuelib==1.5.0
+    # via scrapy
+redis==3.5.3
+    # via
+    #   -r requirements.in
+    #   django-redis
+regex==2020.11.13
+    # via dateparser
+requests==2.24.0
+    # via
+    #   -r requirements.in
+    #   coreapi
+ruamel.yaml==0.16.12
+    # via drf-yasg
+scrapy-djangoitem==1.1.1
+    # via -r requirements.in
+scrapy==1.8.0
+    # via
+    #   -r requirements.in
+    #   scrapyd
+scrapyd==1.2.1
+    # via -r requirements.in
+service-identity==18.1.0
+    # via scrapy
+six==1.15.0
+    # via
+    #   automat
+    #   cryptography
+    #   django-dbbackup
+    #   packaging
+    #   parsel
+    #   protego
+    #   pyopenssl
+    #   python-dateutil
+    #   scrapy
+    #   scrapy-djangoitem
+    #   scrapyd
+    #   w3lib
+sqlparse==0.4.1
+    # via django
+traitlets==5.0.5
+    # via ipython
+twisted==20.3.0
+    # via
+    #   scrapy
+    #   scrapyd
+tzlocal==2.1
+    # via dateparser
+uritemplate==3.0.1
+    # via
+    #   coreapi
+    #   drf-yasg
+urllib3==1.25.11
+    # via requests
+vine==1.3.0
+    # via
+    #   amqp
+    #   celery
+w3lib==1.22.0
+    # via
+    #   parsel
+    #   scrapy
+wcwidth==0.2.5
+    # via prompt-toolkit
+zope.event==4.5.0
+    # via gevent
+zope.interface==5.2.0
+    # via
+    #   gevent
+    #   scrapy
+    #   twisted
 
 # The following packages are considered to be unsafe in a requirements file:
 # setuptools
