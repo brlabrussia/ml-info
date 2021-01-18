@@ -8,6 +8,7 @@ from ..models import (
     BankAgency,
     BankCard,
     BankSubsidiary,
+    Branch,
     ConsumerCredit,
     CreditCard,
     DebitCard,
@@ -24,6 +25,7 @@ def main():
     auto_credits()
     consumer_credits()
     deposits()
+    branches()
 
 
 def banks():
@@ -116,6 +118,17 @@ def deposits():
             qs = Bank.objects.filter(banki_url__isnull=False, banki_url=banki_bank_url)
             if qs.exists():
                 Deposit.objects.create(**item, bank=qs.first())
+
+
+def branches():
+    Branch.objects.all().delete()
+
+    with open(INPUT_PATH.format('banki_branches')) as f:
+        for item in json.load(f):
+            bank_url = item.get('bank_url')
+            qs = Bank.objects.filter(banki_url__isnull=False, banki_url=bank_url)
+            if qs.exists():
+                Branch.objects.create(**item, bank=qs.first())
 
 
 if __name__ == '__main__':

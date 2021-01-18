@@ -9,6 +9,7 @@ from .models import (
     BankAgency,
     BankCard,
     BankSubsidiary,
+    Branch,
     ConsumerCredit,
     CreditCard,
     DebitCard,
@@ -69,6 +70,7 @@ class CreditCardInline(admin.TabularInline):
     AutoCredit,
     ConsumerCredit,
     Deposit,
+    Branch,
 )
 class BankAdditionalAdmin(admin.ModelAdmin, ExportCsvMixin):
     search_fields = ['name']

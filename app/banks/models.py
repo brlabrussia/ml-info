@@ -277,3 +277,27 @@ class Deposit(models.Model):
 
     def __str__(self):
         return self.name_full
+
+
+class Branch(models.Model):
+    bank = models.ForeignKey(Bank, on_delete=models.CASCADE, related_name='branches')
+
+    banki_id = models.CharField(max_length=200, blank=True)
+    latitude = models.CharField(max_length=200, blank=True)
+    longitude = models.CharField(max_length=200, blank=True)
+    name = models.CharField(max_length=200, blank=True)
+    address = models.CharField(max_length=200, blank=True)
+    type = models.CharField(max_length=200, blank=True)
+
+    bank_url = models.URLField(blank=True)
+    bank_name = models.CharField(max_length=200, blank=True)
+
+    metro = models.CharField(max_length=200, blank=True)
+    phone = models.CharField(max_length=200, blank=True)
+    schedule = models.JSONField(blank=True, null=True)
+
+    region_name = models.CharField(max_length=200, blank=True)
+    region_name_full = models.CharField(max_length=200, blank=True)
+
+    def __str__(self):
+        return f'{self.name} ({self.bank_name})'
