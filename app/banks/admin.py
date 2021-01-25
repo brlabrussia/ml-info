@@ -14,6 +14,7 @@ from .models import (
     CreditCard,
     DebitCard,
     Deposit,
+    Rating,
 )
 
 
@@ -62,15 +63,16 @@ class CreditCardInline(admin.TabularInline):
 
 
 @admin.register(
+    AutoCredit,
     BankAgency,
     BankCard,
     BankSubsidiary,
-    DebitCard,
-    CreditCard,
-    AutoCredit,
-    ConsumerCredit,
-    Deposit,
     Branch,
+    ConsumerCredit,
+    CreditCard,
+    DebitCard,
+    Deposit,
+    Rating,
 )
 class BankAdditionalAdmin(admin.ModelAdmin, ExportCsvMixin):
     search_fields = ['name']

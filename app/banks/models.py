@@ -301,3 +301,21 @@ class Branch(models.Model):
 
     def __str__(self):
         return f'{self.name} ({self.bank_name})'
+
+
+class Rating(models.Model):
+    bank = models.ForeignKey(Bank, on_delete=models.CASCADE, related_name='ratings')
+
+    banki_url = models.URLField(blank=True)
+    banki_bank_url = models.URLField(blank=True)
+
+    net_assets = models.BigIntegerField(null=True)
+    net_profit = models.BigIntegerField(null=True)
+    equity = models.BigIntegerField(null=True)
+    credit_portfolio = models.BigIntegerField(null=True)
+    npls = models.BigIntegerField(null=True)
+    private_deposits = models.BigIntegerField(null=True)
+    investment_in_securities = models.BigIntegerField(null=True)
+
+    def __str__(self):
+        return self.banki_url

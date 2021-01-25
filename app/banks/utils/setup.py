@@ -13,6 +13,7 @@ from ..models import (
     CreditCard,
     DebitCard,
     Deposit,
+    Rating,
 )
 
 INPUT_PATH = 'banks/utils/setup_input/{}.json'
@@ -26,6 +27,7 @@ def main():
     consumer_credits()
     deposits()
     branches()
+    ratings()
 
 
 def banks():
@@ -129,6 +131,17 @@ def branches():
             qs = Bank.objects.filter(banki_url__isnull=False, banki_url=bank_url)
             if qs.exists():
                 Branch.objects.create(**item, bank=qs.first())
+
+
+def ratings():
+    Rating.objects.all().delete()
+
+    with open(INPUT_PATH.format('banki_ratings')) as f:
+        for item in json.load(f):
+            banki_bank_url = item.get('banki_bank_url')
+            qs = Bank.objects.filter(banki_url__isnull=False, banki_url=banki_bank_url)
+            if qs.exists():
+                Rating.objects.create(**item, bank=qs.first())
 
 
 if __name__ == '__main__':
