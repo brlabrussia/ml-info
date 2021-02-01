@@ -13,6 +13,8 @@ celery==4.4.*
 djangorestframework==3.12.*
 drf-yasg==1.20.*
 django-filter==2.4.*
+djangorestframework-filters==1.0.*
+drf-flex-fields==0.8.*
 
 ipython==7.19.*
 requests==2.24.*
@@ -22,3 +24,4 @@ scrapy==1.8.*
 scrapyd==1.2.*
 scrapy-djangoitem==1.1.*
 dateparser==0.7.*
+furl==2.1.*
