@@ -21,6 +21,7 @@ INSTALLED_APPS = [
     'investments.apps.InvestmentsConfig',
     'insurance.apps.InsuranceConfig',
     'other.apps.OtherConfig',
+    'finance.apps.FinanceConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

@@ -20,6 +20,8 @@ urlpatterns = [
     path('investments/', include('investments.urls')),
     path('insurance/', include('insurance.urls')),
     path('other/', include('other.urls')),
+    path('banks/', include('banks.urls')),
+    path('finance/', include('finance.urls')),
     path('admin/', admin.site.urls),
     re_path(r'^api-auth/', include('rest_framework.urls')),
     re_path(r'^swagger(?P<format>\.json|\.yaml)$', schema_view.without_ui(cache_timeout=0), name='schema-json'),
