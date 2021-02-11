@@ -2,6 +2,15 @@ from django.contrib.postgres.fields import ArrayField
 from django.db import models
 
 
+class BaseModel(models.Model):
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        abstract = True
+        ordering = ['-updated_at']
+
+
 class Bank(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -303,19 +312,117 @@ class Branch(models.Model):
         return f'{self.name} ({self.bank_name})'
 
 
-class Rating(models.Model):
-    bank = models.ForeignKey(Bank, on_delete=models.CASCADE, related_name='ratings')
+class Rating(BaseModel):
+    bank = models.ForeignKey('Bank', on_delete=models.CASCADE)
 
-    banki_url = models.URLField(blank=True)
-    banki_bank_url = models.URLField(blank=True)
+    url_self_banki = models.URLField(blank=True)
+    url_bank_banki = models.URLField(blank=True)
 
-    net_assets = models.BigIntegerField(null=True)
-    net_profit = models.BigIntegerField(null=True)
-    equity = models.BigIntegerField(null=True)
-    credit_portfolio = models.BigIntegerField(null=True)
-    npls = models.BigIntegerField(null=True)
-    private_deposits = models.BigIntegerField(null=True)
-    investment_in_securities = models.BigIntegerField(null=True)
+    net_assets = models.JSONField(
+        blank=True,
+        null=True,
+        help_text='Активы нетто',
+    )
+    net_profit = models.JSONField(
+        blank=True,
+        null=True,
+        help_text='Чистая прибыль',
+    )
+    equity = models.JSONField(
+        blank=True,
+        null=True,
+        help_text='Капитал (по форме 123)',
+    )
+    credit_portfolio = models.JSONField(
+        blank=True,
+        null=True,
+        help_text='Кредитный портфель',
+    )
+    npls = models.JSONField(
+        blank=True,
+        null=True,
+        help_text='Просроченная задолженность в кредитном портфеле',
+    )
+    private_deposits = models.JSONField(
+        blank=True,
+        null=True,
+        help_text='Вклады физических лиц',
+    )
+    investment_in_securities = models.JSONField(
+        blank=True,
+        null=True,
+        help_text='Вложения в ценные бумаги',
+    )
+    household_credits = models.JSONField(
+        blank=True,
+        null=True,
+        help_text='Кредиты физическим лицам',
+    )
+    loans_extended_to_businesses_and_institutions = models.JSONField(
+        blank=True,
+        null=True,
+        help_text='Кредиты предприятиям и организациям',
+    )
+    funds_held_by_businesses_and_institutions = models.JSONField(
+        blank=True,
+        null=True,
+        help_text='Средства предприятий и организаций',
+    )
+    interbank_loans_raised = models.JSONField(
+        blank=True,
+        null=True,
+        help_text='Привлеченные МБК',
+    )
+    promissory_notes_and_bonds_issued = models.JSONField(
+        blank=True,
+        null=True,
+        help_text='Выпущенные облигации и векселя',
+    )
+    loro_accounts = models.JSONField(
+        blank=True,
+        null=True,
+        help_text='ЛОРО-счета',
+    )
+    return_on_assets = models.JSONField(
+        blank=True,
+        null=True,
+        help_text='Рентабельность активов-нетто',
+    )
+    return_on_equity = models.JSONField(
+        blank=True,
+        null=True,
+        help_text='Рентабельность капитала',
+    )
+    overdue_debts_to_loans_portfolio = models.JSONField(
+        blank=True,
+        null=True,
+        help_text='Уровень просроченной задолженности по кредитному портфелю',
+    )
+    level_of_provisioning_loan_portfolio = models.JSONField(
+        blank=True,
+        null=True,
+        help_text='Уровень резервирования по кредитному портфелю',
+    )
+    level_of_ensuring_loan_portfolio_by_pledge_of_property = models.JSONField(
+        blank=True,
+        null=True,
+        help_text='Уровень обеспечения кредитного портфеля залогом имущества',
+    )
+    n1 = models.JSONField(
+        blank=True,
+        null=True,
+        help_text='Н1',
+    )
+    n2 = models.JSONField(
+        blank=True,
+        null=True,
+        help_text='Н2',
+    )
+    n3 = models.JSONField(
+        blank=True,
+        null=True,
+        help_text='Н3',
+    )
 
     def __str__(self):
-        return self.banki_url
+        return str(self.bank)
