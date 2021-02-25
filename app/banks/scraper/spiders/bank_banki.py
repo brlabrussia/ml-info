@@ -1,23 +1,14 @@
 import scrapy
+from banks.scraper.items import BankItem
 from common.scraper.items import BaseLoader
-from common.scraper.utils import format_url
-from finance.scraper.items import PersonItem
-from scrapy.loader.processors import MapCompose
 
 
 class Loader(BaseLoader):
-    default_item_class = PersonItem
-    _ = \
-        url_self_finparty_in = \
-        url_bank_banki = \
-        MapCompose(
-            BaseLoader.default_input_processor,
-            format_url,
-        )
+    default_item_class = BankItem
 
 
 class Spider(scrapy.Spider):
-    name = 'banki_person'
+    name = 'bank_banki'
     allowed_domains = ['banki.ru']
     start_urls = ['https://www.banki.ru/banks/']
 
@@ -34,9 +25,9 @@ class Spider(scrapy.Spider):
             yield response.follow(next_page, self.parse_links)
 
     def parse_items(self, response):
-        urls = response.css('html').re(r'support__name[^>]+href="([^"]+)"')
-        for url in urls:
-            loader = Loader(response=response)
-            loader.add_value('url_self_finparty', url)
-            loader.add_value('url_bank_banki', response.url)
-            yield loader.load_item()
+        loader = Loader(response=response)
+        loader.add_value('url_self_banki', response.url)
+        loader.add_css('name', '[data-test=bankpage-header-bankname]::text')
+        loader.add_css('reg_number', '[data-test=bankpage-header-banklicense]::text', re=r'(\d+(-\w+)?)')
+        loader.add_css('ogrn', '[data-test=bankpage-header-ogrn]::text', re=r'\d{5,}')
+        yield loader.load_item()

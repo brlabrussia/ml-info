@@ -1,5 +1,3 @@
-import os
-
 from common.scraper.settings import *
 
 BOT_NAME = 'banks'

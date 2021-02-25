@@ -6,9 +6,6 @@ from django.http import HttpResponse
 from .models import (
     AutoCredit,
     Bank,
-    BankAgency,
-    BankCard,
-    BankSubsidiary,
     Branch,
     ConsumerCredit,
     CreditCard,
@@ -37,36 +34,8 @@ class ExportCsvMixin:
         return response
 
 
-class BankCardInline(admin.TabularInline):
-    model = BankCard
-    extra = 0
-
-
-class BankSubsidiaryInline(admin.TabularInline):
-    model = BankSubsidiary
-    extra = 0
-
-
-class BankAgencyInline(admin.TabularInline):
-    model = BankAgency
-    extra = 0
-
-
-class DebitCardInline(admin.TabularInline):
-    model = DebitCard
-    extra = 0
-
-
-class CreditCardInline(admin.TabularInline):
-    model = CreditCard
-    extra = 0
-
-
 @admin.register(
     AutoCredit,
-    BankAgency,
-    BankCard,
-    BankSubsidiary,
     Branch,
     ConsumerCredit,
     CreditCard,
@@ -82,5 +51,4 @@ class BankAdditionalAdmin(admin.ModelAdmin, ExportCsvMixin):
 @admin.register(Bank)
 class BankAdmin(admin.ModelAdmin, ExportCsvMixin):
     search_fields = ['full_name', 'name', 'english_name']
-    inlines = [BankCardInline, BankSubsidiaryInline, BankAgencyInline, DebitCardInline, CreditCardInline]
     actions = ['export_as_csv']

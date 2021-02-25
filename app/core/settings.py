@@ -15,23 +15,25 @@ ALLOWED_HOSTS = [
 ]
 
 INSTALLED_APPS = [
-    'mfo.apps.MfoConfig',
-    'tables.apps.TablesConfig',
-    'banks.apps.BanksConfig',
-    'investments.apps.InvestmentsConfig',
-    'insurance.apps.InsuranceConfig',
-    'other.apps.OtherConfig',
-    'finance.apps.FinanceConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'rest_framework',
-    'django_filters',
-    'drf_yasg',
+
     'dbbackup',
+    'django_filters',
+    'drf_spectacular',
+    'rest_framework',
+
+    'banks.apps.BanksConfig',
+    'finance.apps.FinanceConfig',
+    'insurance.apps.InsuranceConfig',
+    'investments.apps.InvestmentsConfig',
+    'mfo.apps.MfoConfig',
+    'other.apps.OtherConfig',
+    'tables.apps.TablesConfig',
 ]
 
 MIDDLEWARE = [
@@ -102,6 +104,19 @@ REST_FRAMEWORK = {
         'rest_framework.filters.OrderingFilter',
     ],
     'TEST_REQUEST_DEFAULT_FORMAT': 'json',
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
+}
+
+# https://drf-spectacular.readthedocs.io/en/latest/settings.html
+SPECTACULAR_SETTINGS = {
+    'SCHEMA_PATH_PREFIX': '/api/v[0-9]/',
+    'SERVE_PUBLIC': False,
+    'SERVE_INCLUDE_SCHEMA': False,
+    # 'SERVE_PERMISSIONS': ['rest_framework.permissions.IsAuthenticated'],
+    'TITLE': 'ml-info',
+    'DESCRIPTION': '',
+    'VERSION': '',
+    'PREPROCESSING_HOOKS': ['core.hooks.preprocess_exclude_non_api'],
 }
 
 LANGUAGE_CODE = 'en-us'

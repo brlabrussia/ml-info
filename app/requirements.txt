@@ -11,6 +11,7 @@ asgiref==3.3.1
 attrs==20.3.0
     # via
     #   automat
+    #   jsonschema
     #   service-identity
     #   twisted
 automat==20.2.0
@@ -19,6 +20,8 @@ backcall==0.2.0
     # via ipython
 billiard==3.6.3.0
     # via celery
+bleach==3.2.3
+    # via -r requirements.in
 celery==4.4.7
     # via -r requirements.in
 certifi==2020.11.8
@@ -29,12 +32,6 @@ chardet==3.0.4
     # via requests
 constantly==15.1.0
     # via twisted
-coreapi==2.3.3
-    # via drf-yasg
-coreschema==0.0.4
-    # via
-    #   coreapi
-    #   drf-yasg
 cryptography==3.3.1
     # via
     #   pyopenssl
@@ -63,20 +60,22 @@ django==3.1.4
     #   django-filter
     #   django-redis
     #   djangorestframework
-    #   drf-yasg
+    #   drf-spectacular
 djangorestframework-filters==1.0.0.dev2
     # via -r requirements.in
 djangorestframework==3.12.2
     # via
     #   -r requirements.in
     #   djangorestframework-filters
-    #   drf-yasg
+    #   drf-spectacular
 drf-flex-fields==0.8.8
     # via -r requirements.in
-drf-yasg==1.20.0
+drf-spectacular==0.13.2
     # via -r requirements.in
 et-xmlfile==1.0.1
     # via openpyxl
+funcy==1.15
+    # via -r requirements.in
 furl==2.1.0
     # via -r requirements.in
 gevent==20.9.0
@@ -94,33 +93,29 @@ idna==2.10
 incremental==17.5.0
     # via twisted
 inflection==0.5.1
-    # via drf-yasg
+    # via drf-spectacular
 ipython-genutils==0.2.0
     # via traitlets
 ipython==7.19.0
     # via -r requirements.in
-itypes==1.2.0
-    # via coreapi
 jdcal==1.4.1
     # via openpyxl
 jedi==0.17.2
     # via ipython
-jinja2==2.11.2
-    # via coreschema
+jsonschema==3.2.0
+    # via drf-spectacular
 kombu==4.6.11
     # via celery
 lxml==4.6.2
     # via
     #   parsel
     #   scrapy
-markupsafe==1.1.1
-    # via jinja2
 openpyxl==3.0.5
     # via -r requirements.in
 orderedmultidict==1.0.1
     # via furl
 packaging==20.4
-    # via drf-yasg
+    # via bleach
 parsel==1.6.0
     # via scrapy
 parso==0.7.1
@@ -157,6 +152,8 @@ pyopenssl==20.0.1
     # via scrapy
 pyparsing==2.4.7
     # via packaging
+pyrsistent==0.17.3
+    # via jsonschema
 python-dateutil==2.8.1
     # via dateparser
 pytz==2020.4
@@ -166,6 +163,8 @@ pytz==2020.4
     #   django
     #   django-dbbackup
     #   tzlocal
+pyyaml==5.4.1
+    # via drf-spectacular
 queuelib==1.5.0
     # via scrapy
 redis==3.5.3
@@ -175,11 +174,7 @@ redis==3.5.3
 regex==2020.11.13
     # via dateparser
 requests==2.24.0
-    # via
-    #   -r requirements.in
-    #   coreapi
-ruamel.yaml==0.16.12
-    # via drf-yasg
+    # via -r requirements.in
 scrapy-djangoitem==1.1.1
     # via -r requirements.in
 scrapy==1.8.0
@@ -193,9 +188,11 @@ service-identity==18.1.0
 six==1.15.0
     # via
     #   automat
+    #   bleach
     #   cryptography
     #   django-dbbackup
     #   furl
+    #   jsonschema
     #   orderedmultidict
     #   packaging
     #   parsel
@@ -217,9 +214,7 @@ twisted==20.3.0
 tzlocal==2.1
     # via dateparser
 uritemplate==3.0.1
-    # via
-    #   coreapi
-    #   drf-yasg
+    # via drf-spectacular
 urllib3==1.25.11
     # via requests
 vine==1.3.0
@@ -232,6 +227,8 @@ w3lib==1.22.0
     #   scrapy
 wcwidth==0.2.5
     # via prompt-toolkit
+webencodings==0.5.1
+    # via bleach
 zope.event==4.5.0
     # via gevent
 zope.interface==5.2.0
