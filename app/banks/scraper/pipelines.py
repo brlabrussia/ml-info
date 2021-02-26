@@ -15,13 +15,10 @@ class DjangoWriterPipeline:
             spider.logger.error(f'Invalid item\n{item.errors}')
             return item
 
-        try:
-            obj = item.django_model.objects.get(url_self_cbr=item['url_self_cbr'])
-            for key, value in item.items():
-                setattr(obj, key, value)
-            obj.save()
-        except item.django_model.DoesNotExist:
-            spider.logger.error(f'Bank not found\n{item}')
+        item.django_model.objects.update_or_create(
+            url_self_cbr=item['url_self_cbr'],
+            defaults=item,
+        )
 
         return item
 

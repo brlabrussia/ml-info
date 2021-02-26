@@ -110,9 +110,9 @@ REST_FRAMEWORK = {
 # https://drf-spectacular.readthedocs.io/en/latest/settings.html
 SPECTACULAR_SETTINGS = {
     'SCHEMA_PATH_PREFIX': '/api/v[0-9]/',
-    'SERVE_PUBLIC': False,
+    'SERVE_PUBLIC': True,
     'SERVE_INCLUDE_SCHEMA': False,
-    # 'SERVE_PERMISSIONS': ['rest_framework.permissions.IsAuthenticated'],
+    'SERVE_PERMISSIONS': ['rest_framework.permissions.IsAuthenticatedOrReadOnly'],
     'TITLE': 'ml-info',
     'DESCRIPTION': '',
     'VERSION': '',
