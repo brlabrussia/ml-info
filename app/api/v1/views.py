@@ -1,4 +1,7 @@
 import banks
+import finance
+import insurance
+import investments
 from api.v1 import serializers
 from rest_flex_fields.views import FlexFieldsMixin
 from rest_framework import viewsets
@@ -49,4 +52,40 @@ class BranchViewSet(FlexFieldsMixin, viewsets.ReadOnlyModelViewSet):
 class RatingViewSet(FlexFieldsMixin, viewsets.ReadOnlyModelViewSet):
     serializer_class = serializers.RatingSerializer
     queryset = banks.models.Rating.objects.all()
+    ordering = ['-updated_at']
+
+
+class ShareViewSet(FlexFieldsMixin, viewsets.ReadOnlyModelViewSet):
+    serializer_class = serializers.ShareSerializer
+    queryset = investments.models.Share.objects.all()
+    ordering = ['-updated_at']
+
+
+class BondViewSet(FlexFieldsMixin, viewsets.ReadOnlyModelViewSet):
+    serializer_class = serializers.BondSerializer
+    queryset = investments.models.Bond.objects.all()
+    ordering = ['-updated_at']
+
+
+class IiaViewSet(FlexFieldsMixin, viewsets.ReadOnlyModelViewSet):
+    serializer_class = serializers.IiaSerializer
+    queryset = investments.models.IIA.objects.all()
+    ordering = ['-updated_at']
+
+
+class MutualViewSet(FlexFieldsMixin, viewsets.ReadOnlyModelViewSet):
+    serializer_class = serializers.MutualSerializer
+    queryset = investments.models.Mutual.objects.all()
+    ordering = ['-updated_at']
+
+
+class CompanyViewSet(FlexFieldsMixin, viewsets.ReadOnlyModelViewSet):
+    serializer_class = serializers.CompanySerializer
+    queryset = insurance.models.Company.objects.all()
+    ordering = ['-updated_at']
+
+
+class PersonViewSet(FlexFieldsMixin, viewsets.ReadOnlyModelViewSet):
+    serializer_class = serializers.PersonSerializer
+    queryset = finance.models.Person.objects.all()
     ordering = ['-updated_at']

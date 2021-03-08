@@ -6,42 +6,42 @@ class DjangoWriterPipeline:
             return item
         return custom_method(item, spider)
 
-    def banki_shares(self, item, spider):
+    def share_banki(self, item, spider):
         if item.is_valid():
             item.django_model.objects.update_or_create(
                 isin=item['isin'],
                 defaults=item,
             )
         else:
-            spider.logger.error(f'Invalid item {item}')
+            spider.logger.error(f'Invalid item\n{item.errors}')
         return item
 
-    def banki_bonds(self, item, spider):
+    def bond_banki(self, item, spider):
         if item.is_valid():
             item.django_model.objects.update_or_create(
                 isin=item['isin'],
                 defaults=item,
             )
         else:
-            spider.logger.error(f'Invalid item {item}')
+            spider.logger.error(f'Invalid item\n{item.errors}')
         return item
 
-    def banki_iias(self, item, spider):
+    def iia_banki(self, item, spider):
         if item.is_valid():
             item.django_model.objects.update_or_create(
                 name=item['name'],
                 defaults=item,
             )
         else:
-            spider.logger.error(f'Invalid item {item}')
+            spider.logger.error(f'Invalid item\n{item.errors}')
         return item
 
-    def banki_mutuals(self, item, spider):
+    def mutual_banki(self, item, spider):
         if item.is_valid():
             item.django_model.objects.update_or_create(
                 name=item['name'],
                 defaults=item,
             )
         else:
-            spider.logger.error(f'Invalid item {item}')
+            spider.logger.error(f'Invalid item\n{item.errors}')
         return item

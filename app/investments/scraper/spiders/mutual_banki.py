@@ -22,7 +22,7 @@ class Loader(BaseLoader):
 
 
 class Spider(scrapy.Spider):
-    name = 'banki_mutuals'
+    name = 'mutual_banki'
     allowed_domains = ['banki.ru']
     start_urls = ['https://www.banki.ru/investment/mutual/']
 

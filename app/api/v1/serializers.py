@@ -1,4 +1,7 @@
 import banks
+import finance
+import insurance
+import investments
 from rest_flex_fields.serializers import FlexFieldsSerializerMixin
 from rest_framework import serializers
 
@@ -48,4 +51,40 @@ class BranchSerializer(FlexFieldsSerializerMixin, serializers.ModelSerializer):
 class RatingSerializer(FlexFieldsSerializerMixin, serializers.ModelSerializer):
     class Meta:
         model = banks.models.Rating
+        fields = '__all__'
+
+
+class ShareSerializer(FlexFieldsSerializerMixin, serializers.ModelSerializer):
+    class Meta:
+        model = investments.models.Share
+        fields = '__all__'
+
+
+class BondSerializer(FlexFieldsSerializerMixin, serializers.ModelSerializer):
+    class Meta:
+        model = investments.models.Bond
+        fields = '__all__'
+
+
+class IiaSerializer(FlexFieldsSerializerMixin, serializers.ModelSerializer):
+    class Meta:
+        model = investments.models.IIA
+        fields = '__all__'
+
+
+class MutualSerializer(FlexFieldsSerializerMixin, serializers.ModelSerializer):
+    class Meta:
+        model = investments.models.Mutual
+        fields = '__all__'
+
+
+class CompanySerializer(FlexFieldsSerializerMixin, serializers.ModelSerializer):
+    class Meta:
+        model = insurance.models.Company
+        fields = '__all__'
+
+
+class PersonSerializer(FlexFieldsSerializerMixin, serializers.ModelSerializer):
+    class Meta:
+        model = finance.models.Person
         fields = '__all__'

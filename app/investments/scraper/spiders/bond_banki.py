@@ -11,7 +11,7 @@ class Loader(BaseLoader):
 
 
 class Spider(scrapy.Spider):
-    name = 'banki_bonds'
+    name = 'bond_banki'
     allowed_domains = ['banki.ru']
     start_urls = ['https://www.banki.ru/investment/search/']
 
