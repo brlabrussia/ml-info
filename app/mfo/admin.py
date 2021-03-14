@@ -8,11 +8,6 @@ class DocumentInline(admin.TabularInline):
     extra = 0
 
 
-class LoanInline(admin.TabularInline):
-    model = Loan
-    extra = 0
-
-
 @admin.register(Lender)
 class LenderAdmin(admin.ModelAdmin):
     readonly_fields = [
@@ -23,7 +18,7 @@ class LenderAdmin(admin.ModelAdmin):
         'overpayment_day',
         'overpayment_full',
     ]
-    inlines = [DocumentInline, LoanInline]
+    inlines = [DocumentInline]
 
 
 @admin.register(Loan)
