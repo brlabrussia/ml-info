@@ -18,4 +18,6 @@ router.register(r'investments/iia', views.IiaViewSet)
 router.register(r'investments/mutual', views.MutualViewSet)
 router.register(r'insurance/company', views.CompanyViewSet)
 router.register(r'finance/person', views.PersonViewSet)
+router.register(r'mfo/lender', views.LenderViewSet)
+router.register(r'mfo/loan', views.LoanViewSet)
 urlpatterns += router.urls

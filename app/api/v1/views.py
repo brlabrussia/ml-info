@@ -2,6 +2,7 @@ import banks
 import finance
 import insurance
 import investments
+import mfo
 from api.v1 import serializers
 from rest_flex_fields.views import FlexFieldsMixin
 from rest_framework import viewsets
@@ -88,4 +89,16 @@ class CompanyViewSet(FlexFieldsMixin, viewsets.ReadOnlyModelViewSet):
 class PersonViewSet(FlexFieldsMixin, viewsets.ReadOnlyModelViewSet):
     serializer_class = serializers.PersonSerializer
     queryset = finance.models.Person.objects.all()
+    ordering = ['-updated_at']
+
+
+class LoanViewSet(FlexFieldsMixin, viewsets.ReadOnlyModelViewSet):
+    serializer_class = serializers.LoanSerializer
+    queryset = mfo.models.Loan.objects.all()
+    ordering = ['-updated_at']
+
+
+class LenderViewSet(FlexFieldsMixin, viewsets.ReadOnlyModelViewSet):
+    serializer_class = serializers.LenderSerializer
+    queryset = mfo.models.Lender.objects.all()
     ordering = ['-updated_at']

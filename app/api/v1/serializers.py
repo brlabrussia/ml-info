@@ -2,6 +2,7 @@ import banks
 import finance
 import insurance
 import investments
+import mfo
 from rest_flex_fields.serializers import FlexFieldsSerializerMixin
 from rest_framework import serializers
 
@@ -88,3 +89,30 @@ class PersonSerializer(FlexFieldsSerializerMixin, serializers.ModelSerializer):
     class Meta:
         model = finance.models.Person
         fields = '__all__'
+
+
+class DocumentSerializer(FlexFieldsSerializerMixin, serializers.ModelSerializer):
+    class Meta:
+        model = mfo.models.Document
+        fields = [
+            'name',
+            'file',
+        ]
+
+
+class LoanSerializer(FlexFieldsSerializerMixin, serializers.ModelSerializer):
+    class Meta:
+        model = mfo.models.Loan
+        fields = '__all__'
+
+
+class LenderSerializer(FlexFieldsSerializerMixin, serializers.ModelSerializer):
+    documents = DocumentSerializer(many=True)
+    # loans = LoanSerializer(many=True)
+
+    class Meta:
+        model = mfo.models.Lender
+        exclude = [
+            'scraped_from',
+            'logo_origin_url',
+        ]
