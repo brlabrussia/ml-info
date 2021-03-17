@@ -116,7 +116,7 @@ SPECTACULAR_SETTINGS = {
     'TITLE': 'ml-info',
     'DESCRIPTION': '',
     'VERSION': '',
-    'PREPROCESSING_HOOKS': ['core.hooks.preprocess_exclude_non_api'],
+    'PREPROCESSING_HOOKS': ['common.hooks.preprocess_exclude_non_api'],
 }
 
 LANGUAGE_CODE = 'en-us'
@@ -145,7 +145,7 @@ CELERY_IMPORTS = ['core.tasks']
 if not DEBUG:
     CELERY_BEAT_SCHEDULE = {
         'backup': {
-            'task': 'core.tasks.backup',
+            'task': 'common.tasks.backup',
             'schedule': crontab(hour=6, minute=0),
         },
         'tables_schedule': {
