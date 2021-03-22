@@ -141,7 +141,7 @@ DBBACKUP_STORAGE_OPTIONS = {'location': os.path.join(BASE_DIR, 'backups')}
 CELERY_TIMEZONE = TIME_ZONE
 CELERY_BROKER_URL = 'redis://redis:6379'
 CELERY_RESULT_BACKEND = 'redis://redis:6379'
-CELERY_IMPORTS = ['core.tasks']
+CELERY_IMPORTS = ['common.tasks']
 if not DEBUG:
     CELERY_BEAT_SCHEDULE = {
         'backup': {
