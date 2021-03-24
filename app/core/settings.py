@@ -153,4 +153,44 @@ if not DEBUG:
             'task': 'tables.tasks.schedule_spiders',
             'schedule': crontab(hour=4, minute=0),
         },
+        'banks_spiders': {
+            'task': 'common.tasks.schedule_project',
+            'schedule': crontab(hour=2, minute=0),
+            'kwargs': {
+                'project': 'banks',
+                'exclude_spiders': ['branch_banki'],
+                'countdown_step': 60 * 15,
+            },
+        },
+        'banks_spider_branch_banki': {
+            'task': 'common.tasks.schedule_spider',
+            'schedule': crontab(day_of_week=1, hour=8, minute=0),
+            'kwargs': {
+                'project': 'banks',
+                'spider': 'branch_banki',
+            },
+        },
+        'casino_spiders': {
+            'task': 'common.tasks.schedule_project',
+            'schedule': crontab(hour=2, minute=0),
+            'kwargs': {
+                'project': 'casino',
+                'countdown_step': 60 * 25,
+            },
+        },
+        'finance_spiders': {
+            'task': 'common.tasks.schedule_project',
+            'schedule': crontab(hour=2, minute=0),
+            'kwargs': {'project': 'finance'},
+        },
+        'insurance_spiders': {
+            'task': 'common.tasks.schedule_project',
+            'schedule': crontab(hour=3, minute=30),
+            'kwargs': {'project': 'insurance'},
+        },
+        'investments_spiders': {
+            'task': 'common.tasks.schedule_project',
+            'schedule': crontab(hour=5, minute=30),
+            'kwargs': {'project': 'investments'},
+        },
     }
