@@ -28,6 +28,7 @@ INSTALLED_APPS = [
     'rest_framework',
 
     'banks.apps.BanksConfig',
+    'casino.apps.CasinoConfig',
     'finance.apps.FinanceConfig',
     'insurance.apps.InsuranceConfig',
     'investments.apps.InvestmentsConfig',

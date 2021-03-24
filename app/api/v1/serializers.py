@@ -1,4 +1,5 @@
 import banks
+import casino
 import finance
 import insurance
 import investments
@@ -116,3 +117,15 @@ class LenderSerializer(FlexFieldsSerializerMixin, serializers.ModelSerializer):
             'scraped_from',
             'logo_origin_url',
         ]
+
+
+class CasinoSerializer(FlexFieldsSerializerMixin, serializers.ModelSerializer):
+    class Meta:
+        model = casino.models.Casino
+        fields = '__all__'
+
+
+class SlotSerializer(FlexFieldsSerializerMixin, serializers.ModelSerializer):
+    class Meta:
+        model = casino.models.Slot
+        fields = '__all__'

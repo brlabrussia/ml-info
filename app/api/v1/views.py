@@ -1,4 +1,5 @@
 import banks
+import casino
 import finance
 import insurance
 import investments
@@ -101,4 +102,16 @@ class LoanViewSet(FlexFieldsMixin, viewsets.ReadOnlyModelViewSet):
 class LenderViewSet(FlexFieldsMixin, viewsets.ReadOnlyModelViewSet):
     serializer_class = serializers.LenderSerializer
     queryset = mfo.models.Lender.objects.all()
+    ordering = ['-updated_at']
+
+
+class CasinoViewSet(FlexFieldsMixin, viewsets.ReadOnlyModelViewSet):
+    serializer_class = serializers.CasinoSerializer
+    queryset = casino.models.Casino.objects.all()
+    ordering = ['-updated_at']
+
+
+class SlotViewSet(FlexFieldsMixin, viewsets.ReadOnlyModelViewSet):
+    serializer_class = serializers.SlotSerializer
+    queryset = casino.models.Slot.objects.all()
     ordering = ['-updated_at']
