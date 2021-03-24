@@ -27,8 +27,8 @@ class Slot(BaseModel):
     iframe_original = models.URLField(blank=True)
     iframe_fallback = models.URLField(blank=True)
     images_logo = models.URLField(blank=True)
-    images_content = models.TextField(blank=True)
-    videos = models.TextField(blank=True)
+    images_content = models.JSONField(blank=True, null=True)
+    videos = models.JSONField(blank=True, null=True)
 
     def __str__(self):
         return self.name
