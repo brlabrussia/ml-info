@@ -34,6 +34,7 @@ INSTALLED_APPS = [
     'investments.apps.InvestmentsConfig',
     'mfo.apps.MfoConfig',
     'other.apps.OtherConfig',
+    'rankings.apps.RankingsConfig',
     'tables.apps.TablesConfig',
 ]
 
@@ -192,5 +193,9 @@ if not DEBUG:
             'task': 'common.tasks.schedule_project',
             'schedule': crontab(hour=5, minute=30),
             'kwargs': {'project': 'investments'},
+        },
+        'rankings_spiders': {
+            'task': 'rankings.tasks.schedule_project',
+            'schedule': crontab(hour=8, minute=30),
         },
     }

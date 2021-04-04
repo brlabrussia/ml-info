@@ -12,11 +12,15 @@ def backup():
 
 
 @shared_task
-def schedule_spider(project, spider):
+def schedule_spider(project, spider, spider_kwargs=None):
+    if spider_kwargs is None:
+        spider_kwargs = {}
+
     url = SCRAPY_URL + '/schedule.json'
     data = {
         'project': project,
         'spider': spider,
+        **spider_kwargs,
     }
     requests.post(url, data=data)
 

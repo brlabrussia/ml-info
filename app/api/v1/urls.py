@@ -22,4 +22,5 @@ router.register(r'mfo/lender', views.LenderViewSet)
 router.register(r'mfo/loan', views.LoanViewSet)
 router.register(r'casino/casino', views.CasinoViewSet)
 router.register(r'casino/slot', views.SlotViewSet)
+router.register(r'rankings/ranking', views.RankingViewSet)
 urlpatterns += router.urls

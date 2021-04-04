@@ -4,6 +4,7 @@ import finance
 import insurance
 import investments
 import mfo
+import rankings
 from api.v1 import serializers
 from rest_flex_fields.views import FlexFieldsMixin
 from rest_framework import viewsets
@@ -114,4 +115,10 @@ class CasinoViewSet(FlexFieldsMixin, viewsets.ReadOnlyModelViewSet):
 class SlotViewSet(FlexFieldsMixin, viewsets.ReadOnlyModelViewSet):
     serializer_class = serializers.SlotSerializer
     queryset = casino.models.Slot.objects.all()
+    ordering = ['-updated_at']
+
+
+class RankingViewSet(FlexFieldsMixin, viewsets.ReadOnlyModelViewSet):
+    serializer_class = serializers.RankingSerializer
+    queryset = rankings.models.Ranking.objects.all()
     ordering = ['-updated_at']

@@ -4,6 +4,7 @@ import finance
 import insurance
 import investments
 import mfo
+import rankings
 from rest_flex_fields.serializers import FlexFieldsSerializerMixin
 from rest_framework import serializers
 
@@ -128,4 +129,10 @@ class CasinoSerializer(FlexFieldsSerializerMixin, serializers.ModelSerializer):
 class SlotSerializer(FlexFieldsSerializerMixin, serializers.ModelSerializer):
     class Meta:
         model = casino.models.Slot
+        fields = '__all__'
+
+
+class RankingSerializer(FlexFieldsSerializerMixin, serializers.ModelSerializer):
+    class Meta:
+        model = rankings.models.Ranking
         fields = '__all__'
